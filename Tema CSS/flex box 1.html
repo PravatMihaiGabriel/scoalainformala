@@ -1,0 +1,132 @@
+<!doctype html>
+<html>
+<head>
+       <style>
+        .wrapper {
+            display: flex;  
+            flex-flow: row wrap;
+            font-weight: bold;
+            text-align: center;
+            border-radius: 20px;
+            box-sizing: border-box;    
+            border: 20px solid blue;
+                  }
+          
+          .wrapper > * {
+             flex: 1 100%;
+                       }
+          
+          
+          .header {
+            display: flex;
+            background: rgb(134, 168, 177);
+            color: white;
+            font-size: 60px;
+            font-weight: 900;
+            padding: 30px;
+          }
+          
+          .header > div {
+            flex: 2;
+          }
+          .imagine { 
+            width: 200px;
+            height: 100px;
+            font-size: 20px;
+          }
+          .header > div {
+            text-align: center;
+          }
+
+          .footer {
+            background: lightgreen;
+            padding: 20px;
+          }
+          
+          .main {
+            text-align: left;
+            background: white;
+          }
+          
+          .aside-1 {
+            background: white;
+          }
+        .puncte {
+          font-size: 10px;
+        }
+          
+          
+          @media all and (min-width: 600px) {
+            .aside { flex: 1 auto; }
+          }
+          
+          @media all and (min-width: 800px) {
+            .main    { flex: 3 0px; }
+            .aside-1 { order: 1; } 
+            .main    { order: 2; }
+            .footer  { order: 3; }
+          }
+          
+          body {
+            background: rgb(50, 52, 49);
+            padding: 5em; 
+          }
+        </style>
+</head>
+<body>
+        <div class="wrapper" >
+                <header class="header">
+                <img class="imagine" scr="http://cdn1.shopmania.biz/files/s4/997532304/p/l/8/monitor-lcd-ibm-18-1-ibm-9494-hbo-1280x1024-16ms-dvi-grad-a-cabluri~5178.jpg" alt="nu gasesc imaginea">
+                <div>My Website!</div>
+                </header>
+
+                <aside class="aside aside-1">
+                    <a href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/#article-header-id-2">Home</a>
+                  </br>
+                  <p class="puncte">..................................</p>
+                    <a href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/#article-header-id-2">About</a>
+                  </br>
+                  <p class="puncte">..................................</p>
+                    <a href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/#article-header-id-2">Interesting Things</a>
+                  </br>
+                  <p class="puncte">..................................</p>
+                    <a href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/#article-header-id-2">Boring Things</a>
+                  </br>
+                  <p class="puncte">..................................</p>
+                    <a href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/#article-header-id-2">Contact</a>
+                  </br>
+                  <p class="puncte">..................................</p>
+
+                    <p> purus eget diam maximus sollicitudin. Duis posuere ornare mauris, imperdiet tincidunt tellus dapibus a. Pellentesque sodales massa at rhoncus iaculis. In mollis sed orci a laoreet. Nulla quis ex ultricies, maximus metus non, vehicula urna. Curabitur auctor metus id metus suscipit gravida. Donec in sodales nulla, vel placerat mi. Phasellus elementum ullamcorper diam, quis sagittis dui dictum eu. Aliquam pharetra placerat augue eget volutpat. Vestibulum accumsan feugiat magna, quis molestie magna volutpat rutrum. Nulla id mollis est. Nam efficitur libero enim, quis scelerisque libero imperdiet eu. Sed congue eleifend risus, eget suscipit libero. In hac habitasse platea dictumst. Pellentesque porta tristique purus, sit amet congue nisi.
+  
+                        Ut in nunc imperdiet, suscipit dui condimentum, sagittis urna. Proin vulputate ante vitae ipsum facilisis molestie. Aenean interdum vulputate velit, aliquam maximus urna imperdiet ut. Etiam ullamcorper sit amet est sit amet egestas. Sed ut tempor enim, vitae aliquam enim. Morbi tristique iaculis ligula id elementum. In at gravida urna, non sodales felis. Etiam fringilla dapibus neque, eu lacinia est lacinia finibus. Quisque vulputate commodo urna eu consectetur. Vestibulum id justo molestie, euismod sem non, gravida nulla. Nam et augue et lorem fermentum efficitur. Nulla nec orci turpis. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Morbi sem neque, consequat et est sed, aliquet consectetur odio.
+                        
+                        Morbi quis tortor eu ligula sollicitudin euismod. Phasellus nec molestie leo, ac lobortis ipsum. Aliquam ipsum nisl, imperdiet scelerisque nulla id, finibus aliquam tortor. Maecenas scelerisque mi nisl, pretium fringilla metus accumsan sit amet. Sed faucibus, augue et accumsan rhoncus, nulla dolor sodales sapien, eu vulputate turpis dui eu ante. Quisque purus augue, mattis et interdum vel, pretium nec neque. Morbi nec eros quis diam sagittis pulvinar. Donec bibendum velit ut quam pellentesque, et suscipit nisl faucibus. Pellentesque viverra leo ac urna faucibus posuere. Donec iaculis lacus eget odio porta placerat. Aliquam erat volutpat. Aenean condimentum a ligula non luctus. Nunc in quam sit amet augue rutrum dignissim aliquet id nunc. Proin erat ex, sagittis id sagittis quis, bibendum eu lacus. Duis condimentum aliquet ante sit amet sagittis.
+                        
+                        Cras in interdum orci, nec auctor odio. Nunc sodales semper ipsum non mollis. Nulla elit mauris, lobortis
+                      </p>
+                  </aside>
+                
+                <article class="main">
+                  <h1>Lorem Ipsum</h1>
+                      
+                      <p></p>
+"Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit..."
+"There is no one who loves pain itself, who seeks after it and wants to have it, simply because it is pain..."
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ac nisl mattis lorem porttitor sagittis. Cras arcu ante, dapibus vitae luctus nec, faucibus in sem. Nam bibendum eu enim ac pretium. Nam vitae pharetra augue. Mauris convallis vulputate elementum. Maecenas vel est aliquet nulla semper sollicitudin. Duis sodales, massa a efficitur mollis, tellus magna eleifend sem, at feugiat turpis mauris eu nulla. Cras ut risus tincidunt, vehicula enim a, malesuada turpis. Suspendisse potenti. Suspendisse potenti. Vivamus porta, tortor non feugiat gravida, ante dui egestas enim, sit amet placerat nisl leo ut justo. Sed in nisi scelerisque, lacinia nunc at, pharetra quam. Praesent sed tellus ut magna rhoncus rhoncus. Proin porta eros eu gravida venenatis. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Ut sit amet sem turpis.</br></br>
+
+Integer gravida purus eget diam maximus sollicitudin. Duis posuere ornare mauris, imperdiet tincidunt tellus dapibus a. Pellentesque sodales massa at rhoncus iaculis. In mollis sed orci a laoreet. Nulla quis ex ultricies, maximus metus non, vehicula urna. Curabitur auctor metus id metus suscipit gravida. Donec in sodales nulla, vel placerat mi. Phasellus elementum ullamcorper diam, quis sagittis dui dictum eu. Aliquam pharetra placerat augue eget volutpat. Vestibulum accumsan feugiat magna, quis molestie magna volutpat rutrum. Nulla id mollis est. Nam efficitur libero enim, quis scelerisque libero imperdiet eu. Sed congue eleifend risus, eget suscipit libero. In hac habitasse platea dictumst. Pellentesque porta tristique purus, sit amet congue nisi.
+
+Ut in nunc imperdiet, suscipit dui condimentum, sagittis urna. Proin vulputate ante vitae ipsum facilisis molestie. Aenean interdum vulputate velit, aliquam maximus urna imperdiet ut. Etiam ullamcorper sit amet est sit amet egestas. Sed ut tempor enim, vitae aliquam enim. Morbi tristique iaculis ligula id elementum. In at gravida urna, non sodales felis. Etiam fringilla dapibus neque, eu lacinia est lacinia finibus. Quisque vulputate commodo urna eu consectetur. Vestibulum id justo molestie, euismod sem non, gravida nulla. Nam et augue et lorem fermentum efficitur. Nulla nec orci turpis. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Morbi sem neque, consequat et est sed, aliquet consectetur odio.
+
+Morbi quis tortor eu ligula sollicitudin euismod. Phasellus nec molestie leo, ac lobortis ipsum. Aliquam ipsum nisl, imperdiet scelerisque nulla id, finibus aliquam tortor. Maecenas scelerisque mi nisl, pretium fringilla metus accumsan sit amet. Sed faucibus, augue et accumsan rhoncus, nulla dolor sodales sapien, eu vulputate turpis dui eu ante. Quisque purus augue, mattis et interdum vel, pretium nec neque. Morbi nec eros quis diam sagittis pulvinar. Donec bibendum velit ut quam pellentesque, et suscipit nisl faucibus. Pellentesque viverra leo ac urna faucibus posuere. Donec iaculis lacus eget odio porta placerat. Aliquam erat volutpat. Aenean condimentum a ligula non luctus. Nunc in quam sit amet augue rutrum dignissim aliquet id nunc. Proin erat ex, sagittis id sagittis quis, bibendum eu lacus. Duis condimentum aliquet ante sit amet sagittis.
+
+Cras in interdum orci, nec auctor odio. Nunc sodales semper ipsum non mollis. Nulla elit mauris, lobortis quis hendrerit ac, dictum non purus. Maecenas non pretium erat, eu placerat risus. Etiam tincidunt mauris ipsum, vitae laoreet magna elementum at. Aenean nec ornare mauris. Donec ut tellus suscipit, consectetur lectus non, viverra sem. Vestibulum scelerisque quam id orci accumsan, nec ornare sem venenatis.
+                  </p>  
+                </article>
+                
+                <footer class="footer">@Foobar Inc.</footer>
+              </div>
+              
+</body>
+</html>
