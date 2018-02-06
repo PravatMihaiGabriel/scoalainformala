@@ -8,7 +8,6 @@
             flex-flow: row wrap;
             font-weight: bold;
             text-align: center;
-            border-radius: 20px;
             box-sizing: border-box;
             overflow: hidden;    
            
@@ -21,25 +20,34 @@
           
           .header {
             display: flex;
-            background: rgb(134, 168, 177);
-            color: white;
-            font-size: 60px;
+            align-items: flex-end;
+            flex-direction: column;
+            background: url(monitor.jpg);
+            background-repeat: no-repeat;
+            background-size: cover;
+            color: black;
+            font-size: 20px;
             font-weight: 900;
-            padding: 30px;
+            padding: 50px;
+            margin-bottom: 20px; 
+
           }
           
-          .header > div {
-            flex: 2;
+          .meniu {
+            background: rgb(234, 230, 203);
+            padding: 20px;
+            border: 5px solid rgb(206, 200, 176);
+            border-bottom: none;
+            
           }
-          .imagine { 
-            width: 200px;
-            height: 100px;
-            font-size: 20px;
+          .meniu > ul {
+            display: flex;
+            flex-direction: row;
           }
-          .header > div {
-            text-align: center;
+          .meniu > ul > li {
+            flex: 1;
+            
           }
-
           .footer {
             background: lightgreen;
             padding: 20px;
@@ -47,18 +55,15 @@
           
           .main {
             text-align: left;
-            background: white;
+            
             
           }
           
           .aside.aside-1 {
-            background: white;
+            
             flex-basis: 1px;
           }
-        .puncte {
-          font-size: 10px;
-        }
-          
+                
           
         @media all and (min-width: 600px) {
             .aside { flex: 1 auto; }
@@ -72,7 +77,7 @@
           }
           
           body {
-            background: rgb(50, 52, 49);
+            background: rgb(231, 235, 5);
             padding: 50px; 
           }
         </style>
@@ -80,10 +85,21 @@
 <body>
         <div class="wrapper" >
                 <header class="header">
-                <img class="imagine" src="monitor.jpg" alt="nu gasesc imaginea">
-                <div>My Website!</div>
+                <h1>Enter Site Title</h1>
+                <h3>Enter Site Title</h3>
                 </header>
-
+        </div>
+<div style="padding: 5px; background: rgb(223, 228, 228)">
+        <header class="meniu">
+                <ul type="none">
+                        <li>Home</li>
+                        <li >Page1</li>
+                        <li>Page2</li>
+                        <li>Page3</li>
+                        <li>Page4</li>
+                        <li>Page5</li>  
+                </ul>
+        </header>
                 <aside class="aside aside-1">
                     <a href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/#article-header-id-2">Home</a>
                   </br>
