@@ -3,68 +3,65 @@
 <head>
        <style>
         
-        .wrapper {
-            display: flex;  
-            flex-flow: row wrap;
-            font-weight: bold;
-            text-align: center;
-            box-sizing: border-box;
-            overflow: hidden;    
-           
-                  }
-          
-          .wrapper > * {
-             flex: 1 100%;
-                       }
-          
+       
           
           .header {
             display: flex;
-            align-items: flex-end;
+            align-items:flex-end;
             flex-direction: column;
-            background: url(monitor.jpg);
+            flex: 1 100%;
+            background: url(backgroundsite2.jpg);
             background-repeat: no-repeat;
             background-size: cover;
-            color: black;
-            font-size: 20px;
-            font-weight: 900;
-            padding: 50px;
-            margin-bottom: 20px; 
-
-          }
+            padding: 10px;
+            margin-bottom: 5px;
+            height: 100px;
+                  }
           
-          .meniu {
-            background: rgb(234, 230, 203);
+          .meniu1 {
+            background: url(backgroundsite1.jpg);
             padding: 20px;
             border: 5px solid rgb(206, 200, 176);
             border-bottom: none;
             
           }
-          .meniu > ul {
+          .meniu1 > ul {
             display: flex;
             flex-direction: row;
           }
-          .meniu > ul > li {
-            flex: 1;
-            
+          .meniu1 > ul > li {
+              flex: 1;
           }
+            
+          .meniu1 > ul > li > a {
+          text-decoration: none;
+          color:red;
+           }
+          
+          .principal {
+            display: flex;  
+            flex-direction:row;
+            }
+
           .footer {
             background: lightgreen;
             padding: 20px;
           }
           
           .main {
+
             text-align: left;
-            
+                        
             
           }
           
           .aside.aside-1 {
             
             flex-basis: 1px;
+                       
           }
-                
-          
+
+            
         @media all and (min-width: 600px) {
             .aside { flex: 1 auto; }
           }
@@ -74,78 +71,145 @@
             .aside-1 { order: 1;  } 
             .main    { order: 2; }
             .footer  { order: 3; }
+            
           }
           
           body {
-            background: rgb(231, 235, 5);
+            background: url(backgroundsite3.jpg);
             padding: 50px; 
           }
         </style>
 </head>
 <body>
-        <div class="wrapper" >
-                <header class="header">
-                <h1>Enter Site Title</h1>
-                <h3>Enter Site Title</h3>
-                </header>
+    
+        <div class="header">
+        <h1 style="margin-bottom: 5px; margin-top: 5px; text-align: left;">Enter Site Title</h1>
+        <h3 style="margin-top: 5px; margin-bottom: 5px; text-align: left;">Enter Site Title</h3>
         </div>
-<div style="padding: 5px; background: rgb(223, 228, 228)">
-        <header class="meniu">
+
+    
+<div style="padding: 5px; background: url(backgroundsite4.jpg);">
+        <header class="meniu1">
                 <ul type="none">
-                        <li>Home</li>
-                        <li >Page1</li>
-                        <li>Page2</li>
-                        <li>Page3</li>
-                        <li>Page4</li>
-                        <li>Page5</li>  
+                        <li><a href="" style="text-decoration: none;">Home</a></li>
+                        <li ><a href="">Page1</a></li>
+                        <li ><a href="">Page2</a></li>
+                        <li ><a href="">Page3</a></li>
+                        <li ><a href="">Page4</a></li>
+                        <li ><a href="">Page5</a></li>
+                         
                 </ul>
         </header>
-                <aside class="aside aside-1">
-                    <a href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/#article-header-id-2">Home</a>
+<div class="principal">
+                <aside class="aside aside-1" style="float: left; border-right-width: 2px; border-right-color: grey; border-right-style: dotted; padding: 10px;">
+                    <div style="background:yellow; padding: 10px; margin-top: 10px; font-size: 25px;">
+                        <img src="backgroundsite.jpg" style="width: 15px;height: 15px; padding-right: 10px;">
+                        Main Menu
+                    </div>
                   </br>
-                  <p class="puncte">..................................</p>
-                    <a href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/#article-header-id-2">About</a>
+                  <div style="background: yellowgreen; padding: 10px;">
+                    <a href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/#article-header-id-2" style="color: grey;">
+                      <img src="backgroundsite.jpg" style="width: 15px;height: 15px; padding-right: 10px;">
+                      Menu Item 1
+                    </a>
                   </br>
-                  <p class="puncte">..................................</p>
-                    <a href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/#article-header-id-2">Interesting Things</a>
                   </br>
-                  <p class="puncte">..................................</p>
-                    <a href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/#article-header-id-2">Boring Things</a>
+                  <a href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/#article-header-id-2" style="color: grey;">
+                    <img src="backgroundsite.jpg" style="width: 15px;height: 15px; padding-right: 10px;">
+                    Menu Item 2
+                  </a>
                   </br>
-                  <p class="puncte">..................................</p>
-                    <a href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/#article-header-id-2">Contact</a>
                   </br>
-                  <p class="puncte">..................................</p>
-
-                    <p> purus eget diam maximus sollicitudin. Duis posuere ornare mauris, imperdiet tincidunt tellus dapibus a. Pellentesque sodales massa at rhoncus iaculis. In mollis sed orci a laoreet. Nulla quis ex ultricies, maximus metus non, vehicula urna. Curabitur auctor metus id metus suscipit gravida. Donec in sodales nulla, vel placerat mi. Phasellus elementum ullamcorper diam, quis sagittis dui dictum eu. Aliquam pharetra placerat augue eget volutpat. Vestibulum accumsan feugiat magna, quis molestie magna volutpat rutrum. Nulla id mollis est. Nam efficitur libero enim, quis scelerisque libero imperdiet eu. Sed congue eleifend risus, eget suscipit libero. In hac habitasse platea dictumst. Pellentesque porta tristique purus, sit amet congue nisi.
-  
-                        Ut in nunc imperdiet, suscipit dui condimentum, sagittis urna. Proin vulputate ante vitae ipsum facilisis molestie. Aenean interdum vulputate velit, aliquam maximus urna imperdiet ut. Etiam ullamcorper sit amet est sit amet egestas. Sed ut tempor enim, vitae aliquam enim. Morbi tristique iaculis ligula id elementum. In at gravida urna, non sodales felis. Etiam fringilla dapibus neque, eu lacinia est lacinia finibus. Quisque vulputate commodo urna eu consectetur. Vestibulum id justo molestie, euismod sem non, gravida nulla. Nam et augue et lorem fermentum efficitur. Nulla nec orci turpis. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Morbi sem neque, consequat et est sed, aliquet consectetur odio.
-                        
-                        Morbi quis tortor eu ligula sollicitudin euismod. Phasellus nec molestie leo, ac lobortis ipsum. Aliquam ipsum nisl, imperdiet scelerisque nulla id, finibus aliquam tortor. Maecenas scelerisque mi nisl, pretium fringilla metus accumsan sit amet. Sed faucibus, augue et accumsan rhoncus, nulla dolor sodales sapien, eu vulputate turpis dui eu ante. Quisque purus augue, mattis et interdum vel, pretium nec neque. Morbi nec eros quis diam sagittis pulvinar. Donec bibendum velit ut quam pellentesque, et suscipit nisl faucibus. Pellentesque viverra leo ac urna faucibus posuere. Donec iaculis lacus eget odio porta placerat. Aliquam erat volutpat. Aenean condimentum a ligula non luctus. Nunc in quam sit amet augue rutrum dignissim aliquet id nunc. Proin erat ex, sagittis id sagittis quis, bibendum eu lacus. Duis condimentum aliquet ante sit amet sagittis.
-                        
-                        Cras in interdum orci, nec auctor odio. Nunc sodales semper ipsum non mollis. Nulla elit mauris, lobortis
-                      </p>
-                  </aside>
+                  <a href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/#article-header-id-2" style="color: grey;">
+                    <img src="backgroundsite.jpg" style="width: 15px;height: 15px; padding-right: 10px;">Menu Item 3</a>
+                  </br></br>
+                  <a href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/#article-header-id-2" style="color: grey;">
+                    <img src="backgroundsite.jpg" style="width: 15px;height: 15px; padding-right: 10px;">Menu Item 4</a>
+                  </br></br>
+                  <a href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/#article-header-id-2" style="color: grey;">
+                    <img src="backgroundsite.jpg" style="width: 15px;height: 15px; padding-right: 10px;">Menu Item 5</a>
+                  </br></br>
+                  <a href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/#article-header-id-2" style="color: grey;">
+                    <img src="backgroundsite.jpg" style="width: 15px;height: 15px; padding-right: 10px;">
+                    Menu Item 6
+                  </a>
+                </br></br>
+                <a href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/#article-header-id-2" style="color: grey;">
+                  <img src="backgroundsite.jpg" style="width: 15px;height: 15px; padding-right: 10px;">
+                  Menu Item 7
+                </a>
+              </br></br>
+              <a href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/#article-header-id-2" style="color: grey;">
+                <img src="backgroundsite.jpg" style="width: 15px;height: 15px; padding-right: 10px;">
+                Menu Item 8
+              </a>
+              </div>
+            </br>
+            <div style="background:yellow; padding: 10px; margin-bottom: 15px; font-size: 25px;">
+                <img src="backgroundsite.jpg" style="width: 15px;height: 15px; padding-right: 10px;">
+                Block
+              </div>
+              <div style="background: yellowgreen; padding: 10px;">
+                  
+              <textarea style="background: yellowgreen; font-size: 10px;">Enter Block content here...</textarea>
+            <p> 
+              purus eget diam maximus sollicitudin. Duis posuere ornare mauris, imperdiet tincidunt
+             tellus dapibus a. Pellentesque sodales massa at rhoncus iaculis.
+              In mollis sed orci a laoreet. 
+             Nulla quis ex ultricies, maximus metus non, vehicula urna. Curabitur auctor metus id metus 
+             suscipit
+           </p>
+            </div>
+            </aside>
                 
-                <article class="main">
-                  <h1>Lorem Ipsum</h1>
+                <article class="main" style="padding-left: 10px;">
+                  <h1>Gallery</h1>
                       
-                      <p></p>
-"Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit..."
-"There is no one who loves pain itself, who seeks after it and wants to have it, simply because it is pain..."
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ac nisl mattis lorem porttitor sagittis. Cras arcu ante, dapibus vitae luctus nec, faucibus in sem. Nam bibendum eu enim ac pretium. Nam vitae pharetra augue. Mauris convallis vulputate elementum. Maecenas vel est aliquet nulla semper sollicitudin. Duis sodales, massa a efficitur mollis, tellus magna eleifend sem, at feugiat turpis mauris eu nulla. Cras ut risus tincidunt, vehicula enim a, malesuada turpis. Suspendisse potenti. Suspendisse potenti. Vivamus porta, tortor non feugiat gravida, ante dui egestas enim, sit amet placerat nisl leo ut justo. Sed in nisi scelerisque, lacinia nunc at, pharetra quam. Praesent sed tellus ut magna rhoncus rhoncus. Proin porta eros eu gravida venenatis. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Ut sit amet sem turpis.</br></br>
-
-Integer gravida purus eget diam maximus sollicitudin. Duis posuere ornare mauris, imperdiet tincidunt tellus dapibus a. Pellentesque sodales massa at rhoncus iaculis. In mollis sed orci a laoreet. Nulla quis ex ultricies, maximus metus non, vehicula urna. Curabitur auctor metus id metus suscipit gravida. Donec in sodales nulla, vel placerat mi. Phasellus elementum ullamcorper diam, quis sagittis dui dictum eu. Aliquam pharetra placerat augue eget volutpat. Vestibulum accumsan feugiat magna, quis molestie magna volutpat rutrum. Nulla id mollis est. Nam efficitur libero enim, quis scelerisque libero imperdiet eu. Sed congue eleifend risus, eget suscipit libero. In hac habitasse platea dictumst. Pellentesque porta tristique purus, sit amet congue nisi.
-
-Ut in nunc imperdiet, suscipit dui condimentum, sagittis urna. Proin vulputate ante vitae ipsum facilisis molestie. Aenean interdum vulputate velit, aliquam maximus urna imperdiet ut. Etiam ullamcorper sit amet est sit amet egestas. Sed ut tempor enim, vitae aliquam enim. Morbi tristique iaculis ligula id elementum. In at gravida urna, non sodales felis. Etiam fringilla dapibus neque, eu lacinia est lacinia finibus. Quisque vulputate commodo urna eu consectetur. Vestibulum id justo molestie, euismod sem non, gravida nulla. Nam et augue et lorem fermentum efficitur. Nulla nec orci turpis. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Morbi sem neque, consequat et est sed, aliquet consectetur odio.
-
-Morbi quis tortor eu ligula sollicitudin euismod. Phasellus nec molestie leo, ac lobortis ipsum. Aliquam ipsum nisl, imperdiet scelerisque nulla id, finibus aliquam tortor. Maecenas scelerisque mi nisl, pretium fringilla metus accumsan sit amet. Sed faucibus, augue et accumsan rhoncus, nulla dolor sodales sapien, eu vulputate turpis dui eu ante. Quisque purus augue, mattis et interdum vel, pretium nec neque. Morbi nec eros quis diam sagittis pulvinar. Donec bibendum velit ut quam pellentesque, et suscipit nisl faucibus. Pellentesque viverra leo ac urna faucibus posuere. Donec iaculis lacus eget odio porta placerat. Aliquam erat volutpat. Aenean condimentum a ligula non luctus. Nunc in quam sit amet augue rutrum dignissim aliquet id nunc. Proin erat ex, sagittis id sagittis quis, bibendum eu lacus. Duis condimentum aliquet ante sit amet sagittis.
-
-Cras in interdum orci, nec auctor odio. Nunc sodales semper ipsum non mollis. Nulla elit mauris, lobortis quis hendrerit ac, dictum non purus. Maecenas non pretium erat, eu placerat risus. Etiam tincidunt mauris ipsum, vitae laoreet magna elementum at. Aenean nec ornare mauris. Donec ut tellus suscipit, consectetur lectus non, viverra sem. Vestibulum scelerisque quam id orci accumsan, nec ornare sem venenatis.
+                      <p>
+                          "Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit..."
+                          "There is no one who loves pain itself, who seeks after it and wants to have it, simply because it 
+                          is pain..."
+                          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ac nisl mattis lorem porttitor
+                           sagittis. Cras arcu ante, dapibus vitae luctus nec, faucibus in sem. Nam bibendum eu enim ac 
+                           pretium. Nam vitae pharetra augue. Mauris convallis vulputate elementum. Maecenas vel est aliquet nulla 
+                           semper sollicitudin. Duis sodales, massa a efficitur mollis, tellus magna eleifend sem, at feugiat turpis 
+                           mauris eu nulla. Cras ut risus tincidunt, vehicula enim a, malesuada turpis. Suspendisse potenti.
                   </p>  
+                  <div style="display: flex;">
+                      <div style="flex: 1; border-right-width: 2px; border-right-color: grey; border-right-style: dotted; padding-left: 10px;">
+                          <h1 style="margin-top: 0px;">Subscription</h1>
+                          <p>
+                              "Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit..."
+                              "There is no one who loves pain itself, who seeks after it and wants to have it, simply because it 
+                              is pain..."
+                              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ac nisl mattis lorem porttitor
+                               sagittis. Cras arcu ante, dapibus vitae luctus nec, faucibus in sem. Nam bibendum eu enim ac 
+                               pretium. Nam vitae pharetra augue. Mauris convallis vulputate elementum. Maecenas vel est aliquet nulla 
+                               semper sollicitudin. Duis sodales, massa a efficitur mollis, tellus magna eleifend sem, at feugiat turpis 
+                               mauris eu nulla. Cras ut risus tincidunt, vehicula enim a, malesuada turpis. Suspendisse potenti.
+                           </p>
+                           <input type="button" style="background-color: green; padding: 10px;" value="Read More">
+                        </div>
+                        <div style="flex: 1; padding-left: 10px;">
+                            <h1 style="margin-top: 0px;">Other Services</h1>
+                            <p>
+                                "Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit..."
+                                "There is no one who loves pain itself, who seeks after it and wants to have it, simply because it 
+                                is pain..."
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ac nisl mattis lorem porttitor
+                                 sagittis. Cras arcu ante, dapibus vitae luctus nec, faucibus in sem. Nam bibendum eu enim ac 
+                                 pretium. Nam vitae pharetra augue. Mauris convallis vulputate elementum. Maecenas vel est aliquet nulla 
+                                 semper sollicitudin. Duis sodales, massa a efficitur mollis, tellus magna eleifend sem, at feugiat turpis 
+                                 mauris eu nulla. Cras ut risus tincidunt, vehicula enim a, malesuada turpis. Suspendisse potenti. 
+                            </p>
+                            <input type="button" style="background-color: green; padding: 10px;" value="Read More">
+                          </div>
+                  </div>
                 </article>
-                
-                <footer class="footer">@Foobar Inc.</footer>
+              </div>
+            </br>
+                <footer class="footer" style="padding: 10 px; text-align: center;">Copyright @ 2014.</footer>
+              
               </div>
               
 </body>
