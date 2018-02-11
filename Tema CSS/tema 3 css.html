@@ -1,0 +1,263 @@
+<!doctype html>
+<html>
+<head>
+       <style>
+        
+              
+          .header {
+            display: flex;
+            background: url(backgroundsite2.jpg);
+            background-repeat: no-repeat;
+            background-size: cover;
+            height: 100px;
+                  }
+          
+          .meniu1 {
+            background: url(backgroundsite1.jpg);
+            padding: 20px;
+            border: 5px solid rgb(206, 200, 176);
+            border-bottom: none;
+            
+          }
+          .meniu1 > ul {
+            display: flex;
+            flex-direction: row;
+          }
+          .meniu1 > ul > li {
+              flex: 1;
+          }
+            
+          .meniu1 > ul > li > a {
+          text-decoration: none;
+          color:red;
+           }
+          
+          .principal {
+            display: flex;  
+            flex-direction: row;
+            background-size: cover;
+            }
+
+          .footer {
+            background: lightgreen;
+            padding: 20px;
+          }
+          
+         
+          
+        
+            
+        @media all and (min-width: 600px) {
+            aside { flex: 1 auto; }
+          }
+          
+          @media all and (min-width: 800px) {
+            .main    { flex: 4 0px; }
+            aside { order: 1; flex-basis: 1px; } 
+            .main    { order: 2; }
+            .footer  { order: 3; }
+            
+          }
+          
+          body {
+            background: url(backgroundsite3.jpg);
+            padding: 50px; 
+            
+          }
+
+          .meniutest > div :hover { 
+            background: rgb(150, 150, 150);
+            box-shadow: inset 3px 3px 10px 1px black;
+            
+          }
+
+          .accordion {
+    background-color: #eee;
+    color: #444;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 15px;
+    transition: 0.4s;
+}
+
+.active, .accordion:hover {
+    background-color: #ccc;
+    
+    }
+
+.panel {
+    padding: 0 18px;
+    display: none; 
+    background-color: white;
+    overflow: hidden;
+}
+
+
+        </style>
+</head>
+<body>
+    
+        <div class="header">
+        <h1 style="margin-bottom: 5px; margin-top: 5px; text-align:center; flex: 1; padding-top: 20px; color:#444;">FAQ Template</h1>
+        </div>
+
+    
+<div style="padding: 5px; background: url(backgroundsite4.jpg);">
+        
+<div class="principal">
+                <aside class="meniutest" style="float: left; border-right-width: 2px; border-right-color: grey; border-right-style: dotted; padding: 10px; width: 100px;">
+                    
+                    <div style="background: grey; display: flex; flex-direction:column;">
+                        <a href="#how"
+                        style="padding: 5px; font-size: 20px; text-decoration: none; 
+                        color:blanchedalmond; border-bottom-width: 1px; border-bottom-color: rgb(196, 179, 179); border-bottom-style:solid;">
+                        Basic
+                        </a>
+                        <a href="#mob"
+                        style="padding: 5px; font-size: 20px; text-decoration: none; 
+                        color:blanchedalmond; border-bottom-width: 1px; border-bottom-color: rgb(196, 179, 179); border-bottom-style:solid;">
+                        Mobile
+                        </a>
+                        <a href="#acc"
+                        style="padding: 5px; font-size: 20px; text-decoration: none; 
+                        color:blanchedalmond; border-bottom-width: 1px; border-bottom-color: rgb(196, 179, 179); border-bottom-style:solid;">
+                        Account
+                        </a>
+                        <a href=""
+                        style="padding: 5px; font-size: 20px; text-decoration: none; 
+                        color:blanchedalmond; border-bottom-width: 1px; border-bottom-color: rgb(196, 179, 179); border-bottom-style:solid;">
+                        Payments
+                        </a>
+                        <a href=""
+                        style="padding: 5px; font-size: 20px; text-decoration: none; 
+                        color:blanchedalmond; border-bottom-width: 1px; border-bottom-color: rgb(196, 179, 179); border-bottom-style:solid;">
+                        Privacy
+                        </a>
+                        <a href=""
+                        style="padding: 5px; font-size: 20px; text-decoration: none; 
+                        color:blanchedalmond; border-bottom-width: 1px; border-bottom-color: rgb(196, 179, 179); border-bottom-style:solid;">
+                        Delivery
+                        </a>
+                    </div>
+           
+            </aside>
+                
+                <article class="main" style="padding-left: 10px; text-align: justify;">
+                
+                <p id="how" style="color:#444; font-size: 20px;">Basic</p>
+                 
+                <button class="accordion">How do I change my password ?</button>
+                <div class="panel">
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor 
+                incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+                ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                </div>
+                </br>
+                </br>
+
+                <button class="accordion">How do I change my password ?</button>
+                <div class="panel">
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor 
+                incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+                ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                </div>
+                </br>
+                </br>
+
+                <button class="accordion">How do I change my password ?</button>
+                <div class="panel">
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor 
+                incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+                ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                </div>
+                </br>
+                </br>
+
+                <p id="mob" style="color:#444; font-size: 20px;">Mobile</p>
+                 
+                <button class="accordion">How do I change my password ?</button>
+                <div class="panel">
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor 
+                incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+                ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                </div>
+                </br>
+                </br>
+
+                <button class="accordion">How do I change my password ?</button>
+                <div class="panel">
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor 
+                incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+                ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                </div>
+                </br>
+                </br>
+
+                <button class="accordion">How do I change my password ?</button>
+                <div class="panel">
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor 
+                incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+                ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                </div>
+                </br>
+                </br>
+
+                <p id="acc" style="color:#444; font-size: 20px;">Account</p>
+                 
+                <button class="accordion">How do I change my password ?</button>
+                <div class="panel">
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor 
+                incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+                ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                </div>
+                </br>
+                </br>
+
+                <button class="accordion">How do I change my password ?</button>
+                <div class="panel">
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor 
+                incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+                ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                </div>
+                </br>
+                </br>
+
+                <button class="accordion">How do I change my password ?</button>
+                <div class="panel">
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor 
+                incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+                ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                </div>
+                </br>
+                </br>
+      
+                </article>
+              </div>
+            </br>
+                <footer class="footer" style="padding: 10 px; text-align: center;">Copyright @ 2014.</footer>
+              
+              </div>
+
+              <script>
+                    var acc = document.getElementsByClassName("accordion");
+                    var i;
+                    
+                    for (i = 0; i < acc.length; i++) {
+                        acc[i].addEventListener("click", function() {
+                            this.classList.toggle("active");
+                            var panel = this.nextElementSibling;
+                            if (panel.style.display === "block") {
+                                panel.style.display = "none";
+                            } else {
+                                panel.style.display = "block";
+                            }
+                        });
+                    }
+                    </script>
+              
+</body>
+</html>
