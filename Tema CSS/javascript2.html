@@ -1,0 +1,93 @@
+<!doctype html>
+<html>
+<head>
+<script>
+    var zileSaptamana=["Luni","Marti","Miercuri","Joi","Vineri","Sambata","Duminica"]
+    var pc={
+        cpu:{familie:"i7",
+        producator:"Intel",
+        frecventa:"2Gz"
+        },
+        ram:{clock_speed:15,
+             frecventa:2600
+        }
+    }
+
+    var persoana= {
+        inaltime: 1.64,
+        greutate: 70,
+        ochi:{
+            culoare: "caprui",
+            dioptrii: 0.25,
+            numar: 2
+        },
+        nume: "Pravat",
+        prenume: "Mihai",
+        ci:{
+            serie: "RX",
+            numar: "1234",
+            cnp: "1234",
+            locnastere: "Bucuresti"
+        },
+        diplome:["BAC","LICENTA"]
+
+    }
+var i=0;
+while (i<zileSaptamana.length){
+    console.log(zileSaptamana[i]);
+    i++;
+}
+
+for (i=0; i<zileSaptamana.length; i++){
+    console.log(zileSaptamana[i]);
+}
+var i=zileSaptamana.length-1
+while (i>=0){
+    console.log(zileSaptamana[i]);
+    i--;
+}
+console.log("---------------");
+for (i=0; i<zileSaptamana.length; i++){
+    console.log(zileSaptamana[zileSaptamana.length-i-1]);
+}
+
+function sum(arr){
+    var x=0;
+    for (i=0; i<arr.length; i++){
+    x=arr[i]+x;
+    };
+    return x;
+}
+function produs(arr){
+    var x=1;
+    for (i=0; i<arr.length; i++){
+    x=arr[i]*x;
+    };
+    return x;
+}
+function concat(arr){
+    var x="";
+    for (i=0; i<arr.length; i++){
+    x=arr[i]+x;
+    };
+    return x;
+}
+console.log(sum([2, 3, 5 ]));
+console.log(produs([2, 3, 5 ]));
+console.log(concat(["ana", "are","mere" ]));
+console.log(zileSaptamana);
+console.log(zileSaptamana[2]);
+console.log(zileSaptamana.length);
+console.log(pc);
+console.log(pc.cpu);
+console.log(pc["cpu"]);
+console.log(pc.cpu.familie);
+console.log(persoana);
+console.log(persoana.diplome[0]);
+console.log(persoana.ci.cnp);
+</script>
+</head>
+<body>
+
+</body>
+</html>
