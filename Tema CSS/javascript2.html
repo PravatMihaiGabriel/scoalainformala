@@ -37,7 +37,7 @@ while (i<zileSaptamana.length){
     console.log(zileSaptamana[i]);
     i++;
 }
-
+var i=0;
 for (i=0; i<zileSaptamana.length; i++){
     console.log(zileSaptamana[i]);
 }
@@ -68,10 +68,29 @@ function produs(arr){
 function concat(arr){
     var x="";
     for (i=0; i<arr.length; i++){
-    x=arr[i]+x;
+    x=x+arr[i];
     };
     return x;
 }
+
+function prim(x){
+
+        for (var i=0; i<x-1 && x%i!=0; i++);
+        if (i===x){ console.log("Nu este prim")};
+}
+          
+console.log(prim(7));
+        function palindrom(arr){
+    
+        for (var i=0; arr[i]===arr[arr.length-i-1] && i<=arr.length/2; i++);
+        if (i===parseInt(arr.length/2+1, 10)){
+           
+            console.log("Palindrom");}else{console.log("Nu este palindrom");
+        }
+        }
+
+console.log(palindrom("abcdcba"));
+console.log("-------------");
 console.log(sum([2, 3, 5 ]));
 console.log(produs([2, 3, 5 ]));
 console.log(concat(["ana", "are","mere" ]));

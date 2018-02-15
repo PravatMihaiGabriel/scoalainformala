@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+<head>
+<script>
+    var arr=[-3, 5, 10, -7];
+    function sum(arr){
+    var x=0;
+    for (var i=0; i<arr.length; i++){
+    x=arr[i]+x;
+    };
+    return x;
+}
+console.log(sum(arr));
+
+var avg=sum(arr)/arr.length;
+for (var i=0; i<arr.length; i++){
+    if (avg>=arr[i]){
+        console.log(arr[i]);
+    }
+}
+
+function prim(x){
+if(x===1 || x===2){ 
+    console.log("Este prim");
+    }
+else{
+    for (var i=2; i<x-1 && x%i!=0; i++){
+
+    }
+    if (i+1===x){ 
+        console.log("Este prim");
+    }else {
+        console.log("Nu este prim");
+    }
+}
+}
+  
+console.log(prim(97));
+</script>
+</head>
+<body>
+
+</body>
+</html>
