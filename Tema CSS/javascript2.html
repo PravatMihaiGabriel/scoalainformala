@@ -73,11 +73,6 @@ function concat(arr){
     return x;
 }
 
-function prim(x){
-
-        for (var i=0; i<x-1 && x%i!=0; i++);
-        if (i===x){ console.log("Nu este prim")};
-}
           
 console.log(prim(7));
         function palindrom(arr){
@@ -85,7 +80,7 @@ console.log(prim(7));
         for (var i=0; arr[i]===arr[arr.length-i-1] && i<=arr.length/2; i++);
         if (i===parseInt(arr.length/2+1, 10)){
            
-            console.log("Palindrom");}else{console.log("Nu este palindrom");
+            return "Palindrom";}else{ return "Nu este palindrom";
         }
         }
 

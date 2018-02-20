@@ -41,9 +41,7 @@
         var sirprimele5litere="";
         var lungimesirlitere=0;
         for (var i=0; i<sir.length && lungimesirlitere<5; i++){
-            if (sir[i]>=0 && sir[i]<=9) {
-                sirprimele5litere=sirprimele5litere;
-            }else{
+            if (sir.toLowerCase()[i]>="a" && sir.toLowerCase()[i]<="z" ) {
                 sirprimele5litere=sirprimele5litere+sir[i];
                 lungimesirlitere=lungimesirlitere+1;
             }
@@ -51,8 +49,8 @@
             }
             
             if (sirprimele5litere.length<4){
-                console.log("Acest sir nu contine 5 litere");
-            }else{ console.log(sirprimele5litere);}
+                return "Acest sir nu contine 5 litere";
+            }else{ return sirprimele5litere;}
     }
 
     console.log(extragereprimele5litere("1a2b3c4d5eana"));
@@ -61,20 +59,18 @@
     function extragereultimele10litere(sir){
         var sirultimele10litere="";
             for (var i=0; i<sir.length && sirultimele10litere.length<10; i++){
-                if (sir[sir.length-1-i]>=0 && sir[sir.length-1-i]<=9) {
-                sirultimele10litere=sirultimele10litere;
-                }else{
+                if (sir.toLowerCase()[sir.length-1-i]>="a" && sir.toLowerCase()[sir.length-1-i]<="z") {
                     sirultimele10litere=sir[sir.length-1-i]+sirultimele10litere;
-                     }
+                }
 
             }
             
             if (sirultimele10litere.length<10){
-                console.log("Acest sir nu contine 10 litere");
-            }else{ console.log(sirultimele10litere);}
+                return "Acest sir nu contine 10 litere";
+            }else{ return sirultimele10litere;}
     }
 
-    console.log(extragereultimele10litere("1a2b3c4d5e8_ana_are_mere"));
+    console.log(extragereultimele10litere("1a2b3c4d5e8_AnA_are_mer9e"));
     console.log("-------------------");
 
     function primulx(sir,x){

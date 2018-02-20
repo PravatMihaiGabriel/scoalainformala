@@ -1,0 +1,70 @@
+<!doctype html>
+<html>
+
+<head>
+    <script>
+        function valideaza(element, eveniment) {
+            eveniment.preventDefault();
+            
+            var elemNume = document.getElementById("nume");
+            var elemPrenume = document.getElementById("prenume");
+            var elemParola = document.getElementById("parola");
+            var elemParola1 = document.getElementById("parola1");
+            var elemTermeni = document.getElementById("termeni");
+            console.log(elemNume.value);
+            if (validarenumepren(elemNume.value)<3){
+                elemNume.style.backgroundColor="red";
+            }else { elemNume.style.backgroundColor="";};
+            if (validarenumepren(elemPrenume.value)<3){
+                elemPrenume.style.backgroundColor="red";
+            }else { elemParola.style.backgroundColor="";};
+            if (validarenumepren(elemPrenume.value)<3){
+                elemParola.style.backgroundColor="red";
+            }else { elemParola1.style.backgroundColor="";};
+            if (validarenumepren(elemPrenume.value)<3){
+                elemParola1.style.backgroundColor="red";
+            }else { elemParola1.style.backgroundColor="";};
+            console.log(elemPrenume.value);
+            console.log(elemParola.value);
+            console.log(elemParola1.value);
+            console.log(elemTermeni.value);
+            console.log(element, eveniment);
+            console.log(validarenumepren(elemNume.value));
+            
+            elemParola1.type="text";
+        }
+        function validarenumepren(sir){
+        var sirprimele3litere="";
+        var lungimesirlitere=0;
+        for (var i=0; i<sir.length; i++){
+            if (sir.toLowerCase()[i]>="a" && sir.toLowerCase()[i]<="z" ) {
+                  lungimesirlitere=lungimesirlitere+1;
+            }
+
+            }        
+            return lungimesirlitere;
+    }
+   
+    </script>
+    <title>
+        Quiz !!!
+    </title>
+</head>
+
+<body>
+    <form method="post" onsubmit="valideaza(this, event)">
+      <fieldset>
+          <legend>Cont Nou</legend>
+          Nume: <input name="numeleMeu" type="text" id="nume"><br>
+          Prenume: <input name="prenumeleMeu" type="text" id="prenume"><br>
+          Parola: <input name="parolaMea" type="password" id="parola"><br>
+          Reintroduceti Parola: <input name="dinNouParola" type="password" id="parola1"><br>
+          Acceptati Termenii si Conditiile: <input name="termeniiSiConditiile" type="checkbox" id="termeni"><br>
+          <input type="submit" value="Salveaza"><br>
+
+      </fieldset>  
+    </form>
+    
+</body>
+
+</html>
