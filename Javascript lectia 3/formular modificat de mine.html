@@ -12,19 +12,19 @@
             var elemParola1 = document.getElementById("parola1");
             var elemTermeni = document.getElementById("termeni");
             console.log(elemNume.value);
-            if (elemNume.value<3){
+            if (elemNume.value.length<3){
                 elemNume.style.backgroundColor="red";
-                document.getElementById("numegresit").styled.isplay="";
+                document.getElementById("numegresit").style.display="";
             }else { elemNume.style.backgroundColor="";
             document.getElementById("numegresit").style.display="none";};
 
-            if (elemPrenume.value<3){
+            if (elemPrenume.value.length<3){
                 elemPrenume.style.backgroundColor="red";
                 document.getElementById("prenumegresit").style.display="";
             }else { elemPrenume.style.backgroundColor="";
             document.getElementById("prenumegresit").style.display="none";};
 
-            if (elemParola.value<6){
+            if (elemParola.value.length<6){
                 elemParola.style.backgroundColor="red";
                 document.getElementById("parolagresita").style.display="";
             }else { elemParola.style.backgroundColor="";
@@ -45,7 +45,7 @@
             console.log(elemParola1.value);
             console.log(elemTermeni.value);
             console.log(element, eveniment);
-            console.log(validarenumepren(elemNume.value));
+            
             
             elemParola1.type="text";
         }
