@@ -1,0 +1,142 @@
+<!doctype html>
+<html>
+
+<head>
+    <script>
+        function valideaza(element, eveniment) {
+            eveniment.preventDefault();
+            
+            var elemNume = document.getElementById("nume");
+            var elemPrenume = document.getElementById("prenume");
+            var elemParola = document.getElementById("parola");
+            var elemParola1 = document.getElementById("parola1");
+            var elemTermeni = document.getElementById("termeni");
+            console.log(elemNume.value);
+            if (elemNume.value.length<3){
+                elemNume.style.backgroundColor="red";
+                document.getElementById("numegresit").style.display="";
+            }else { elemNume.style.backgroundColor="";
+            document.getElementById("numegresit").style.display="none";};
+
+            if (elemPrenume.value.length<3){
+                elemPrenume.style.backgroundColor="red";
+                document.getElementById("prenumegresit").style.display="";
+            }else { elemPrenume.style.backgroundColor="";
+            document.getElementById("prenumegresit").style.display="none";};
+
+            if (elemParola.value.length<6){
+                elemParola.style.backgroundColor="red";
+                document.getElementById("parolagresita").style.display="";
+            }else { elemParola.style.backgroundColor="";
+            document.getElementById("parolagresita").style.display="none";};
+
+            if (elemParola.value===elemParola1.value){
+                elemParola1.style.backgroundColor="";
+                document.getElementById("parola1gresita").style.display="none";}
+            else { elemParola1.style.backgroundColor="red";
+            document.getElementById("parola1gresita").style.display="";
+            };
+            if (elemTermeni.checked==="false") {
+                elemTermeni.style.backgroundColor="red";
+            }else { elemTermeni.style.backgroundColor="";};
+
+            console.log(elemPrenume.value);
+            console.log(elemParola.value);
+            console.log(elemParola1.value);
+            console.log(elemTermeni.value);
+            console.log(element, eveniment);
+            
+            
+            elemParola1.type="text";
+        }
+        function validarenumepren(element,eveniment){
+        var elemNume = document.getElementById("nume");
+        var valoaresir=elemNume.value; 
+        var ultimatasta=eveniment.key;   
+        var lungimesirlitere=0;
+
+        for (var i=0; i<valoaresir.length; i++){
+            if (ultimatasta.toLowerCase()>="a" && ultimatasta.toLowerCase()<="z" || ultimatasta===" " || ultimatasta==="-" || ultimatasta==="'") {
+                  lungimesirlitere=lungimesirlitere+1;
+                  
+            }else {eveniment.preventDefault();}
+
+            }        
+            return lungimesirlitere;
+    }
+   
+    function validareparola(element,eveniment){
+        var elemparola = document.getElementById("parola");
+        var valoaresir=elemparola.value;
+        var literamica=false;
+        var literamare=false;
+        var caracterspecial=false;
+        var cifra=false;
+        var elemParola = document.getElementById("parola");
+            
+
+
+        for (var i=0; i<valoaresir.length; i++){
+            if (valoaresir[i]>="a" && valoaresir[i]<="z") {
+                  literamica=true;
+            }
+            else { if (valoaresir[i]>="A" && valoaresir[i]<="Z") {
+                  literamare=true;
+            } else {if (valoaresir[i]>="0" && valoaresir[i]<="9") {
+                  cifra=true;} else {if (valoaresir[i]==="!" || valoaresir[i]<="#" || valoaresir[i]<="@") {
+                  caracterspecial=true;}
+
+                  }
+            }     
+            }
+        } 
+
+            if (literamica && literamare &&  caracterspecial && cifra){
+                elemParola.style.backgroundColor="";
+                document.getElementById("parolagresita").style.display="none";
+                 } else {
+                    elemParola.style.backgroundColor="red";
+                document.getElementById("parolagresita").style.display="";
+                eveniment.preventDefault();
+                 }
+            }
+    /*function validarenumepren1(sir){
+        var lungimesirlitere=0;
+
+        for (var i=0; i<valoaresir.length; i++){
+            if (sir.length>=3) {
+                  
+                  
+            }else {eveniment.preventDefault();}
+
+            }        
+            return lungimesirlitere;
+    }*/
+
+    </script>
+    <title>
+        Quiz !!!
+    </title>
+</head>
+
+<body>
+    <form method="post" onsubmit="valideaza(this, event)">
+      <fieldset>
+          <legend>Cont Nou</legend>
+          Nume: <input name="numeleMeu" type="text" id="nume" onkeypress="validarenumepren(this, event)"><br>
+          <p style="display:none;" id="numegresit"> Ai gresit numele</p>
+          Prenume: <input name="prenumeleMeu" type="text" id="prenume" onkeypress="validarenumepren(this, event)"><br>
+          <p style="display:none;" id="prenumegresit"> Ai gresit prenumele</p>
+          Parola: <input name="parolaMea" type="password" id="parola" onchange="validareparola(this, event)"><br>
+          <p style="display:none;" id="parolagresita"> Ai gresit parola</p>
+          Reintroduceti Parola: <input name="dinNouParola" type="password" id="parola1"><br>
+          <p style="display:none;" id="parola1gresita"> Parolele nu sunt la fel </p>
+          Acceptati Termenii si Conditiile: <input name="termeniiSiConditiile" type="checkbox" id="termeni"><br>
+          <input type="submit" value="Salveaza"><br>
+
+      </fieldset>  
+    </form>
+    
+</body>
+
+</html>

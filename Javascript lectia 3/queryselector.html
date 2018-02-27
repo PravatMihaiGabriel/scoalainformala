@@ -1,0 +1,21 @@
+<html>
+    <head>
+        <script>
+            function valideaza(form, event){
+                event.preventDefault();
+                console.log(form.querySelector("[name=Nume]").value);
+            };
+        </script>
+
+    </head>
+    <body>
+<form onsubmit="valideaza(this, event)">
+    <input type="text" name="Nume">
+    <input type="submit" name="Valideaza">
+</form>
+<form onsubmit="valideaza(this, event)">
+        <input type="text" name="Nume">
+        <input type="submit" name="Valideaza">
+    </form>
+    </body>
+</html>
