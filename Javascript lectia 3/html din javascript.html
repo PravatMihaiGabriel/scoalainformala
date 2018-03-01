@@ -1,0 +1,100 @@
+<!doctype html>
+<html>
+<head>
+<script>
+var listaClienti=[
+{
+    nume:"Gigi",
+    prenume:"Dorel",
+    varsta:"39",
+    telefon:"07340000"
+},
+{
+    nume:"Eu",
+    prenume:"Dorel",
+    varsta:"29",
+    telefon:"0734248400"
+},
+{
+    nume:"Gigi1",
+    prenume:"Dorel1",
+    varsta:"28",
+    telefon:["07340000","07445698"]
+}
+];
+function deseneazaClienti(){
+    var tabel=document.querySelector("#listaClienti>tbody");
+    var str="";
+    for(i=0;i<listaClienti.length;i++){
+        var rand=`<tr>
+            <td>${listaClienti[i].nume}</td>
+            <td>${listaClienti[i].prenume}</td>
+            <td>${listaClienti[i].varsta}</td>
+            <td>${listaClienti[i].telefon}</td>                                     
+        </tr>`
+        str+=rand;
+        tabel.innerHTML=str;
+    }
+
+}
+var coloanaSortare="";
+var directieSortare="asc";
+function sorteaza(criteriu, td){
+    if(coloanaSortare!==criteriu){
+        var ultimulElement=document.querySelector(".asc, .desc");
+        if(ultimulElement!==null){
+            ultimulElement.classList.remove("asc");
+            ultimulElement.classList.remove("desc");
+        }
+        coloanaSortare=criteriu;
+        directieSortare="asc";}else {
+            if(directieSortare==="asc") {
+                directieSortare="desc";
+            } else { 
+                directieSortare="asc"}
+            }
+
+    listaClienti.sort(function(a,b){
+        if(a[criteriu]>b[criteriu]){
+        return 1}
+        else {if(a[criteriu]<b[criteriu]){
+                return -1}
+                else {
+                    return 0}
+        }
+        
+    });
+    if(directieSortare==="desc"){
+        listaClienti.reverse();
+    }
+    console.log(listaClienti);
+    deseneazaClienti();
+    td.classList.add(directieSortare);
+}
+console.log(listaClienti);
+</script>
+<style>
+table {border-collapse: collapse;}
+.asc{background-color: blue; }
+.desc{background-color: red; }
+
+</style>
+</head>
+
+    <body onload="deseneazaClienti()">
+            <table border="1" id="listaClienti">
+                <thead>
+                    <tr>
+                            <td onclick="sorteaza('nume', this)"> Nume </td>
+                            <td onclick="sorteaza('prenume', this)"> Prenume </td>
+                            <td onclick="sorteaza('varsta', this)"> Varsta </td>
+                            <td> Telefon </td>
+                                               
+                    </tr>
+                </thead>
+                <tbody>
+
+                </tbody>
+                    
+    </body>
+</html>
