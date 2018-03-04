@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		
+		<style>
+			.tab.selected{
+				display:block;
+				border:1px solid black;
+			}
+			.tab{
+				display:none;
+			}
+			
+		</style>
+		<script>
+			function showTab(index){
+				var selectedList = document.querySelectorAll(".tab.selected");
+				for(var i=0;i<selectedList.length;i++){
+					selectedList[i].classList.remove("selected");
+				}
+				
+				document.querySelectorAll(".tab")[index].classList.add("selected");
+			}
+		</script>
+	</head>
+<body>
+	<input type="button" value="Tab1" onclick="showTab(0)"/>
+	<input type="button" value="Tab2" onclick="showTab(1)"/>
+	<input type="button" value="Tab3" onclick="showTab(2)"/>
+	<input type="button" value="Tab4" onclick="showTab(3)"/>
+	<div class="tab">
+		Continu tab 1;
+	</div>
+	<div class="tab">
+		Continu tab 2;
+	</div>
+	<div class="tab">
+		Continu tab 3;
+	</div>
+	<div class="tab">
+		Continu tab 4;
+	</div>
+</body>
+</html>
