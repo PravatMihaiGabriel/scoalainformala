@@ -157,11 +157,11 @@
             else { elemNrdetel.style.backgroundColor="red";
             document.getElementById("nrdetelgresit").style.display="";
             };
-
-            if(a===true && b===true && c===true && d===true){listaClienti.push({nume: elemNume.value, prenume: elemPrenume.value, varsta: elemVarsta.value, telefon: elemNrdetel.value});
+            var clientNou={nume: elemNume.value, prenume: elemPrenume.value, varsta: elemVarsta.value, telefon: elemNrdetel.value};
+            if(a===true && b===true && c===true && d===true){listaClienti.push(clientNou);
                              
                 drawClienti();
-                //document.getElementById("formular").submit();
+                /*element.reset();*/
                 }
             
 
@@ -180,16 +180,17 @@
         var ultimatasta=eveniment.key;   
         var lungimesirlitere=0;
 
-        for (var i=0; i<valoaresir.length; i++){
+        /*for (var i=0; i<valoaresir.length; i++){*/
             if (ultimatasta.toLowerCase()>="a" && ultimatasta.toLowerCase()<="z" || ultimatasta===" " || ultimatasta==="-" || ultimatasta==="'") {
                   lungimesirlitere=lungimesirlitere+1;
                   
             }else {
             eveniment.preventDefault();}
 
-            }        
+                    
             return lungimesirlitere;
         }
+        
 
         function validareprenume(element,eveniment){
             
@@ -198,7 +199,7 @@
         var ultimatasta=eveniment.key;   
         var lungimesirlitere=0;
         
-        for (var i=0; i<valoaresir.length; i++){
+        /*for (var i=0; i<valoaresir.length; i++){*/
             if (ultimatasta.toLowerCase()>="a" && ultimatasta.toLowerCase()<="z" || ultimatasta===" " || ultimatasta==="-" || ultimatasta==="'") {
                   lungimesirlitere=lungimesirlitere+1;
                   
@@ -206,7 +207,7 @@
                     
                 }
 
-            }        
+               
             return lungimesirlitere;
         }
 
@@ -216,13 +217,12 @@
         var ultimatasta=eveniment.key;   
         var lungimesirlitere=0;
 
-        for (var i=0; i<valoaresir.length; i++){
+        /*for (var i=0; i<valoaresir.length; i++){*/
             if (ultimatasta>=0 && ultimatasta<=9) {
                   lungimesirlitere=lungimesirlitere+1;
                   
             }else {eveniment.preventDefault();}
-
-            }        
+        
             return lungimesirlitere;
         }
 		
@@ -266,6 +266,7 @@
             Numarul de telefon: <input name="nrdetel" type="text" id="nrdetel" onkeypress="validarenrtel(this, event)"><br>
             <p style="display:none;" id="nrdetelgresit"> Numarul de telefon este gresit </p>
             <input type="submit" value="Salveaza"><br>
+            <input type="reset" value="Reseteaza"><br>
   
         </fieldset>  
       </form>

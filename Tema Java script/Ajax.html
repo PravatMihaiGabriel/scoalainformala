@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<script>
+			var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState==4 && this.status==200){
+                    
+                    console.log(this.responseText);
+                    console.log(JSON.parse(this.responseText));
+                    var cursValutar=JSON.parse(this.responseText);
+                    console.log(cursValutar);
+                    str=""
+                    for(var i in cursValutar.rates){
+                        console.log(i,cursValutar.rates[i]);
+                        str+=`<li> <span class="curency">${i}</span>
+        <span class="rate">${(1/cursValutar.rates[i]).toFixed(4)}</span>
+      </li>`
+                    document.getElementById("containerCursValutar").innerHTML=str; 
+                    document.getElementById("data").innerHTML=dataRomaneasca(cursValutar.date); 
+                    }
+                }
+            };
+            xhttp.open("GET", "https://api.fixer.io/latest?base=RON&symbols=USD,EUR")
+            xhttp.send();
+
+            function dataRomaneasca(data){
+                var dataRomaneasca="";
+                //dataRomaneasca=data[8]+data[9]+"."+data[5]+data[6]+"."+data[0]+data[1]+data[2]+data[3];
+                dataRomaneasca=data.substr(8,2)+"."+data.substr(5,2)+"."+data.substr(0,4);
+                return dataRomaneasca;
+
+
+            }
+            
+        </script>
+        <style>
+        .rate {
+            color: #5a4b4b;
+        }
+        .curecy {
+            font-size: 1.2em;
+        }
+        </style>
+    </head>
+    
+<body>
+
+    <span id="data"></span>
+
+    <ul id="containerCursValutar">
+       
+    </ul>
+       
+
+</body>
+</html>
