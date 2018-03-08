@@ -30,23 +30,19 @@
             }else{yesterdayString=yesterdayString+yesterday.getDate();}
             console.log(yesterdayString);
 
+            var todayResponse=null;
+            var yesterdayResponse=null;
+
 			var xhttp = new XMLHttpRequest();
             xhttp.onreadystatechange = function() {
                 if (this.readyState==4 && this.status==200){
-                    
+                    todayResponse=JSON.parse(this.responseText);
+                    if(todayResponse!==null && yesterdayResponse!==null){
+                        drawList(todayResponse, yesterdayResponse);
+                    }
                     console.log(this.responseText);
                     console.log(JSON.parse(this.responseText));
-                    var cursValutar=JSON.parse(this.responseText);
-                    console.log(cursValutar);
-                    str=""
-                    for(var i in cursValutar.rates){
-                        console.log(i,cursValutar.rates[i]);
-                        str+=`<li> <span class="curency">${i}</span>
-        <span class="rate">${(1/cursValutar.rates[i]).toFixed(4)}</span>
-      </li>`
-                    document.getElementById("containerCursValutar").innerHTML=str; 
-                    document.getElementById("data").innerHTML=dataRomaneasca(cursValutar.date); 
-                    }
+                    
                 }
             };
             xhttp.open("GET", "https://api.fixer.io/"+yesterdayString+"?base=RON&symbols=USD,EUR")
@@ -55,24 +51,30 @@
 var xhttp = new XMLHttpRequest();
             xhttp.onreadystatechange = function() {
                 if (this.readyState==4 && this.status==200){
-                    
+                    yesterdayResponse=JSON.parse(this.responseText);
+                    if(todayResponse!==null && yesterdayResponse!==null){
+                        drawList(todayResponse, yesterdayResponse);
+                    }
                     console.log(this.responseText);
                     console.log(JSON.parse(this.responseText));
-                    var cursValutar=JSON.parse(this.responseText);
-                    console.log(cursValutar);
-                    str=""
-                    for(var i in cursValutar.rates){
-                        console.log(i,cursValutar.rates[i]);
-                        str+=`<li> <span class="curency">${i}</span>
-        <span class="rate">${(1/cursValutar.rates[i]).toFixed(4)}</span>
-      </li>`
-                    document.getElementById("containerCursValutar").innerHTML=str; 
-                    document.getElementById("data").innerHTML=dataRomaneasca(cursValutar.date); 
+    
+                    
+         
                     }
-                }
             };
             xhttp.open("GET", "https://api.fixer.io/"+todayString+"?base=RON&symbols=USD,EUR")
             xhttp.send();
+
+            function drawList(todayResponse,yesterdayResponse){
+                        str=""
+                    for(var i in todayResponse.rates){
+                        str+=`<li> <span class="curency">${i}</span>
+        <span class="rate">${(1/todayResponse.rates[i]).toFixed(4)}  ${(1/yesterdayResponse.rates[i]).toFixed(4)} ${(1/todayResponse.rates[i]-1/yesterdayResponse.rates[i]).toFixed(8)}</span>
+      </li>`
+      document.getElementById("containerCursValutar").innerHTML=str; 
+      document.getElementById("data").innerHTML=dataRomaneasca(todayResponse.date); 
+                    }
+            }
 
             function dataRomaneasca(data){
                 var dataRomaneasca="";

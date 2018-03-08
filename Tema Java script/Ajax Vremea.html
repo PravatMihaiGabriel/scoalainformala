@@ -12,6 +12,10 @@
                     console.log(JSON.parse(this.responseText));
                     var vremeaAcum=JSON.parse(this.responseText);
                     console.log(vremeaAcum);
+                    var str="";
+                    str+=`<li><span class="vremeaNow">${vremeaAcum.main.temp}</span>
+      </li>`
+            document.getElementById("vremeaAcum").innerHTML=str;
                 }
             };
 
@@ -109,7 +113,7 @@
             </form>
 
 
-    <span>
+    <span id="vremeaAcum">
         
     </span>
        
