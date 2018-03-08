@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<script>
+            var URL_CURRENT_WEATHER = "https://api.openweathermap.org/data/2.5/weather?appid=69518b1f8f16c35f8705550dc4161056&units=metric&q=";
+            var a=false;
+            var currentWeather = new XMLHttpRequest();
+            currentWeather.onreadystatechange = function() {
+                if (this.readyState==4 && this.status==200){
+                    
+                    console.log(this.responseText);
+                    console.log(JSON.parse(this.responseText));
+                    var vremeaAcum=JSON.parse(this.responseText);
+                    console.log(vremeaAcum);
+                }
+            };
+
+            function valideaza(elem, e){
+				e.preventDefault();
+				
+				console.log(elem,e);
+				
+				var elemOras = document.getElementById("oras");
+								
+				console.log(elemOras);
+								
+				if (elemOras.value.length<3){
+                    elemOras.style.backgroundColor="red";
+                document.getElementById("orasGresit").style.display="";
+            }else { elemOras.style.backgroundColor="";
+            document.getElementById("orasGresit").style.display="none";
+            a=true;};
+				
+				console.log(elemOras.value);
+                if (a=true){
+                    URL_CURRENT_WEATHER=URL_CURRENT_WEATHER+elemOras.value;
+                    currentWeather.open("GET", URL_CURRENT_WEATHER);
+                    currentWeather.send();}
+                    URL_CURRENT_WEATHER = "https://api.openweathermap.org/data/2.5/weather?appid=69518b1f8f16c35f8705550dc4161056&units=metric&q=";
+
+                }
+			
+            
+            function validareOras(element,eveniment){
+        var elemOras = document.getElementById("oras");
+        
+        var ultimatasta=eveniment.key;   
+        
+            if (ultimatasta.toLowerCase()>="a" && ultimatasta.toLowerCase()<="z" || ultimatasta===" " || ultimatasta==="-" || ultimatasta==="'") {
+                                   
+            }else {
+            eveniment.preventDefault();}
+     
+            return elemOras.value;
+        }
+
+			/*var currentWeather = new XMLHttpRequest();
+            currentWeather.onreadystatechange = function() {
+                if (this.readyState==4 && this.status==200){
+                    
+                    console.log(this.responseText);
+                    console.log(JSON.parse(this.responseText));
+                    var vremeaAcum=JSON.parse(this.responseText);
+                    console.log(vremeaAcum);
+                    str=""
+                    for(var i in cursValutar.rates){
+                        console.log(i,cursValutar.rates[i]);
+                        str+=`<li> <span class="curency">${i}</span>
+        <span class="rate">${(1/cursValutar.rates[i]).toFixed(4)}</span>
+      </li>`
+                    document.getElementById("containerCursValutar").innerHTML=str; 
+                    document.getElementById("data").innerHTML=dataRomaneasca(cursValutar.date); 
+                    }
+                }
+            };
+            if (a=true){currentWeather.open("GET", URL_CURRENT_WEATHER);
+            currentWeather.send();}
+
+            function dataRomaneasca(data){
+                var dataRomaneasca="";
+                //dataRomaneasca=data[8]+data[9]+"."+data[5]+data[6]+"."+data[0]+data[1]+data[2]+data[3];
+                dataRomaneasca=data.substr(8,2)+"."+data.substr(5,2)+"."+data.substr(0,4);
+                return dataRomaneasca;
+
+
+            }*/
+            
+        </script>
+        <style>
+        .rate {
+            color: #5a4b4b;
+        }
+        .curecy {
+            font-size: 1.2em;
+        }
+        </style>
+    </head>
+    
+<body>
+        <form method="post" onsubmit="valideaza(this,event);">
+                <fieldset style="border: 1px dashed #676767;">
+                              
+                <input name="vremeaOras" id="oras" type="text" onkeypress="validareOras(this, event)">
+                <p style="display:none;" id="orasGresit"> Numele orasului poate sa contina numai caractere, spatii si cratima</p>
+                <input type="submit" value="Afiseaza vremea"/>
+                <input type="submit" value="Afiseaza prognoza"/>
+              
+             </fieldset>
+            </form>
+
+
+    <span>
+        
+    </span>
+       
+
+</body>
+</html>
