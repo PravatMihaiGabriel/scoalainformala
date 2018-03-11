@@ -13,8 +13,18 @@
                     var vremeaAcum=JSON.parse(this.responseText);
                     console.log(vremeaAcum);
                     var str="";
-                    str+=`<li><span class="vremeaNow">${vremeaAcum.main.temp}</span>
-      </li>`
+                    str+=`<span class="vremeaNow">
+                    <span>Descriere: ${vremeaAcum.weather[0].description}</span>
+                    </br>
+                    <span>Umiditate: ${vremeaAcum.main.humidity}</span>
+                    </br>
+                    <span>Presiune: ${vremeaAcum.main.pressure}</span>
+                    </br>
+                    <span>Temperatura curenta: ${vremeaAcum.main.temp}</span>
+                    </br>
+                    <span>Minima zilei: ${vremeaAcum.main.temp_min}</span>
+                    </br>
+                    <span>Maxima zilei: ${vremeaAcum.main.temp_max}</span>`
             document.getElementById("vremeaAcum").innerHTML=str;
                 }
             };
@@ -113,8 +123,11 @@
             </form>
 
 
+    <span>
+    <span>Vremea acum</span>
+    <hr>
     <span id="vremeaAcum">
-        
+    </span>      
     </span>
        
 
