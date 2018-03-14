@@ -3,10 +3,12 @@
 	<head>
 		<script>
             var today = new Date();
+            ziua=today.getDate();
             console.log(today.getDate());
             console.log(today.getMonth()+1);
             console.log(today.getFullYear());
             console.log(today.getTime());
+            console.log(today.getTime(ziua));
             var yesterday= new Date (today.getTime()-24*60*60*1000)
             console.log(yesterday.getDate());
             console.log(yesterday.getMonth()+1);

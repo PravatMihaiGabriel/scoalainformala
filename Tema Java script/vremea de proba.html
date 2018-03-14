@@ -11,11 +11,9 @@
         var raspunsPrognoza = null;
         var latitudine = null;
         var longitudine = null;
-
         var currentWeather = new XMLHttpRequest();
         currentWeather.onreadystatechange = function () {
             if (this.readyState == 4 && this.status == 200) {
-
                 console.log(this.responseText);
                 console.log(JSON.parse(this.responseText));
                 vremeaAcum = JSON.parse(this.responseText);
@@ -32,16 +30,12 @@
                         mapTypeId: google.maps.MapTypeId.ROADMAP,
                     };
                     var map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
-
                 }
-
             }
         };
-
         var forecastWeather = new XMLHttpRequest();
         forecastWeather.onreadystatechange = function () {
             if (this.readyState == 4 && this.status == 200) {
-
                 console.log(this.responseText);
                 console.log(JSON.parse(this.responseText));
                 raspunsPrognoza = JSON.parse(this.responseText);
@@ -49,15 +43,12 @@
                 if (raspunsPrognoza !== null) {
                     drawPrognoza(raspunsPrognoza);
                 }
-
             }
         };
-
         function drawVremea(x) {
             var str = "";
-            str += `<span>
-                    <span><img src="${URL_WEATHER_ICON_PREFIX}${vremeaAcum.weather[0].icon}.png" 
-                    alt="nu gasesc imaginea"></span>
+            str += `<span class="vremeaNow">
+                    <span><img class="imagine" src="${URL_WEATHER_ICON_PREFIX}${vremeaAcum.weather[0].icon}.png" alt="nu gasesc imaginea"></span>
                     </br>
                     <span>Descriere: ${vremeaAcum.weather[0].description}</span>
                     </br>
@@ -70,71 +61,24 @@
                     <span>Minima zilei: ${vremeaAcum.main.temp_min}</span>
                     </br>
                     <span>Maxima zilei: ${vremeaAcum.main.temp_max}</span>
-                    </span>
-                    <div id="googleMap" style="width: 75%; height:250px; flex: 1; margin-left: 15px;"></div>`;
-
+                    <div id="googleMap" style="width:75%;height:250px;"></div>`
             document.getElementById("vremeaAcum").innerHTML = str;
-
         }
-
         function drawPrognoza(x) {
-            var strZile=null;
-            var ora=raspunsPrognoza.list[0].dt_txt.substr(11, 2);
-            var i=null;
-            if (ora!=="00"){ i=0;
-                
-            } else{i=1;}
-                strZile =`<tr bgcolor="#c4def5">
-                    <th align="center" nowrap valign="middle">Ziua: ${raspunsPrognoza.list[i+0].dt_txt.substr(8, 2)+"/"+raspunsPrognoza.list[i+0].dt_txt.substr(5, 2)+"/"+raspunsPrognoza.list[i+0].dt_txt.substr(0, 4)}</td>
-                    <th align="center" nowrap valign="middle">Ziua: ${raspunsPrognoza.list[i+7].dt_txt.substr(8, 2)+"/"+raspunsPrognoza.list[i+7].dt_txt.substr(5, 2)+"/"+raspunsPrognoza.list[i+7].dt_txt.substr(0, 4)}</td>
-                    <th align="center" nowrap valign="middle">Ziua: ${raspunsPrognoza.list[i+15].dt_txt.substr(8, 2)+"/"+raspunsPrognoza.list[i+15].dt_txt.substr(5, 2)+"/"+raspunsPrognoza.list[i+15].dt_txt.substr(0, 4)}</td>
-                    <th align="center" nowrap valign="middle">Ziua: ${raspunsPrognoza.list[i+23].dt_txt.substr(8, 2)+"/"+raspunsPrognoza.list[i+23].dt_txt.substr(5, 2)+"/"+raspunsPrognoza.list[i+23].dt_txt.substr(0, 4)}</td>
-                    <th align="center" nowrap valign="middle">Ziua: ${raspunsPrognoza.list[i+31].dt_txt.substr(8, 2)+"/"+raspunsPrognoza.list[i+31].dt_txt.substr(5, 2)+"/"+raspunsPrognoza.list[i+31].dt_txt.substr(0, 4)}</td>
-                    <th align="center" nowrap valign="middle">Ziua: ${raspunsPrognoza.list[i+39].dt_txt.substr(8, 2)+"/"+raspunsPrognoza.list[i+39].dt_txt.substr(5, 2)+"/"+raspunsPrognoza.list[i+39].dt_txt.substr(0, 4)}</td>
-
-                    </tr>`
-                    
             var strPrognoza = "";
-            for (i = 0; i < 8; i++) {
+            for (i = 0; i < 6; i++) {
                 strPrognoza = strPrognoza + `<tr>
-                    <td align="center" nowrap valign="middle" id="${i+0*8}"></td>
-                    <td align="center" nowrap valign="middle" id="${i+1*8}"></td>
-                    <td align="center" nowrap valign="middle" id="${i+2*8}"></td>
-                    <td align="center" nowrap valign="middle" id="${i+3*8}"></td>
-                    <td align="center" nowrap valign="middle" id="${i+4*8}"></td>
-                    <td align="center" nowrap valign="middle" id="${i+5*8}"></td>
-                    </tr>`
+                    <td>1</td>
+                    <td>2</td>
+                    <td>3</td>
+                    <td>4</td>
+                    <td>5</td>
+                    <td>6</td>
+                    <td>7</td>
+                    <td>8</td>                    
+            </tr>`
             }
-            document.getElementById("prognoza").innerHTML = strZile+strPrognoza;
-           
-            console.log(ora);
-            var dtInitial=raspunsPrognoza.list[0].dt-(ora*60*60);
-            console.log(dtInitial);
-            var diferentaOra=null;
-            var idul=null;
-            var oraCurenta=null;
-            for(var i in raspunsPrognoza.list){
-                diferentaOra=(raspunsPrognoza.list[i].dt-dtInitial)/(60*60);
-                console.log(raspunsPrognoza.list[i].dt);
-                console.log(diferentaOra);
-                console.log(i);
-                idul=parseInt(diferentaOra/3);
-                oraCurenta=raspunsPrognoza.list[i].dt_txt.substr(11, 5);
-                console.log(idul);
-                var stringPrognoza="";
-                        stringPrognoza+=`<div><span><img src="${URL_WEATHER_ICON_PREFIX}${raspunsPrognoza.list[i].weather[0].icon}.png" 
-                        alt="nu gasesc imaginea"></span></br>
-                        <span >Ora: ${oraCurenta}</span></br>
-                        <span >Temperatura: ${raspunsPrognoza.list[i].main.temp}</span></br>
-                        <span>Descriere: ${raspunsPrognoza.list[i].weather[0].description}</span>
-                        </div>
-                        `
-                if(idul!==null && diferentaOra!==null){
-        
-                document.getElementById(idul).innerHTML=stringPrognoza;
-                } 
-      
-                    }
+            document.getElementById("prognoza").innerHTML = strPrognoza;
             /*strPrognoza+=`<span class="vremeaNow">
             <span><img class="imagine" src="${URL_WEATHER_ICON_PREFIX}${vremeaAcum.weather[0].icon}.png" alt="nu gasesc imaginea"></span>
             </br>
@@ -151,19 +95,12 @@
             <span>Maxima zilei: ${vremeaAcum.main.temp_max}</span>
             <div id="googleMap" style="width:75%;height:250px;"></div>`
             document.getElementById("vremeaAcum").innerHTML=str;*/
-
             }
-
-
             function valideaza(elem, e) {
                 e.preventDefault();
-
                 console.log(elem, e);
-
                 var elemOras = document.getElementById("oras");
-
                 console.log(elemOras);
-
                 if (elemOras.value.length < 3) {
                     elemOras.style.backgroundColor = "red";
                     document.getElementById("orasGresit").style.display = "";
@@ -172,7 +109,6 @@
                     document.getElementById("orasGresit").style.display = "none";
                     a = true;
                 };
-
                 console.log(elemOras.value);
                 if (a = true) {
                     URL_CURRENT_WEATHER = URL_CURRENT_WEATHER + elemOras.value;
@@ -182,19 +118,12 @@
                 }
                 URL_CURRENT_WEATHER = "https://api.openweathermap.org/data/2.5/weather?appid=69518b1f8f16c35f8705550dc4161056&units=metric&q=";
                 URL_WEATHER_ICON_PREFIX = "http://openweathermap.org/img/w/";
-
             }
-
-
             function valideazaPrognoza(elem, e) {
                 e.preventDefault();
-
                 console.log(elem, e);
-
                 var elemOras = document.getElementById("oras");
-
                 console.log(elemOras);
-
                 if (elemOras.value.length < 3) {
                     elemOras.style.backgroundColor = "red";
                     document.getElementById("orasGresit").style.display = "";
@@ -203,7 +132,6 @@
                     document.getElementById("orasGresit").style.display = "none";
                     a = true;
                 };
-
                 console.log(elemOras.value);
                 if (a = true) {
                     URL_FORECAST_WEATHER = URL_FORECAST_WEATHER + elemOras.value;
@@ -211,24 +139,16 @@
                     forecastWeather.send();
                 }
                 URL_FORECAST_WEATHER = "https://api.openweathermap.org/data/2.5/forecast?appid=69518b1f8f16c35f8705550dc4161056&units=metric&q=";
-
-
             }
-
             function validareOras(element, eveniment) {
                 var elemOras = document.getElementById("oras");
-
                 var ultimatasta = eveniment.key;
-
                 if (ultimatasta.toLowerCase() >= "a" && ultimatasta.toLowerCase() <= "z" || ultimatasta === " " || ultimatasta === "-" || ultimatasta === "'") {
-
                 } else {
                     eveniment.preventDefault();                
 }
-
                 return elemOras.value;
             }
-
 			/*var currentWeather = new XMLHttpRequest();
             currentWeather.onreadystatechange = function() {
                 if (this.readyState==4 && this.status==200){
@@ -250,18 +170,21 @@
             };
             if (a=true){currentWeather.open("GET", URL_CURRENT_WEATHER);
             currentWeather.send();}
-
             function dataRomaneasca(data){
                 var dataRomaneasca="";
                 //dataRomaneasca=data[8]+data[9]+"."+data[5]+data[6]+"."+data[0]+data[1]+data[2]+data[3];
                 dataRomaneasca=data.substr(8,2)+"."+data.substr(5,2)+"."+data.substr(0,4);
                 return dataRomaneasca;
-
-
             }*/
-
     </script>
-   
+    <style>
+        .rate {
+            color: #5a4b4b;
+        }
+        .curecy {
+            font-size: 1.2em;
+        }
+    </style>
 </head>
 
 <body style="background-color: rgb(188, 248, 248);">
@@ -283,44 +206,21 @@
     </br>
     <div style="background-color:white; padding: 20px; border-radius: 10px;">
         <div>
-        <span style="font-weight: bold; color: #655a57;">Vremea acum</span>
+        <span>Vremea acum</span>
         <hr>
         </div>
-        <span id="vremeaAcum" style="display: flex; flex-direction: row;">
-            <span>
-                <span><img src="" 
-            alt=""></span>
-            </br>
-                <span>Descriere: </span>
-            </br>
-                <span>Umiditate: </span>
-            </br>
-             <span>Presiune: </span>
-            </br>
-             <span>Temperatura curenta: </span>
-            </br>
-                <span>Minima zilei: </span>
-            </br>
-                <span>Maxima zilei: </span>
-            </span>
-            <div style="width: 75%; height:250px; flex: 1; margin-left: 15px;"></div>
+        <span id="vremeaAcum">
         </span>
     </div>
 </br>
 </br>
     <div style="background-color:white; padding: 20px; border-radius: 10px;">
     
-    <span style="font-weight: bold; color: #655a57;">Vremea in urmatoarele zile</span>
-    <hr>
-   
-   
+    <span>Prognoza</span>
     <table id="prognoza">
 
     </table>
     </div>
-</br>
-</br>
-    
     
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDo4lTLnuHmYj5RJzb8IeCAKqAHb154rbw"></script>
 </body>
