@@ -1,0 +1,20 @@
+[
+    {
+        "nume":"Nourescu3",
+        "prenume":"Bogdan",
+        "varsta":29,
+        "telefon":["0758066000"]
+    },
+    {
+        "nume":"Nourescu1",
+        "prenume":"Bogdan1",
+        "varsta":30,
+        "telefon":["0758000000","0758000000"]
+    },
+    {
+        "nume":"Nourescu2",
+        "prenume":"Bogdan2",
+        "varsta":31,
+        "telefon":["0758000000"]
+    }
+]
