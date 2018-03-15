@@ -92,13 +92,15 @@
             if (ora!=="00"){ i=0;
                 
             } else{i=1;}
-                strZile =`<tr bgcolor="#c4def5">
-                    <th >Ziua: ${raspunsPrognoza.list[i+0].dt_txt.substr(8, 2)+"/"+raspunsPrognoza.list[i+0].dt_txt.substr(5, 2)+"/"+raspunsPrognoza.list[i+0].dt_txt.substr(0, 4)}</td>
-                    <th >Ziua: ${raspunsPrognoza.list[i+7].dt_txt.substr(8, 2)+"/"+raspunsPrognoza.list[i+7].dt_txt.substr(5, 2)+"/"+raspunsPrognoza.list[i+7].dt_txt.substr(0, 4)}</td>
-                    <th >Ziua: ${raspunsPrognoza.list[i+15].dt_txt.substr(8, 2)+"/"+raspunsPrognoza.list[i+15].dt_txt.substr(5, 2)+"/"+raspunsPrognoza.list[i+15].dt_txt.substr(0, 4)}</td>
-                    <th >Ziua: ${raspunsPrognoza.list[i+23].dt_txt.substr(8, 2)+"/"+raspunsPrognoza.list[i+23].dt_txt.substr(5, 2)+"/"+raspunsPrognoza.list[i+23].dt_txt.substr(0, 4)}</td>
-                    <th >Ziua: ${raspunsPrognoza.list[i+31].dt_txt.substr(8, 2)+"/"+raspunsPrognoza.list[i+31].dt_txt.substr(5, 2)+"/"+raspunsPrognoza.list[i+31].dt_txt.substr(0, 4)}</td>
-                    <th >Ziua: ${raspunsPrognoza.list[i+39].dt_txt.substr(8, 2)+"/"+raspunsPrognoza.list[i+39].dt_txt.substr(5, 2)+"/"+raspunsPrognoza.list[i+39].dt_txt.substr(0, 4)}</td>
+                strZile =`<tr>
+                    <th ><span style="background-color: #c4def5">Ziua: ${raspunsPrognoza.list[i+0].dt_txt.substr(8, 2)+
+                    "/"+raspunsPrognoza.list[i+0].dt_txt.substr(5, 2)+"/"
+                    +raspunsPrognoza.list[i+0].dt_txt.substr(0, 4)}</span></td>
+                    <th ><span style="background-color: #c4def5">Ziua: ${raspunsPrognoza.list[i+7].dt_txt.substr(8, 2)+"/"+raspunsPrognoza.list[i+7].dt_txt.substr(5, 2)+"/"+raspunsPrognoza.list[i+7].dt_txt.substr(0, 4)}</span></td>
+                    <th ><span style="background-color: #c4def5">Ziua: ${raspunsPrognoza.list[i+15].dt_txt.substr(8, 2)+"/"+raspunsPrognoza.list[i+15].dt_txt.substr(5, 2)+"/"+raspunsPrognoza.list[i+15].dt_txt.substr(0, 4)}</span></td>
+                    <th ><span style="background-color: #c4def5">Ziua: ${raspunsPrognoza.list[i+23].dt_txt.substr(8, 2)+"/"+raspunsPrognoza.list[i+23].dt_txt.substr(5, 2)+"/"+raspunsPrognoza.list[i+23].dt_txt.substr(0, 4)}</span></td>
+                    <th ><span style="background-color: #c4def5">Ziua: ${raspunsPrognoza.list[i+31].dt_txt.substr(8, 2)+"/"+raspunsPrognoza.list[i+31].dt_txt.substr(5, 2)+"/"+raspunsPrognoza.list[i+31].dt_txt.substr(0, 4)}</span></td>
+                    <th ><span style="background-color: #c4def5">Ziua: ${raspunsPrognoza.list[i+39].dt_txt.substr(8, 2)+"/"+raspunsPrognoza.list[i+39].dt_txt.substr(5, 2)+"/"+raspunsPrognoza.list[i+39].dt_txt.substr(0, 4)}</span></td>
 
                     </tr>`
                     
@@ -208,11 +210,11 @@
 
 
             }
-            /*var initializare=null;*/
+            var initializare=null;
 
             function validareOras(element, eveniment){
                 var elemOras = document.getElementById("oras");
-                /*var rescrierePagina=null;
+                var rescrierePagina=null;
                 if(initializare===null){
                     rescrierePagina=`<div style="background-color:white; padding: 20px; border-radius: 10px;">
         <div>
@@ -246,15 +248,16 @@
     <span style="font-weight: bold; color: #655a57;">Vremea in urmatoarele zile</span>
     <hr>
    
-   
+    <div align="center" >
     <table id="prognoza">
 
     </table>
+    </div>
     </div>`
     initializare=1;
     console.log(rescrierePagina);
-    document.getElementById(paginaInitiala).innerHTML=rescrierePagina;
-                }*/
+    document.getElementById("paginaInitiala").innerHTML=rescrierePagina;
+                }
 
 
 
@@ -322,10 +325,11 @@
     <span style="font-weight: bold; color: #655a57;">Vremea in urmatoarele zile</span>
     <hr>
    
-   
-    <table id="prognoza" style="width:70%">
+    <div align="center" >
+    <table id="prognoza" style="width:100%">
 
     </table>
+    </div>
     </div>
 </div>
 </br>
