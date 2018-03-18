@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<script>
+			var listaProduse=[];
+		
+		function drawListaCumparaturi(){
+			var tabel=document.querySelector("#listaProduse tbody");
+			var str="";
+            
+			for(var i=0;i<listaProduse.length;i++){
+				if(listaProduse[i].mark===false){
+                    str+= `<tr>
+					<td>${listaProduse[i].produs}</td>
+					<td><input style="margin-left: 2px; border-radius: 5px; color:black;
+                    background-color: rgb(226, 139, 163);; height: 25px;" type="button" value="Mark as Buyed" onclick="mark(${i})"/></td>
+				</tr>`;
+				
+                }else { str+= `<tr>
+					<td ><span style="text-decoration: line-through;">${listaProduse[i].produs}</span></td>
+					<td><input style="margin-left: 2px; border-radius: 5px; color:black;
+                    background-color: rgb(226, 139, 163);; height: 25px;" type="button" value="Mark as Buyed" onclick="mark(${i})"/></td>
+				</tr>`;}
+			}
+			console.log(str);
+			tabel.innerHTML=str;
+		}
+
+		
+		function sorteaza(coloana, td, sortare){
+           
+			
+			listaProduse.sort(function(a,b){
+				if(a[coloana]>b[coloana]){
+					return 1;
+				}else if(a[coloana]<b[coloana]){
+					return -1;
+				}else{
+					return 0;
+				}
+			}); 
+            if (sortare==="desc"){
+							listaProduse.reverse();
+            }
+			
+			console.log(listaProduse);
+			drawListaCumparaturi();
+		}
+        
+        function mark(pozitie){
+
+            listaProduse[pozitie].mark=true;
+
+            drawListaCumparaturi();
+        }
+
+
+
+      function valideaza(element, eveniment) {
+            eveniment.preventDefault();
+            
+            var elemProdus = document.getElementById("produs");
+           
+            var a=false;
+            
+
+            console.log(elemProdus.value);
+            if (elemProdus.value.length<3){
+                elemProdus.style.backgroundColor="red";
+                document.getElementById("produsgresit").style.display="";
+            }else { elemProdus.style.backgroundColor="";
+            document.getElementById("produsgresit").style.display="none";
+            a=true;};
+
+           
+            var produsNou={produs: elemProdus.value, mark: false};
+            if(a===true){listaProduse.push(produsNou);
+                             
+                drawListaCumparaturi();
+
+                elemProdus.value="";
+                }
+            
+
+            console.log(elemProdus.value);
+            console.log(produsNou.mark.value);
+            console.log(element, eveniment);
+            
+            
+            
+        }
+        function validareProdus(element,eveniment){
+        var elemNume = document.getElementById("produs");
+        var valoaresir=elemNume.value; 
+        var ultimatasta=eveniment.key;   
+        var lungimesirlitere=0;
+
+                if (ultimatasta.toLowerCase()>="a" && ultimatasta.toLowerCase()<="z" || ultimatasta===" " || ultimatasta==="-" || ultimatasta==="'") {
+                  lungimesirlitere=lungimesirlitere+1;
+                  
+            }else {
+            eveniment.preventDefault();}
+
+                    
+            return lungimesirlitere;
+        }
+        
+
+       
+        
+        
+		</script>
+		<style>
+			table{
+				border-collapse:collapse;
+			}
+			
+		</style>
+    </head>
+        
+    <body style="background-color: rgb(171, 150, 191);">
+
+            <div style="background-color:white; padding: 20px; border-radius: 10px;">
+            <h2 align="center">SHOPPING LIST</h2>
+            </br>
+                <div align="center">
+                   <input style="width: 300px; height: 25px;border-color: lightgrey; margin-right: 30px;
+                    margin-left: 30px;flex: 4;" name="produs" id="produs" type="text" onkeypress="validareProdus(this, event);">
+                    <p style="display:none;" id="produsgresit">Nu este un nume de produs</p>
+                   
+                   <input style="margin-right: 30px; margin-left: 30px; border-radius: 5px; color:black;
+                    background-color:rgb(123, 241, 160); height: 31px;" type="button" value="Add Item" onclick="valideaza(this,event);">
+                </div>
+                </br>
+                <div align="left" style="margin-left: 265px;">
+                <input style="margin-right: 2px; border-radius: 5px; color:black;
+                    background-color:rgb(211, 123, 241); height: 25px;" type="button" value="Sort asc" onclick="sorteaza('produs', this, 'asc')">
+                    <input style="margin-left: 2px; border-radius: 5px; color:black;
+                    background-color:rgb(211, 123, 241); height: 25px;" type="button" value="Sort desc" onclick="sorteaza('produs', this, 'desc')">
+                </div>
+                </br>
+                <div align="left" style="margin-left: 265px;">
+                <table id="listaProduse">
+                        <thead >
+                            <tr>
+                                <td ><h3 style="margin-right: 20px;">Item description</h3></td>
+                                <td ><h3>Action</h3></td>
+                                
+                            </tr>
+                        </thead>
+                        <tbody>
+                
+                        </tbody>
+                    </table>
+                </div>    
+                </div>     
+
+</body>
+</html>
