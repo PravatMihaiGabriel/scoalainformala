@@ -2,11 +2,23 @@
 <html>
 	<head>
 		<script>
+            function sendAsJson(form, event){
+                event.preventDefault();
+                var list= form.querySelectorAll("input[name]");
+                var obj={};
+                for(var i=0; i<list.length; i++){
+                    var val=list[i].value;
+                    var name=list[i].getAttribute("name");
+                    obj[name]=val;
+                }
+                console.log(obj);
+            
 			var listaClienti=null;
 			var lista = new XMLHttpRequest();
         lista.onreadystatechange = function () {
             if (this.readyState == 4 && this.status == 200) {
-
+                listaClienti=[];
+                var server=JSON.parse(this.responseText);
                 console.log(this.responseText);
                 console.log(JSON.parse(this.responseText));
                 listaClienti= JSON.parse(this.responseText);
@@ -18,13 +30,13 @@
 			}
         }
 			lista.open("get", "https://pravat-mihai.firebaseio.com/.json",true);
-            lista.send();
-    
+            lista.send(JSON.stringify(obj));
+        }
 		
 		function drawClienti(){
 			var tabel=document.querySelector("#listaClienti tbody");
 			var str="";
-			for( i=0;i<listaClienti.length;i++){
+			for( i in listaClienti){
 				//listaClienti[i].nume
 				//listaClienti[i].prenume
 				//listaClienti[i].varsta
@@ -112,7 +124,7 @@
 			//console.log(str);
            // console.log(sterse);
 			//tabel.innerHTML=str;
-      //  }
+      //}
 		
 		</script>
 		<style>
@@ -127,16 +139,17 @@
 			}
 		</style>
     </head>
-    <form method="post" onsubmit="valideaza(this, event)">
+    <form method="post" action="https://pravat-mihai.firebaseio.com/.json" onsubmit="sendAsJson(this, event)">
         <fieldset>
             <legend>Client nou</legend>
-            Nume: <input name="numeleMeu" type="text" id="nume" onkeypress="validarenumepren(this, event)"><br>
+            <label for="nume">Nume: </label>
+            <input name="nume" type="text" id="nume"><br>
             <p style="display:none;" id="numegresit"> Ai gresit numele</p>
-            Prenume: <input name="prenumeleMeu" type="text" id="prenume" onkeypress="validarenumepren(this, event)"><br>
+            Prenume: <input name="prenume" type="text" id="prenume" ><br>
             <p style="display:none;" id="prenumegresit"> Ai gresit prenumele</p>
-            Varsta: <input name="varsta" type="text" id="varsta" onkeypress="validarevarsta(this, event)"><br>
+            Varsta: <input name="varsta" type="text" id="varsta" ><br>
             <p style="display:none;" id="varstagresita" > Ai gresit varsta</p>
-            Numarul de telefon: <input name="nrdetel" type="text" id="nrdetel" onkeypress="validarenrtel(this, event)"><br>
+            Numarul de telefon: <input name="telefon" type="text" id="nrdetel" ><br>
             <p style="display:none;" id="nrdetelgresit"> Numarul de telefon este gresit </p>
             <input type="submit" value="Salveaza"><br>
   
