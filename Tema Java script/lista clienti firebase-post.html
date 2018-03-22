@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		
+		<style>
+			table{
+				border-collapse:collapse;
+			}
+			.asc{
+				background-color:red;
+			}
+			.desc{
+				background-color:blue;
+			}
+		</style>
+		
+		<script>
+			function sendAsJson(form, event){
+				event.preventDefault();
+				
+				var list = form.querySelectorAll("input[name]");
+				var obj = {};
+				for(var i=0;i<list.length;i++){
+					var val = list[i].value;
+					var name = list[i].getAttribute("name");
+					obj[name]=val;
+				}
+				console.log(obj);
+				
+		
+				var xhttp = new XMLHttpRequest();
+				xhttp.onreadystatechange = function() {
+					if (this.readyState == 4 && this.status == 200) {
+					  console.log(this.responseText);
+					}
+				};
+				xhttp.open("PUT", "https://bogdan-nourescu.firebaseio.com/.json", true);
+				xhttp.send(JSON.stringify(obj));
+				
+				
+			}
+		</script>
+	</head>
+<body>
+
+	<form 
+		method="post" 
+		action="https://bogdan-nourescu.firebaseio.com/.json" 
+		onsubmit="sendAsJson(this,event)">
+		
+		<fieldset style="border: 1px dashed #676767;">
+		<legend style="border: 1px dashed #676767;border-radius: 10px;padding: 0 5px;">New Account</legend>
+	  
+		<label for="nume">Nume:</label>
+		<input name="nume" id="nume"  type="text" /><br>
+		
+		<label for="prenume">Prenume:</label> 
+		<input name="prenume" id="prenume" type="text" /><br>
+			
+			
+		
+		<label for="varsta">Varsta:</label> 
+		<input name="varsta" id="varsta" type="text" /><br>
+		
+		<label for="telefon">Telefon:</label> 
+		<input name="telefon" id="telefon" type="text" /><br>
+		
+		
+		<br />
+		<input type="submit" value="Salveaza"/>
+	  
+	 </fieldset>
+	</form>
+
+</body>
+</html>
