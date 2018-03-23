@@ -5,6 +5,8 @@
 			var listaElevi=[];
 		
 		function drawListaElevi(){
+            document.getElementById("niciUnElev").style.display = "none";
+            document.getElementById("macarUnElev").style.display = "flex";
 			var tabel=document.querySelector("#listaElevi tbody");
 			var str="";
             
@@ -12,8 +14,8 @@
 				    str+= `<tr>
 					<td>${listaElevi[i].numeElev}</td>
                     <td>${listaElevi[i].medie}</td>
-					<td><input style="margin-left: 2px; border-radius: 5px; color:black;
-                    background-color: rgb(226, 139, 163);; height: 25px;" type="button" value="Vezi notele" onclick="veziNotele(${i})"/></td>
+					<td><input style="margin-right: 40px; margin-left: 40px; color:black;
+                    background-color: lightgrey; height: 25px;" type="button" value="Vezi notele" onclick="veziNotele(${i}, this, event)"/></td>
 				</tr>`;
 				
                 
@@ -23,6 +25,22 @@
 		}
 
 		
+        function drawListaNote(){
+            document.getElementById("nicioNota").style.display = "none";
+            document.getElementById("macarONota").style.display = "flex";
+			var tabel=document.querySelector("#listaNote tbody");
+			var str="";
+            
+			for(var i=0;i<listaElevi[indexElev].note.length;i++){
+				    str+= `<tr>
+					<td>${listaElevi[indexElev].note[i]}</td>
+                    </tr>`;
+				
+                
+			}
+			console.log(str);
+			tabel.innerHTML=str;
+		}
 		function sorteaza(coloana, td, sortare){
            
 			
@@ -85,14 +103,50 @@
             
             
         }
+
+        function valideazaNota(element, eveniment) {
+            eveniment.preventDefault();
+            
+            var elemNota = document.getElementById("notaElev");
+           
+            var a=false;
+            
+
+            console.log(elemNota.value);
+            if (elemNota.value<1 || elemNota.value>10){
+                elemNota.style.backgroundColor="red";
+                document.getElementById("notaGresita").style.display="";
+            }else { elemNota.style.backgroundColor="";
+            document.getElementById("notaGresita").style.display="none";
+            a=true;};
+
+           
+                console.log(listaElevi[indexElev]);           
+            if(a===true){listaElevi[indexElev].note=elemNota.value;
+                console.log(listaElevi[indexElev]); 
+                             
+                drawListaNote();
+
+                elemNota.value="";
+                }
+            
+
+                       
+            
+            
+        }
+
         function validareElev(element,eveniment){
         var elemNume = document.getElementById("numeElev");
         var valoaresir=elemNume.value; 
         var ultimatasta=eveniment.key;   
         var lungimesirlitere=0;
+        var codTasta=eveniment.keyCode;
+
 
                 if (ultimatasta.toLowerCase()>="a" && ultimatasta.toLowerCase()<="z" || ultimatasta===" " || ultimatasta==="-" || ultimatasta==="'") {
                   lungimesirlitere=lungimesirlitere+1;
+                  if(codTasta===13){valideaza(element, eveniment);}
                   
             }else {
             eveniment.preventDefault();}
@@ -101,9 +155,35 @@
             return lungimesirlitere;
         }
         
-
-       
+        function validareNota(element,eveniment){
         
+        var ultimaTasta=eveniment.key;
+                            
+
+            if (ultimaTasta>="0" && ultimaTasta<="9") {
+                  
+                 } else {
+                    
+                eveniment.preventDefault();
+                 }
+            }
+       
+            function ascundeNotele(element,eveniment){
+                document.getElementById("fereastraNote").style.display = "none";
+
+            }
+
+             var numeleElevului="";
+             var indexElev="";
+
+             function veziNotele(i, element,eveniment){
+                document.getElementById("fereastraNote").style.display = "";
+                numeleElevului=listaElevi[i].numeElev;
+                indexElev=i;
+                var elevul=document.getElementById("noteleElevului");
+                var sir=`<h2 align="left" id="noteleElevului">Note elev: ${numeleElevului}</h2>`;
+                elevul.innerHTML=sir;
+            }
         
 		</script>
 		<style>
@@ -114,33 +194,40 @@
 		</style>
     </head>
         
-    <body style="background-color: rgb(171, 150, 191);">
+    <body >
+        <div style="display: flex;">
 
-            <div style="background-color:white; padding: 20px; border-radius: 10px;">
+            <div id="fereastraElevi" style="background-color:rgb(127, 249, 5); padding: 20px; flex: 1;">
             <h2 align="left">Lista Elevi</h2>
             </br>
-                <div align="center" >
+                <div style="border: 1px solid black;">
+                   <label for="numeElev">Nume:</label>
                    <input style="width: 300px; height: 25px;border-color: lightgrey; margin-right: 30px;
-                    margin-left: 30px;flex: 4;" name="numeElev" id="numeElev" type="text" onkeypress="validareElev(this, event);">
-                    <p style="display:none;" id="numeElevGresit">Nu este un nume</p>
-                   
-                   <input style="margin-right: 30px; margin-left: 30px; border-radius: 5px; color:black;
-                    background-color:rgb(123, 241, 160); height: 31px;" type="button" value="Adauga elev" onclick="valideaza(this,event);">
+                    margin-left: 30px;" name="numeElev" id="numeElev" type="text" onkeypress="validareElev(this, event);">
+                   <input style="margin-right: 40px; margin-left: 40px; color:black;
+                    background-color: lightgrey; height: 31px;" type="button" value="Adauga elev" onclick="valideaza(this,event);">
+                    <div style="display:none;" id="numeElevGresit">
+                    </br>
+                    <p >Nu este un nume</p>
+                    </div>
                 </div>
                 </br>
-                <div align="left" style="margin-left: 265px;">
-                <input style="margin-right: 2px; border-radius: 5px; color:black;
-                    background-color:rgb(211, 123, 241); height: 25px;" type="button" value="Sorteaza ascendent dupa medie" onclick="sorteaza('medie', this, 'asc')">
-                    <input style="margin-left: 2px; border-radius: 5px; color:black;
-                    background-color:rgb(211, 123, 241); height: 25px;" type="button" value="Sorteaza descendent dupa medie" onclick="sorteaza('medie', this, 'desc')">
-                </div>
+                <div style="border: 1px solid black;">
+                <input style="margin-left: 25px; color:black;
+                    background-color:lightgrey; height: 25px;" type="button" value="Sorteaza ascendent dupa medie" onclick="sorteaza('medie', this, 'asc')">
                 </br>
-                <div align="left" style="margin-left: 265px;">
-                <table id="listaElevi">
+                </br>
+                    <input style="margin-left: 25px; color:black;
+                    background-color:lightgrey; height: 25px;" type="button" value="Sorteaza descendent dupa medie" onclick="sorteaza('medie', this, 'desc')">
+                </br>
+                </br>
+                <div id="niciUnElev" style="margin-left: 25px;">Nici un elev adaugat</div>
+                <div id="macarUnElev" align="left" style="margin-left: 265px; display: none;">
+                <table id="listaElevi" style="width:100%">
                         <thead >
                             <tr>
                                 <td ><h3 style="margin-right: 20px;">Nume</h3></td>
-                                <td ><h3>Medie note</h3></td>
+                                <td ><h3 style="margin-right: 20px;">Medie note</h3></td>
                                 
                             </tr>
                         </thead>
@@ -149,7 +236,52 @@
                         </tbody>
                     </table>
                 </div>    
-                </div>     
+                </div> 
+            </div>
+            <div id="fereastraNote" style="background-color:rgb(5, 249, 249); padding: 20px; display: none; flex: 1;">
+                    <input style="margin-right: 40px; margin-left: 40px; color:black;
+                    background-color: lightgrey; height: 31px;" type="button" value="Ascunde notele" onclick="ascundeNotele(this,event);">
+                    </br>   
+                    <h2 align="left" id="noteleElevului">Note elev: </h2>
+                    </br>
+                        <div style="border: 1px solid black;">
+                           <label for="notaElev">Nota:</label>
+                           <input style="width: 300px; height: 25px;border-color: lightgrey; margin-right: 30px;
+                            margin-left: 30px;" name="nota" id="notaElev" type="text" onkeypress="validareNota(this, event);">
+                           <input style="margin-right: 40px; margin-left: 40px; color:black;
+                            background-color: lightgrey; height: 31px;" type="button" value="Adauga nota" onclick="valideazaNota(this,event);">
+                            <div style="display:none;" id="notaGresita">
+                            </br>
+                            <p >Nu este o nota</p>
+                            </div>
+                        </div>
+                        </br>
+                        <div style="border: 1px solid black;">
+                        <input style="margin-left: 25px; color:black;
+                            background-color:lightgrey; height: 25px;" type="button" value="Sorteaza ascendent notele" onclick="sorteaza('medie', this, 'asc')">
+                        </br>
+                        </br>
+                            <input style="margin-left: 25px; color:black;
+                            background-color:lightgrey; height: 25px;" type="button" value="Sorteaza descendent notele" onclick="sorteaza('medie', this, 'desc')">
+                        </br>
+                        </br>
+                        <div id="nicioNota" style="margin-left: 25px;">Nici o nota adaugata</div>
+                        <div id="macarONota" align="left" style="margin-left: 265px; display: none;">
+                        <table id="listaElevi" style="width:100%">
+                                <thead >
+                                    <tr>
+                                        <td ><h3 style="margin-right: 20px;">Nota</h3></td>
+                                        
+                                    </tr>
+                                </thead>
+                                <tbody>
+                        
+                                </tbody>
+                            </table>
+                        </div>    
+                        </div> 
+                    </div>
+                </div>    
 
 </body>
 </html>
