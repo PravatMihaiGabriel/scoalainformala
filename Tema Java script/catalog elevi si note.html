@@ -30,7 +30,7 @@
             document.getElementById("macarONota").style.display = "flex";
 			var tabel=document.querySelector("#listaNote tbody");
 			var str="";
-            
+            console.log(listaElevi[indexElev].note.length);
 			for(var i=0;i<listaElevi[indexElev].note.length;i++){
 				    str+= `<tr>
 					<td>${listaElevi[indexElev].note[i]}</td>
