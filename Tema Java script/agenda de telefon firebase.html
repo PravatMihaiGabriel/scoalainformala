@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script>
+        var listaNume = [];
+        var verificator = false;
+        var modificare = -1;
+
+        function drawAgenda() {
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    listaNume = [];
+                    var server = JSON.parse(this.responseText);
+                    for (var i in server) {
+                        listaNume.push(server[i]);
+
+                    }
+                    console.log(listaNume)
+                    var tabel = document.querySelector("#listaNume tbody");
+                    var agenda = document.getElementById("agenda");
+                    var str = "";
+                    if (verificator === false) {
+                        agenda.style = "background-color:white; padding: 20px; border-radius: 10px;";
+                        verificator = true;
+                    }
+                    for (var i = 0; i < listaNume.length; i++) {
+                        if(listaNume[i]===null){continue}
+                        str += `<tr>
+                    <td>${listaNume[i].nume}</td>
+                    <td>${listaNume[i].telefon}</td>
+                    <td><a href="#" style="margin-left: 2px; border-radius: 5px; color:black;
+                    background-color: rgb(226, 139, 163);; height: 25px;" onclick="modifica(${i})">Modifica</a></td>
+                    <td><a href="#" style="margin-left: 2px; border-radius: 5px; color:black;
+                    background-color: rgb(226, 139, 163);; height: 25px;" onclick="sterge(${i})">Sterge</a></td>
+                </tr>`;
+
+
+                    }
+                    console.log(str);
+
+                    tabel.innerHTML = str;
+                }
+            };
+            xhttp.open("GET", "https://agenda-b0b50.firebaseio.com/.json", true);
+            xhttp.send();
+
+
+
+
+        }
+
+        function sterge(i) {
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    console.log(this.responseText);
+                    console.log(listaNume.length)
+                    drawAgenda();
+
+                }
+            };
+            xhttp.open("DELETE", `https://agenda-b0b50.firebaseio.com/${i}/.json`, true);
+            xhttp.send();
+        }
+
+        function modifica(i) {
+            document.getElementById("nume").value = listaNume[i].nume;
+            document.getElementById("telefon").value = listaNume[i].telefon;
+            modificare = i;
+        }
+
+        function sorteaza(coloana, td, sortare) {
+
+
+            listaElevi.sort(function (a, b) {
+                if (a[coloana] > b[coloana]) {
+                    return 1;
+                } else if (a[coloana] < b[coloana]) {
+                    return -1;
+                } else {
+                    return 0;
+                }
+            });
+            if (sortare === "desc") {
+                listaElevi.reverse();
+            }
+
+            console.log(listaProduse);
+            drawListaElevi();
+        }
+
+        function actualizareMedie(pozitie) {
+
+            listaElevi[pozitie].elemMedie = medie;
+
+            drawAgenda();
+        }
+
+
+
+        function valideaza(element, eveniment) {
+            eveniment.preventDefault();
+
+            var elemNume = document.getElementById("nume");
+            var elemTelefon = document.getElementById("telefon");
+
+            var a = false;
+
+
+
+            console.log(elemNume.value);
+            if (elemNume.value.length < 3) {
+                elemNume.style.backgroundColor = "red";
+                document.getElementById("numeGresit").style.display = "";
+            } else {
+                elemNume.style.backgroundColor = "";
+                document.getElementById("numeGresit").style.display = "none";
+                a = true;
+            };
+
+
+            var numeNou = { nume: elemNume.value, telefon: elemTelefon.value };
+            if (a === true) {
+                if (modificare === -1) {
+                    var xhttp = new XMLHttpRequest();
+                    xhttp.onreadystatechange = function () {
+                        if (this.readyState == 4 && this.status == 200) {
+                            console.log(this.responseText);
+                            console.log(listaNume.length)
+                            drawAgenda();
+
+                        }
+                    };
+                    xhttp.open("PUT", `https://agenda-b0b50.firebaseio.com/${listaNume.length}/.json`, true);
+                    xhttp.send(JSON.stringify(numeNou));
+                    elemNume.value = "";
+                    elemTelefon.value = "";
+                } else {
+
+                    var xhttp = new XMLHttpRequest();
+                    xhttp.onreadystatechange = function () {
+                        if (this.readyState == 4 && this.status == 200) {
+                            console.log(this.responseText);
+                            console.log(listaNume.length)
+                            drawAgenda();
+
+                        }
+                    };
+                    xhttp.open("PUT", `https://agenda-b0b50.firebaseio.com/${modificare}/.json`, true);
+                    xhttp.send(JSON.stringify(numeNou));
+
+
+                    elemNume.value = "";
+                    elemTelefon.value = "";
+                    modificare = -1;
+                }
+
+            }
+
+            console.log(elemNume.value);
+
+        }
+
+
+        function validareNume(element, eveniment) {
+            return
+            var elemNume = document.getElementById("numeElev");
+            var valoaresir = elemNume.value;
+            var ultimatasta = eveniment.key;
+            var lungimesirlitere = 0;
+
+            if (ultimatasta.toLowerCase() >= "a" && ultimatasta.toLowerCase() <= "z" || ultimatasta === " " || ultimatasta === "-" || ultimatasta === "'") {
+                lungimesirlitere = lungimesirlitere + 1;
+
+            } else {
+                eveniment.preventDefault();
+            }
+
+
+            return lungimesirlitere;
+        }
+
+        function validareTelefon(element, eveniment) {
+            return;
+        }
+
+
+
+    </script>
+    <style>
+        table {
+            border-collapse: collapse;
+        }
+    </style>
+</head>
+
+<body style="background-color: rgb(171, 150, 191);" onload="drawAgenda()">
+    <div align="center" style="background-color: rgb(171, 150, 191); padding-right: 200px; padding-left: 200px; border-radius: 10px;">
+        <h1 align="center">Agenda</h2>
+            </br>
+            <div style="background-color:white; padding: 20px; border-radius: 10px;">
+
+                <div align="center">
+                    <label for="nume">Nume:</label>
+                    <input style="width: 300px; height: 25px;border-color: lightgrey; margin-right: 30px;
+                    margin-left: 30px;" name="nume" id="nume" type="text" onkeypress="validareNume(this, event);">
+                    <p style="display:none;" id="numeGresit">Nu este un nume</p>
+                    <label for="telefon">Telefon:</label>
+                    <input style="width: 300px; height: 25px;border-color: lightgrey; margin-right: 30px;
+                    margin-left: 30px;" name="telefon" id="telefon" type="number" onkeypress="validareTelefon(this, event);">
+                    <p style="display:none;" id="telefonGresit">Nu este un numar</p>
+                    </br>
+                    </br>
+                    <input style=" margin-left: 50px; border-radius: 5px; color:black;
+                    background-color:rgb(156, 137, 206); height: 31px;" type="button" value="Adauga contact" onclick="valideaza(this,event);">
+                </div>
+                </br>
+                <!--<div align="left" style="margin-left: 265px;">
+                <input style="margin-right: 2px; border-radius: 5px; color:black;
+                    background-color:rgb(211, 123, 241); height: 25px;" type="button" value="Sorteaza ascendent dupa medie" onclick="sorteaza('medie', this, 'asc')">
+                    <input style="margin-left: 2px; border-radius: 5px; color:black;
+                    background-color:rgb(211, 123, 241); height: 25px;" type="button" value="Sorteaza descendent dupa medie" onclick="sorteaza('medie', this, 'desc')">
+                </div>
+                </br>-->
+            </div>
+            </br>
+            </br>
+            <div id="agenda" align="center" style="background-color:white; padding: 20px; border-radius: 10px; display: none">
+                <table id="listaNume">
+                    <thead>
+                        <tr>
+                            <td>
+                                <h3 style="margin-right: 20px;">Nume</h3>
+                            </td>
+                            <td>
+                                <h3>Numar de telefon</h3>
+                            </td>
+
+                        </tr>
+                    </thead>
+
+                    <tbody>
+
+                    </tbody>
+                </table>
+            </div>
+    </div>
+    </div>
+</body>
+
+</html>

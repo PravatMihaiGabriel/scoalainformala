@@ -13,7 +13,7 @@
 			for(var i=0;i<listaElevi.length;i++){
 				    str+= `<tr>
 					<td>${listaElevi[i].numeElev}</td>
-                    <td>${listaElevi[i].medie}</td>
+                    <td>${listaElevi[i].suma}</td>
 					<td><input style="margin-right: 40px; margin-left: 40px; color:black;
                     background-color: lightgrey; height: 25px;" type="button" value="Vezi notele" onclick="veziNotele(${i}, this, event)"/></td>
 				</tr>`;
@@ -87,7 +87,7 @@
             a=true;};
 
            
-            var elevNou={numeElev: elemNumeElev.value, medie: "" };
+            var elevNou={numeElev: elemNumeElev.value, suma: "", note: [] };
             if(a===true){listaElevi.push(elevNou);
                              
                 drawListaElevi();
@@ -97,7 +97,7 @@
             
 
             console.log(elemNumeElev.value);
-            console.log(elevNou.medie.value);
+            console.log(elevNou.sum.value);
             console.log(element, eveniment);
             
             
@@ -122,7 +122,7 @@
 
            
                 console.log(listaElevi[indexElev]);           
-            if(a===true){listaElevi[indexElev].note=elemNota.value;
+            if(a===true){listaElevi[indexElev].note.push(elemNota.value);
                 console.log(listaElevi[indexElev]); 
                              
                 drawListaNote();
@@ -267,7 +267,7 @@
                         </br>
                         <div id="nicioNota" style="margin-left: 25px;">Nici o nota adaugata</div>
                         <div id="macarONota" align="left" style="margin-left: 265px; display: none;">
-                        <table id="listaElevi" style="width:100%">
+                        <table id="listaNote" style="width:100%">
                                 <thead >
                                     <tr>
                                         <td ><h3 style="margin-right: 20px;">Nota</h3></td>
