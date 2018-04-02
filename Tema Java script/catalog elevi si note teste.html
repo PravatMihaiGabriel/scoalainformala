@@ -1,4 +1,8 @@
-var listaElevi=[];
+<!DOCTYPE html>
+<html>
+	<head>
+		<script>
+            var listaElevi=[];
 		
 		function drawListaElevi(){
             document.getElementById("niciUnElev").style.display = "none";
@@ -24,6 +28,7 @@ var listaElevi=[];
 				
                 
 			}
+			console.log(str);
 			tabel.innerHTML=str;
 		}
 
@@ -33,14 +38,17 @@ var listaElevi=[];
             document.getElementById("macarONota").style.display = "flex";
 			var tabel=document.querySelector("#listaNote tbody");
 			var str="";
+            console.log(listaElevi[indexElev].note.length);
             for(var i=0;i<listaElevi[indexElev].note.length;i++){
 				    str+= `<tr>
 					<td>${listaElevi[indexElev].note[i]}</td>
                     </tr>`;
+				
+                
 			}
+			console.log(str);
 			tabel.innerHTML=str;
-        }
-        
+		}
 		function sorteazaNote(i, element, eveniment){
 
             listaElevi[indexElev].note.sort(function(a, b)
@@ -55,6 +63,7 @@ var listaElevi=[];
 			drawListaNote();
            
 		}
+        
        
         function sorteazaMedii(i, element, eveniment){
             
@@ -74,10 +83,9 @@ var listaElevi=[];
 
            }
            
-           for(i=0;i<listaElevi.length;i++){
-               if (listaElevi[i].numeElev===numeleElevului){
-            indexElev=i;}
-            }
+           for(i=0;i<listaElevi.length;i++){if (listaElevi[i].numeElev===numeleElevului){
+            indexElev=i;
+            console.log(indexElev)}}
            
            drawListaElevi();
            drawListaNote();
@@ -91,7 +99,9 @@ var listaElevi=[];
             var elemNumeElev = document.getElementById("numeElev");
            
             var a=false;
+            
 
+            console.log(elemNumeElev.value);
             if (elemNumeElev.value.length<3){
                 elemNumeElev.style.backgroundColor="red";
                 var element=document.getElementById("numeElevGresit");
@@ -112,6 +122,12 @@ var listaElevi=[];
                 elemNumeElev.value="";
                 }
             
+
+            console.log(elemNumeElev.value);
+            console.log(elevNou.suma.value);
+            console.log(element, eveniment);
+               
+            
         }
 
         function valideazaNota(element, eveniment) {
@@ -120,7 +136,9 @@ var listaElevi=[];
             var elemNota = document.getElementById("notaElev");
            
             var a=false;
+            
 
+            console.log(elemNota.value);
             if (parseInt(elemNota.value)<1 || parseInt(elemNota.value)>10){
                 elemNota.style.backgroundColor="red";
                 var element=document.getElementById("notaGresita");
@@ -131,13 +149,17 @@ var listaElevi=[];
                 element.classList.remove("gresit");
                 element.classList.add("corect");
                 a=true;};
-          
+
+           
+                console.log(listaElevi[indexElev]);           
             if(a===true){
                 listaElevi[indexElev].note.push(parseInt(elemNota.value));
+                console.log(listaElevi[indexElev]);
                 var sumaNote=listaElevi[indexElev].suma;
                 sumaNote+=parseInt(elemNota.value);
                 listaElevi[indexElev].suma=sumaNote;
-                }          
+                }
+                console.log(listaElevi[indexElev].suma);            
                 drawListaNote();
                 drawListaElevi();
 
@@ -194,4 +216,89 @@ var listaElevi=[];
                 elevul.innerHTML=sir;
                 drawListaNote();   
             }
+		</script>
+		<link rel="stylesheet" href="catalog elevi si note.css">
+    </head>
         
+    <body >
+        <div id="principal">
+
+            <div id="fereastraElevi">
+            <h2>Lista Elevi</h2>
+            </br>
+                <div class="comuna1">
+                   <label for="numeElev">Nume:</label>
+                   <input class="zonaScris" name="numeElev" id="numeElev" type="text" onkeypress="validareElev(this, event);">
+                   <input class="butonAdaugare" type="button" id="adaugaElev" value="Adauga elev" onclick="valideaza(this,event);">
+                    <div class="corect" id="numeElevGresit">
+                    </br>
+                    <p >Nu este un nume</p>
+                    </div>
+                </div>
+                </br>
+                <div class="comuna1">
+                <input class="butoaneSortare" type="button" value="Sorteaza ascendent dupa medie" onclick="sorteazaMedii('asc', this, event)">
+                </br>
+                </br>
+                    <input class="butoaneSortare" type="button" value="Sorteaza descendent dupa medie" onclick="sorteazaMedii('desc', this, event)">
+                </br>
+                </br>
+                <div class="listaGoala" id="niciUnElev">Nici un elev adaugat</div>
+                <div class="macarUnElement" id="macarUnElev">
+                <table class="lista" id="listaElevi">
+                        <thead >
+                            <tr>
+                                <td ><h3>Nume</h3></td>
+                                <td ><h3 >Medie note</h3></td>
+                                
+                            </tr>
+                        </thead>
+                        <tbody>
+                
+                        </tbody>
+                    </table>
+                </div>    
+                </div> 
+            </div>
+            <div class="fereastraNoteInvizibila" id="fereastraNote">
+                    <input id="ascundeNote" type="button" value="Ascunde notele" onclick="ascundeNotele(this,event);">
+                    </br>   
+                    <h2 id="noteleElevului">Note elev: </h2>
+                    </br>
+                        <div class="comuna1">
+                           <label for="notaElev">Nota:</label>
+                           <input class="zonaScris" name="nota" id="notaElev" type="text" onkeypress="validareNota(this, event);">
+                           <input class="butonAdaugare" type="button" value="Adauga nota" onclick="valideazaNota(this,event);">
+                            <div class="corect" id="notaGresita">
+                            </br>
+                            <p >Nu este o nota</p>
+                            </div>
+                        </div>
+                        </br>
+                        <div class="comuna1">
+                        <input class="butoaneSortare" type="button" value="Sorteaza ascendent notele" onclick="sorteazaNote('asc', this, event)">
+                        </br>
+                        </br>
+                            <input class="butoaneSortare" type="button" value="Sorteaza descendent notele" onclick="sorteazaNote('desc', this, event)">
+                        </br>
+                        </br>
+                        <div class="listaGoala" id="nicioNota">Nici o nota adaugata</div>
+                        <div class="macarUnElement" id="macarONota">
+                        <table class="lista" id="listaNote">
+                                <thead >
+                                    <tr>
+                                        <td ><h3>Nota</h3></td>
+                                        
+                                    </tr>
+                                </thead>
+                                <tbody>
+                        
+                                </tbody>
+                            </table>
+                        </div>    
+                        </div> 
+                    </div>
+                </div>    
+
+</body>
+</html>
