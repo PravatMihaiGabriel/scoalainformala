@@ -1,0 +1,96 @@
+            #principal{
+                display: flex;
+            }
+
+            #fereastraElevi{
+                background-color:rgb(127, 249, 5); 
+                height: 100vh; 
+                padding: 20px; 
+                flex: 1;
+            }
+            
+            h2{
+                align: left;
+            }
+            
+            .comuna1{
+                border: 1px solid black;
+            }
+
+            .zonaScris{
+                width: 300px; 
+                height: 25px;
+                border-color: lightgrey; 
+                margin-right: 30px;
+                margin-left: 30px;
+            }
+
+            .butonAdaugare{
+                margin-right: 40px; 
+                margin-left: 40px; 
+                color:black;
+                background-color: lightgrey; 
+                height: 31px;
+            }
+
+            .corect{
+                display:none;
+            }
+
+            .gresit{
+                display:block;
+            }
+
+            .butoaneSortare{
+                margin-left: 25px; 
+                color:black;
+                background-color:lightgrey; 
+                height: 25px;
+            }
+
+            .listaGoala{
+                margin-left: 25px;
+                
+            }
+
+            .macarUnElement{
+                align: left;
+                margin-left: 265px; 
+                display: none;
+                
+            }
+
+            .lista{
+                width:100%;
+            }
+            
+            h3{
+                margin-right: 20px;
+            }
+
+            .fereastraNoteInvizibila{
+                background-color:rgb(5, 249, 249); 
+                padding: 20px; 
+                height: 100vh; 
+                display: none; 
+                flex: 1;
+            }
+
+            .fereastraNoteVizibila{
+                background-color:rgb(5, 249, 249); 
+                padding: 20px; 
+                height: 100vh; 
+                display: block; 
+                flex: 1;
+            }
+            #ascundeNote{
+                margin-right: 40px; 
+                margin-left: 40px; 
+                color:black;
+                background-color: lightgrey; 
+                height: 31px;
+            }
+			table{
+				border-collapse:collapse;
+			}
+			

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<script>
+			var listaClienti=[];
+			
+			
+			var indexModificat=-1;
+		function adaugaClient(form, event){
+			event.preventDefault();
+			if(indexModificat!==-1){
+				var xhttp = new XMLHttpRequest();
+				xhttp.onreadystatechange = function() {
+					if (this.readyState == 4 && this.status == 200) {
+						drawClienti();
+					}
+				};
+				xhttp.open("PUT", "https://agenda-scoala-informala.firebaseio.com/"+indexModificat+"/.json", true);
+				xhttp.send(JSON.stringify({
+					nume: form.querySelector("[name=nume]").value,
+					telefon: form.querySelector("[name=telefon]").value,
+				}));
+				indexModificat=-1;
+			}else{
+				var xhttp = new XMLHttpRequest();
+				xhttp.onreadystatechange = function() {
+					if (this.readyState == 4 && this.status == 200) {
+						drawClienti();
+					}
+				};
+				xhttp.open("POST", "https://agenda-scoala-informala.firebaseio.com/.json", true);
+				xhttp.send(JSON.stringify({
+					nume: form.querySelector("[name=nume]").value,
+					telefon: form.querySelector("[name=telefon]").value,
+				}));
+			}
+			
+		}
+		function sterge(index){
+			var xhttp = new XMLHttpRequest();
+			xhttp.onreadystatechange = function() {
+				if (this.readyState == 4 && this.status == 200) {
+					drawClienti();
+				}
+			};
+			xhttp.open("DELETE", "https://agenda-scoala-informala.firebaseio.com/"+index+"/.json", true);
+			xhttp.send();
+		}
+		function modifica(index){
+			var client = listaClienti[index];
+			document.querySelector("form [name=nume]").value=client.nume;
+			document.querySelector("form [name=telefon]").value=client.telefon;
+			indexModificat=index;
+		}
+		function drawClienti(){
+			var xhttp = new XMLHttpRequest();
+			xhttp.onreadystatechange = function() {
+				if (this.readyState == 4 && this.status == 200) {
+					
+					listaClienti= JSON.parse(this.responseText);
+					
+					var tabel=document.querySelector("#listaClienti tbody");
+					var str="";
+					for(var i in listaClienti){
+						var rand = `<tr>
+							<td>${listaClienti[i].nume}</td>
+							<td>${listaClienti[i].telefon}</td>
+							<td><a href="#" onclick="modifica('${i}')" >Modifica</a></td>
+							<td><a href="#" onclick="sterge('${i}')" >Sterge</a></td>
+						</tr>`;
+						str +=rand;
+					}
+					console.log(str);
+					tabel.innerHTML=str;
+				}
+			};
+			xhttp.open("GET", "https://agenda-scoala-informala.firebaseio.com/.json", true);
+			xhttp.send();
+		}
+		
+		
+		</script>
+		
+	</head>
+<body onload="drawClienti();">
+	<form method="post" onsubmit="adaugaClient(this,event);" style="background-color:#ffd100;border-radius:5px;max-width:500px;">
+		<fieldset style="border: 0px dashed #676767;">
+		<legend style="border: 0px dashed #676767;border-radius: 10px;padding: 0 5px;">Agenda</legend>
+	  
+		<label for="nume">Nume:</label>
+		<input name="nume" id="nume" type="text">
+
+		<label for="telefon">Telefon:</label> 
+		<input name="telefon" id="telefon" type="number"><br>
+			
+			
+		
+		<div style="text-align:center;"><input type="submit" value="Salveaza"/></div>
+	  
+	 </fieldset>
+	</form>
+	<br />
+	<table id="listaClienti" style="background-color:#ffd100;border-radius:5px;padding: 20px;">
+		<thead>
+			<tr>
+				<td>Nume</td>
+				<td>Telefon</td>
+				<td></td>
+				<td></td>
+			</tr>
+		</thead>
+		<tbody></tbody>
+	</table>
+
+</body>
+</html>
