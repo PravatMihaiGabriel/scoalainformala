@@ -35,7 +35,7 @@ var listaElevi=[];
 			var tabel=document.querySelector("#listaNote tbody");
 			var str="";
             console.log(listaElevi[indexElev].note.length);
-			for(var i=0;i<listaElevi[indexElev].note.length;i++){
+            for(var i=0;i<listaElevi[indexElev].note.length;i++){
 				    str+= `<tr>
 					<td>${listaElevi[indexElev].note[i]}</td>
                     </tr>`;
@@ -46,10 +46,13 @@ var listaElevi=[];
 			tabel.innerHTML=str;
 		}
 		function sorteazaNote(i, element, eveniment){
+
+            listaElevi[indexElev].note.sort(function(a, b)
+                {
+                     return a - b;
+                });
            
-			listaElevi[indexElev].note.sort()
-			
-            if (i==="desc"){
+			if (i==="desc"){
 							listaElevi[indexElev].note.reverse();
             }
 			
@@ -61,9 +64,9 @@ var listaElevi=[];
         function sorteazaMedii(i, element, eveniment){
             
             listaElevi.sort(function(a,b){
-				if((a.suma/a.note.lenght)>(b.suma/b.note.lenght)){
+				if((a.suma/a.note.length)>(b.suma/b.note.length)){
 					return 1;
-				}else if((a.suma/a.note.lenght)<(b.suma/b.note.lenght)){
+				}else if((a.suma/a.note.length)<(b.suma/b.note.length)){
 					return -1;
 				}else{
 					return 0;
@@ -73,10 +76,15 @@ var listaElevi=[];
                   
            if (i==="desc"){
                            listaElevi.reverse();
+
            }
            
-          
+           for(i in listaElevi.nume){if (listaElevi[i].nume===numeleElevului){
+            indexElev=i;
+            console.log(indexElev)}}
+           
            drawListaElevi();
+           drawListaNote();
        }
 
 
@@ -102,7 +110,7 @@ var listaElevi=[];
             a=true;};
 
            
-            var elevNou={numeElev: elemNumeElev.value, suma: "", note: [] };
+            var elevNou={numeElev: elemNumeElev.value, suma: 0, note: [] };
             if(a===true){listaElevi.push(elevNou);
                              
                 drawListaElevi();
@@ -114,8 +122,7 @@ var listaElevi=[];
             console.log(elemNumeElev.value);
             console.log(elevNou.suma.value);
             console.log(element, eveniment);
-            
-            
+               
             
         }
 
@@ -141,17 +148,13 @@ var listaElevi=[];
 
            
                 console.log(listaElevi[indexElev]);           
-            if(a===true){listaElevi[indexElev].note.push(parseInt(elemNota.value));
+            if(a===true){
+                listaElevi[indexElev].note.push(parseInt(elemNota.value));
                 console.log(listaElevi[indexElev]);
                 var sumaNote=listaElevi[indexElev].suma;
-                if(listaElevi[indexElev].suma===""){
-                    sumaNote=parseInt(elemNota.value);
-                listaElevi[indexElev].suma=sumaNote;} else {
-
                 sumaNote+=parseInt(elemNota.value);
                 listaElevi[indexElev].suma=sumaNote;
                 }
-
                 console.log(listaElevi[indexElev].suma);            
                 drawListaNote();
                 drawListaElevi();
@@ -159,11 +162,6 @@ var listaElevi=[];
                 elemNota.value="";
                 }
             
-
-                       
-            
-            
-        }
 
         function validareElev(element,eveniment){
         var ultimatasta=eveniment.key;   
@@ -202,12 +200,12 @@ var listaElevi=[];
             }
 
         var indexElev="";
-
+        var numeleElevului="";
         function veziNotele(i, element, eveniment){
                 var element=document.getElementById("fereastraNote");
                 element.classList.remove("fereastraNoteInvizibila");
                 element.classList.add("fereastraNoteVizibila");
-                var numeleElevului=listaElevi[i].numeElev;
+                numeleElevului=listaElevi[i].numeElev;
                 indexElev=i;
                 var elevul=document.getElementById("noteleElevului");
                 var sir=`<h2 align="left" id="noteleElevului">Note elev: ${numeleElevului}</h2>`;
