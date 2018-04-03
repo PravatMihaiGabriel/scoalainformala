@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<script >
+            var meniu;
+            var MENU_SERVER_URL = "https://restaurant-menu-v1.firebaseio.com/menu/.json";
+
+            var xhttp = new XMLHttpRequest();
+			xhttp.onreadystatechange = function() {
+				if (this.readyState == 4 && this.status == 200) {
+					meniu = JSON.parse(this.responseText);
+					
+					drawmeniu();
+				}
+			};
+			xhttp.open("GET", MENU_SERVER_URL, true);
+			xhttp.send();
+		
+		function drawmeniu(){
+            var tabel=document.querySelector("#meniu tbody");
+			var str="";
+            
+			for(i in meniu){ 
+                    str+=`<tr>
+					<td><span><img class="imagine" src="${meniu[i].imagine}" alt="nu gasesc imaginea"></span></td>
+                    <td><h2>${meniu[i].nume}</h2></br></br><div>${meniu[i].ingrediente}<div></td>
+                    <td><a href="detalii.html?id=${i}">
+                    <input style="margin-right: 40px; margin-left: 40px; color:black;
+                    background-color: lightgrey; height: 25px;" type="button" value="Detalii"/></a></td>
+				</tr>`;}
+				
+			tabel.innerHTML=str;
+		}
+
+      function cautaIngrediente(element, eveniment) {
+            eveniment.preventDefault();
+            
+            var elemIngrediente = document.getElementById("cautare");
+            var a=false;
+
+            if (elemIngrediente.value.length<3){
+                elemIngrediente.style.backgroundColor="red";
+                var element=document.getElementById("ingredientGresit");
+                element.classList.remove("corect");
+                element.classList.add("gresit");
+                }else { elemIngrediente.style.backgroundColor="";
+                element=document.getElementById("ingredientGresit");
+                element.classList.remove("gresit");
+                element.classList.add("corect");
+            a=true;};
+
+           
+            var ingredientNou=elemIngrediente.value;
+            if(a===true){
+            var tabel=document.querySelector("#meniu tbody");
+			var str="";
+            
+			for(i in meniu){ 
+                    str+=`<tr>
+					<td><span><img class="imagine" src="${meniu[i].imagine}" alt="nu gasesc imaginea"></span></td>
+                    <td><h2>${meniu[i].nume}</h2></br></br><div>${meniu[i].ingrediente}<div></td>
+                    <td><a href="detalii.html?id=${i}">
+                    <input style="margin-right: 40px; margin-left: 40px; color:black;
+                    background-color: lightgrey; height: 25px;" type="button" value="Detalii"/></a></td>
+				</tr>`;}
+				
+			tabel.innerHTML=str;
+
+                elemIngrediente.value="";
+                }
+            
+        }
+
+        function valideazaIngrediente(element,eveniment){
+        var ultimatasta=eveniment.key;   
+        var codTasta=eveniment.keyCode;
+
+
+            if (ultimatasta.toLowerCase()>="a" && ultimatasta.toLowerCase()<="z" || ultimatasta===" " || ultimatasta==="-" || ultimatasta==="'") {
+                         
+            } else {
+            eveniment.preventDefault();}
+
+            if(codTasta===13){valideaza(element, eveniment);}       
+            
+        }
+        
+          </script>
+    <style>
+         
+
+            #fereastraMeniu{
+                background-color:rgb(127, 249, 5); 
+                padding: 20px; 
+                
+            }
+            
+            span{
+                align: left;
+                margin-left: 30px;
+                font-size: xx-large;
+            }
+            
+            
+            .zonaCautare{
+                width: 300px; 
+                height: 25px;
+                border-color: lightgrey; 
+                margin-right: 30px;
+                margin-left: 30px;
+            }
+
+            .butonCautare{
+                margin-right: 40px; 
+                margin-left: 40px;
+                margin-bottom: 30px;
+                color:black;
+                background-color: lightgrey; 
+                height: 31px;
+            }
+
+            .corect{
+                display:none;
+            }
+
+            .gresit{
+                display:block;
+            }
+
+            .butoaneSortare{
+                margin-left: 25px; 
+                color:black;
+                background-color:lightgrey; 
+                height: 25px;
+            }
+
+            .listaGoala{
+                margin-left: 25px;
+                
+            }
+
+            .macarUnElement{
+                align: left;
+                margin-left: 265px; 
+                display: none;
+                
+            }
+
+            .lista{
+                width:100%;
+            }
+            
+            h3{
+                margin-right: 20px;
+            }
+
+           
+           
+			table{
+				border-collapse:collapse;
+			}
+    </style>
+		
+    </head>
+        
+    <body >
+           <div id="fereastraMeniu">
+            <span>Cald si bun</span>
+            <a href="contact.html">
+            <input class="butonCautare" type="button" id="contact" value="Contact"></a>
+            </br>
+                <div>
+                   <input class="zonaCautare" name="cautare" id="cautare" type="text" onkeypress="valideazaIngrediente(this, event);">
+                   <input class="butonCautare" type="button" id="butonCautare" value="Cauta in ingrediente" onclick="cautaIngrediente(this,event);">
+                    <div class="corect" id="ingredientGresit">
+                    </br>
+                    <p >Nu este un ingredient</p>
+                    </div>
+                </div>
+                </br>
+                <div>
+                <table class="meniu" id="meniu">
+                        <tbody>
+                
+                        </tbody>
+                    </table>
+                </div>    
+                </div> 
+            </div>
+
+</body>
+</html>
