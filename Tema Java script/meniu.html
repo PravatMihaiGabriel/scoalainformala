@@ -55,7 +55,10 @@
             var tabel=document.querySelector("#meniu tbody");
 			var str="";
             
-			for(i in meniu){ 
+			for(i in meniu){
+                if(meniu[i].ingrediente.indexOf(ingredientNou)===-1){
+                    continue;
+                }
                     str+=`<tr>
 					<td><span><img class="imagine" src="${meniu[i].imagine}" alt="nu gasesc imaginea"></span></td>
                     <td><h2>${meniu[i].nume}</h2></br></br><div>${meniu[i].ingrediente}<div></td>
@@ -81,7 +84,7 @@
             } else {
             eveniment.preventDefault();}
 
-            if(codTasta===13){valideaza(element, eveniment);}       
+            if(codTasta===13){cautaIngrediente(element, eveniment);}       
             
         }
         
@@ -114,11 +117,21 @@
                 margin-right: 40px; 
                 margin-left: 40px;
                 margin-bottom: 30px;
-                color:black;
-                background-color: lightgrey; 
+                color: white;
+                background-color: #afa6a6; 
                 height: 31px;
+                border-radius: 5px;
             }
 
+            .butonContact { margin-right: 40px; 
+                margin-left: 40px;
+                margin-bottom: 30px;
+                color:black;
+                background-color:#b1d3f5; 
+                height: 31px;
+                border-radius: 5px;
+
+            }
             .corect{
                 display:none;
             }
@@ -149,12 +162,7 @@
             .lista{
                 width:100%;
             }
-            
-            h3{
-                margin-right: 20px;
-            }
-
-           
+                
            
 			table{
 				border-collapse:collapse;
@@ -165,9 +173,11 @@
         
     <body >
            <div id="fereastraMeniu">
-            <span>Cald si bun</span>
-            <a href="contact.html">
-            <input class="butonCautare" type="button" id="contact" value="Contact"></a>
+            <div style="display: flex;">
+            <span style="flex: 1;">Cald si bun</span>
+            <a  href="contact.html">
+            <input  class="butonContact" type="button" id="contact" value="Contact"></a>
+            </div>            
             </br>
                 <div>
                    <input class="zonaCautare" name="cautare" id="cautare" type="text" onkeypress="valideazaIngrediente(this, event);">

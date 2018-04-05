@@ -9,32 +9,29 @@
 			xhttp.onreadystatechange = function() {
 				if (this.readyState == 4 && this.status == 200) {
 					meniu = JSON.parse(this.responseText);
-					
 					drawdetalii();
 				}
 			};
 			xhttp.open("GET", MENU_SERVER_URL, true);
 			xhttp.send();
 		
-		function drawdetalii(){
-            var tabel=document.querySelector("#detalii");
-			var str="";
-            var i=window.location.search.substring(4);
-			 
-                    str+=`
-					<span><img class="imagine" src="${meniu[i].imagine}" alt="nu gasesc imaginea"></span>
-                    <h2>${meniu[i].nume}</h2></br></br><div>${meniu[i].reteta}<div>`
-				
-			tabel.innerHTML=str;
+		    function drawharta(){
+            var mapProp = {
+                        center: new google.maps.LatLng(44.4432214, 26.1585078),
+                        zoom: 12,
+                        mapTypeId: google.maps.MapTypeId.ROADMAP,
+                    };
+                    var map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
 		}
         
           </script>
     <style>
          
 
-            #fereastraMeniu{
-                background-color:rgb(127, 249, 5); 
-                padding: 20px; 
+            #fereastraContact{
+                background-color:rgb(5, 212, 249); 
+                padding: 20px;
+                height: 100vh; 
                 
             }
             
@@ -44,6 +41,11 @@
                 font-size: xx-large;
             }
             
+            .adresa{
+                align: left;
+                margin-left: 30px;
+
+            }
             
             .zonaCautare{
                 width: 300px; 
@@ -106,19 +108,18 @@
 		
     </head>
         
-    <body >
-           <div id="fereastraMeniu">
+    <body onload="drawharta()">
+           <div id="fereastraContact">
             <span>Cald si bun</span>
             <a href="meniu.html">
             <input class="butonCautare" type="button" id="butonMeniu" value="meniu"></a>
-            <a href="contact.html">
-            <input class="butonCautare" type="button" id="contact" value="Contact"></a>
-            </br>
-                
+            <div class="adresa">Adresa: Sos. Pantelimon, nr. 253</div>
                 </br>
-                <div class="detalii" id="detalii" onload="drawdetalii()">
-                </div>    
+                
+    <div id="googleMap" style="height:550px;  margin-left: 15px;"></div>
+                </br>
+                   
                 </div>
-
+                <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDo4lTLnuHmYj5RJzb8IeCAKqAHb154rbw"></script>
 </body>
 </html>
