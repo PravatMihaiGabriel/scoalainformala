@@ -3,7 +3,7 @@
 	<head>
 		<script >
             var meniu;
-            var MENU_SERVER_URL = "https://restaurant-menu-v1.firebaseio.com/menu/.json";
+            var MENU_SERVER_URL = "https://menu-3c993.firebaseio.com/.json";
 
             var xhttp = new XMLHttpRequest();
 			xhttp.onreadystatechange = function() {
@@ -17,6 +17,9 @@
 			xhttp.send();
 		
 		function drawmeniu(){
+            var element=document.getElementById("imagineLoading");
+            element.classList.remove("imagineLoading");
+            element.classList.add("ascundeImagine");
             var tabel=document.querySelector("#meniu tbody");
 			var str="";
             
@@ -24,8 +27,10 @@
                     str+=`<tr>
 					<td><span><img class="imagine" src="${meniu[i].imagine}" alt="nu gasesc imaginea"></span></td>
                     <td><h2>${meniu[i].nume}</h2></br></br><div>${meniu[i].ingrediente}<div></td>
-                    <td><a href="detalii.html?id=${i}">
-                    <input class="butonDetalii" type="button" value="Detalii"/></a></td>
+                        <td><a href="modifica.html?id=${i}">
+                    <input class="butonModifica" type="button" value="Modifica"/></a></td>
+                    <td><a href="sterge.html?id=${i}">
+                    <input class="butonSterge" type="button" value="Sterge"/></a></td>
 				</tr>`;}
 				
 			tabel.innerHTML=str;
@@ -48,8 +53,10 @@
                     str+=`<tr>
 					<td><span><img class="imagine" src="${meniu[i].imagine}" alt="nu gasesc imaginea"></span></td>
                     <td><h2>${meniu[i].nume}</h2></br></br><div>${meniu[i].ingrediente}<div></td>
-                    <td><a href="detalii.html?id=${i}">
-                    <input class="butonDetalii" type="button" value="Detalii"/></a></td>
+                    <td><a href="modifica.html?id=${i}">
+                    <input class="butonModifica" type="button" value="Modifica"/></a></td>
+                    <td><a href="sterge.html?id=${i}">
+                    <input class="butonSterge" type="button" value="Sterge"/></a></td>
 				</tr>`;}
 				
 			tabel.innerHTML=str;
@@ -86,28 +93,12 @@
                 flex: 1;
                 margin-left: 30px;
                 font-size: xx-large;
+                color:#3939ec;
             }
             
             
-            .zonaCautare{
-                width: 300px; 
-                height: 25px;
-                border-color: lightgrey; 
-                margin-right: 30px;
-                margin-left: 30px;
-            }
-
-            .butonCautare{
-                margin-right: 40px; 
-                margin-left: 40px;
-                margin-bottom: 30px;
-                color: white;
-                background-color:  #d9a1f1;
-                height: 31px;
-                border-radius: 5px;
-            }
-
-            .butonContact { 
+           
+            .butonAdauga { 
                 margin-right: 40px; 
                 margin-left: 40px;
                 margin-bottom: 30px;
@@ -118,9 +109,17 @@
 
             }
 
-            .butonDetalii { 
-                margin-right: 40px; 
+            .butonModifica { 
+                margin-right: 5px; 
                 margin-left: 40px; 
+                color:white;
+                background-color: #b1d3f5; 
+                height: 31px;
+                border-radius: 5px;
+            }
+            .butonSterge { 
+                margin-right: 40px; 
+                margin-left: 5px; 
                 color:white;
                 background-color: rgb(218, 97, 133); 
                 height: 31px;
@@ -131,24 +130,30 @@
 			table{
 				border-collapse:collapse;
 			}
+
+            .imagineLoading { display: block;
+            
+            }
+
+            .adcundeImagine{ display: none;
+            }
+
     </style>
 		
     </head>
         
-    <body >
+    <body  >
            <div id="fereastraMeniu">
              <div class="titlu">
-              <span >Cald si bun</span>
-              <a  href="contact.html">
-              <input  class="butonContact" type="button" id="contact" value="Contact"></a>
-             </div>            
-             </br>
-                <div>
-                   <input class="zonaCautare" name="cautare" id="cautare" type="text" onkeypress="valideazaIngrediente(this, event);">
-                   <input class="butonCautare" type="button" id="butonCautare" value="Cauta in ingrediente" onclick="cautaIngrediente(this,event);">
-                    
-                </div>
-                </br>
+              <span >Cald si bun (Admin)</span>
+              <a  href="adauga.html">
+              <input  class="butonAdauga" type="button" id="adauga" value="Adauga reteta noua"></a>
+             </div>
+             <div id="imagineLoading" class="imagineLoading">
+                 <img src="http://lh3.ggpht.com/_183mzYgaPbc/TKJQmhvCzjI/AAAAAAAADXI/Hunv0F1yM6U/s1600-h/loading%5B3%5D.gif" alt="nu gasesc imaginea"> 
+                 </div>      
+                  </br>
+                
             <div>
                 <table class="meniu" id="meniu">
                         <tbody>

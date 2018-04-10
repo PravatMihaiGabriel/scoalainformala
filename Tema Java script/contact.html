@@ -29,97 +29,66 @@
          
 
             #fereastraContact{
-                background-color:rgb(5, 212, 249); 
+                background-color:rgb(117, 222, 230); 
                 padding: 20px;
-                height: 100vh; 
+                height: 100vh;
                 
+            }
+
+            .titlu{
+                display: flex;
             }
             
             span{
-                align: left;
+               
                 margin-left: 30px;
                 font-size: xx-large;
+                flex: 1;
             }
             
             .adresa{
-                align: left;
+                
                 margin-left: 30px;
 
             }
             
-            .zonaCautare{
-                width: 300px; 
-                height: 25px;
-                border-color: lightgrey; 
-                margin-right: 30px;
-                margin-left: 30px;
-            }
-
-            .butonCautare{
+          
+            .butonMeniu { 
                 margin-right: 40px; 
-                margin-left: 40px;
-                margin-bottom: 30px;
-                color:black;
-                background-color: lightgrey; 
+                margin-left: 40px; 
+                color:white;
+                background-color: rgb(218, 97, 133); 
                 height: 31px;
+                border-radius: 5px;
             }
 
-            .corect{
-                display:none;
-            }
+           #googleMap {
+            height:550px;  
+            margin-left: 15px;
 
-            .gresit{
-                display:block;
-            }
-
-            .butoaneSortare{
-                margin-left: 25px; 
-                color:black;
-                background-color:lightgrey; 
-                height: 25px;
-            }
-
-            .listaGoala{
-                margin-left: 25px;
-                
-            }
-
-            .macarUnElement{
-                align: left;
-                margin-left: 265px; 
-                display: none;
-                
-            }
-
-            .lista{
-                width:100%;
-            }
-            
-            h3{
-                margin-right: 20px;
-            }
-
+           }
            
            
-			table{
-				border-collapse:collapse;
-			}
+		
     </style>
 		
     </head>
         
     <body onload="drawharta()">
            <div id="fereastraContact">
+               <div class="titlu">
             <span>Cald si bun</span>
             <a href="meniu.html">
-            <input class="butonCautare" type="button" id="butonMeniu" value="meniu"></a>
+            <input class="butonMeniu" type="button" id="butonMeniu" value="Meniu"></a>
+               </div>
+            </br>
             <div class="adresa">Adresa: Sos. Pantelimon, nr. 253</div>
                 </br>
                 
-    <div id="googleMap" style="height:550px;  margin-left: 15px;"></div>
+            <div id="googleMap" ></div>
                 </br>
                    
-                </div>
-                <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDo4lTLnuHmYj5RJzb8IeCAKqAHb154rbw"></script>
+          </div>
+ <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDo4lTLnuHmYj5RJzb8IeCAKqAHb154rbw"></script>
 </body>
 </html>

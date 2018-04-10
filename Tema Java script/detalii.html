@@ -32,93 +32,63 @@
     <style>
          
 
-            #fereastraMeniu{
-                background-color:rgb(127, 249, 5); 
-                padding: 20px; 
+            #fereastraDetalii{
+                background-color:rgb(117, 222, 230); 
+                padding: 20px;
+                height: 100vh; 
                 
             }
             
             span{
-                align: left;
+                flex: 1;
                 margin-left: 30px;
                 font-size: xx-large;
             }
             
-            
-            .zonaCautare{
-                width: 300px; 
-                height: 25px;
-                border-color: lightgrey; 
-                margin-right: 30px;
-                margin-left: 30px;
+            .titlu{
+                display: flex;
             }
-
-            .butonCautare{
+            
+            .butonContact { 
                 margin-right: 40px; 
-                margin-left: 40px;
+                margin-left: 5px;
                 margin-bottom: 30px;
-                color:black;
-                background-color: lightgrey; 
+                color:white;
+                background-color:#b1d3f5; 
                 height: 31px;
+                border-radius: 5px;
             }
 
-            .corect{
-                display:none;
+             .butonMeniu { 
+                margin-right: 5px; 
+                margin-left: 40px; 
+                color:white;
+                background-color: rgb(218, 97, 133); 
+                height: 31px;
+                border-radius: 5px;
             }
 
-            .gresit{
-                display:block;
-            }
-
-            .butoaneSortare{
-                margin-left: 25px; 
-                color:black;
-                background-color:lightgrey; 
-                height: 25px;
-            }
-
-            .listaGoala{
-                margin-left: 25px;
-                
-            }
-
-            .macarUnElement{
-                align: left;
-                margin-left: 265px; 
-                display: none;
-                
-            }
-
-            .lista{
-                width:100%;
-            }
-            
-            h3{
-                margin-right: 20px;
-            }
-
-           
-           
-			table{
-				border-collapse:collapse;
-			}
+          
+    
     </style>
 		
     </head>
         
     <body >
-           <div id="fereastraMeniu">
+           <div id="fereastraDetalii">
+               <div class="titlu">
             <span>Cald si bun</span>
             <a href="meniu.html">
-            <input class="butonCautare" type="button" id="butonMeniu" value="meniu"></a>
+            <input class="butonMeniu" type="button" id="butonMeniu" value="Meniu"></a>
             <a href="contact.html">
-            <input class="butonCautare" type="button" id="contact" value="Contact"></a>
+            <input class="butonContact" type="button" id="contact" value="Contact"></a>
+           </div>
             </br>
                 
-                </br>
+            </br>
                 <div class="detalii" id="detalii" onload="drawdetalii()">
                 </div>    
-                </div>
+           </div>
 
 </body>
 </html>

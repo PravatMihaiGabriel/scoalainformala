@@ -1,0 +1,166 @@
+<html>
+	<head>
+		<script >
+
+            var id=window.location.search.substring(4);
+            
+            var MENU_EDIT_ITEM_SERVER_URL = "https://menu-3c993.firebaseio.com/"+id+".json"
+            
+           
+                 
+                function afiseazaPreparat(form, event){
+				event.preventDefault();
+				
+                		
+				var xhttp = new XMLHttpRequest();
+				xhttp.onreadystatechange = function() {
+					if (this.readyState == 4 && this.status == 200) {
+                      console.log(this.responseText);
+                      var preparat=JSON.parse(this.responseText);
+                      document.getElementById('nume').value=preparat.nume;
+                      document.getElementById('url').value=preparat.imagine;
+                      document.getElementById('reteta').value=preparat.reteta;
+                      document.getElementById('ingrediente').value=preparat.ingrediente;
+
+
+					}
+                };
+                
+				xhttp.open("GET", MENU_EDIT_ITEM_SERVER_URL, true);
+                xhttp.send();
+                
+				
+				
+            }
+            
+            function sendAsJson(form, event){
+				event.preventDefault();
+				
+                var obj = { "nume": document.getElementById('nume').value, "imagine": document.getElementById('url').value, 
+                "reteta": document.getElementById('reteta').value, "ingrediente": document.getElementById('ingrediente').value }
+				
+						
+		
+				var xhttp = new XMLHttpRequest();
+				xhttp.onreadystatechange = function() {
+					if (this.readyState == 4 && this.status == 200) {
+                      console.log(this.responseText);
+                      window.location="meniuadmin.html";
+					}
+                };
+                console.log(obj);
+				xhttp.open("PUT", MENU_EDIT_ITEM_SERVER_URL, true);
+				xhttp.send(JSON.stringify(obj));
+				
+				
+			}
+        
+        
+          </script>
+    <style>
+         
+
+            #formularProdusNou{
+                background-color:rgb(117, 222, 230); 
+                padding: 20px;
+                border-radius: 5px;
+                
+            }
+
+            .titlu{
+                
+                margin-left: 30px;
+                font-size: xx-large;
+                color:#3939ec;
+
+            }
+
+            .formular {
+                display: flex;
+            }
+
+            .completare {
+                margin-right: 40px; 
+                margin-left: 40px;
+                margin-bottom: 30px;
+                 
+                height: 41px;
+                width: 900px;
+                float: right;
+                
+
+            }
+            
+            span{
+                flex: 1;
+                margin-left: 30px;
+                font-size: x-large;
+                
+            }
+            
+            
+           
+            .butonAdauga { 
+                margin-right: 40px; 
+                margin-left: 20px;
+                margin-bottom: 30px;
+                color:white;
+                background-color:#b1d3f5; 
+                height: 41px;
+                border-radius: 5px;
+
+            }
+
+            .butonModifica { 
+                margin-right: 5px; 
+                margin-left: 40px; 
+                color:white;
+                background-color: #b1d3f5; 
+                height: 31px;
+                border-radius: 5px;
+            }
+            .butonSterge { 
+                margin-right: 40px; 
+                margin-left: 5px; 
+                color:white;
+                background-color: rgb(218, 97, 133); 
+                height: 31px;
+                border-radius: 5px;
+            }
+           
+
+			table{
+				border-collapse:collapse;
+			}
+    </style>
+		
+    </head>
+    <body onload="afiseazaPreparat()">
+    
+    <form id="formularProdusNou" method="post" action="https://menu-3c993.firebaseio.com/.json" 
+    onsubmit="sendAsJson(this,event)">
+            
+                
+                <span class="titlu">Cald si bun (Admin)</span>
+                </br></br>
+                <div class="formular"><span>Nume:</span> <input class="completare" name="numePreparat" type="text" id="nume"></div>
+                <br>
+                
+                <div class="formular"><span>URL Imagine : </span><input class="completare" name="urlImagine" type="text" id="url" ></div>
+                <br>
+                
+                <div class="formular"><span>Ingrediente:</span> <textarea class="completare" name="ingrediente" id="ingrediente"></textarea></div>
+                    <br>
+                
+                <div class="formular"><span>Mod de preparare: </span><textarea class="completare" name="reteta" id="reteta" ></textarea></div>
+                <br>
+                
+                <input class="butonAdauga" type="submit" value="Salveaza preparat"><br>
+      
+          
+          </form>
+    
+          
+
+</body>
+</html>
