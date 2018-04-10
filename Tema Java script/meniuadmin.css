@@ -1,0 +1,65 @@
+            #fereastraMeniu{
+                background-color:rgb(117, 222, 230); 
+                padding: 20px; 
+                
+            }
+
+            .titlu{
+                display: flex;
+            }
+            
+            span{
+                flex: 1;
+                margin-left: 30px;
+                font-size: xx-large;
+                color:#3939ec;
+            }
+            
+            
+           
+            .butonAdauga { 
+                margin-right: 40px; 
+                margin-left: 40px;
+                margin-bottom: 30px;
+                color:white;
+                background-color:#b1d3f5; 
+                height: 31px;
+                border-radius: 5px;
+
+            }
+
+            .butonModifica { 
+                margin-right: 5px; 
+                margin-left: 40px; 
+                color:white;
+                background-color: #b1d3f5; 
+                height: 31px;
+                border-radius: 5px;
+            }
+            .butonSterge { 
+                margin-right: 40px; 
+                margin-left: 5px; 
+                color:white;
+                background-color: rgb(218, 97, 133); 
+                height: 31px;
+                border-radius: 5px;
+            }
+           
+
+			table{
+				border-collapse:collapse;
+			}
+
+            .imagineLoading>img { display: block;
+                width: 100px;
+                height: 100px;
+            
+            }
+
+            .ascundeImagine { display: none;
+            }
+
+            .imagine { 
+                max-width: 600px;
+            }
+		

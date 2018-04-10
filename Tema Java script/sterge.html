@@ -1,97 +1,9 @@
 <html>
 	<head>
-		<script >
-            
-            var id=window.location.search.substring(4);
-            var MENU_DELETE_ITEM_SERVER_URL = "https://menu-3c993.firebaseio.com/"+id+".json"
+        <script src="sterge.js">
+        </script>
+        <link rel="stylesheet" href="sterge.css">
 
-                 console.log("valoarea lui:", MENU_DELETE_ITEM_SERVER_URL);
-                            
-            function sterge(form, event){
-			var xhttp = new XMLHttpRequest();
-			xhttp.onreadystatechange = function() {
-				if (this.readyState == 4 && this.status == 200) {
-                    window.location="meniuadmin.html";
-					
-				}
-			};
-			xhttp.open("DELETE", MENU_DELETE_ITEM_SERVER_URL, true);
-			xhttp.send();
-        }
-        
-        function numePreparat (){
-                var element=document.getElementById("numePreparat");
-
-                var xhttp = new XMLHttpRequest();
-			xhttp.onreadystatechange = function() {
-				if (this.readyState == 4 && this.status == 200) {
-                    
-                    var preparat=JSON.parse(this.responseText);
-                    
-                    var sir=`<div class="formular" id="numePreparat">Esti pe cale sa stergi preparatul ${preparat.nume}</div>`;
-                element.innerHTML=sir;
-				}
-			};
-			xhttp.open("GET", MENU_DELETE_ITEM_SERVER_URL, true);
-			xhttp.send();
-            
-                
-                
-        }
-
-        function nuSterge(){
-            window.location="meniuadmin.html";
-
-        }
-        
-        
-          </script>
-    <style>
-         
-
-            #formularSterge{
-                background-color:rgb(117, 222, 230); 
-                padding: 20px;
-                border-radius: 5px;
-                
-            }
-
-            .titlu{
-                
-                margin-left: 30px;
-                font-size: xx-large;
-                color:#3939ec;
-
-            }
-
-            .formular {
-                display: flex;
-            }
-
- 
-           
-            .butonSterge { 
-                margin-right: 40px; 
-                margin-left: 5px; 
-                color:white;
-                background-color: rgb(218, 97, 133); 
-                height: 31px;
-                border-radius: 5px;
-            }
-
-            .butonNuSterge { 
-                margin-right: 40px; 
-                margin-left: 5px; 
-                color:white;
-                background-color: rgb(97, 180, 218); 
-                height: 31px;
-                border-radius: 5px;
-            }
-           
-
-			
-    </style>
-		
     </head>
     <body onload="numePreparat()">
     
@@ -103,7 +15,7 @@
                 </br></br>
                 
                 
-                <div class="formular" id="numePreparat">Esti pe cale sa stergi preparatul`${nume}</div>
+                <div class="formular" id="numePreparat"></div>
                 <br>
                 <div class="formular">Confirmi stergerea ?</div>
                   </br>
