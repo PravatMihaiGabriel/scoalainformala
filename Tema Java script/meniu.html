@@ -1,141 +1,11 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<script >
-            var meniu;
-            var MENU_SERVER_URL = "https://restaurant-menu-v1.firebaseio.com/menu/.json";
-
-            var xhttp = new XMLHttpRequest();
-			xhttp.onreadystatechange = function() {
-				if (this.readyState == 4 && this.status == 200) {
-					meniu = JSON.parse(this.responseText);
-					
-					drawmeniu();
-				}
-			};
-			xhttp.open("GET", MENU_SERVER_URL, true);
-			xhttp.send();
-		
-		function drawmeniu(){
-            var tabel=document.querySelector("#meniu tbody");
-			var str="";
-            
-			for(i in meniu){ 
-                    str+=`<tr>
-					<td><span><img class="imagine" src="${meniu[i].imagine}" alt="nu gasesc imaginea"></span></td>
-                    <td><h2>${meniu[i].nume}</h2></br></br><div>${meniu[i].ingrediente}<div></td>
-                    <td><a href="detalii.html?id=${i}">
-                    <input class="butonDetalii" type="button" value="Detalii"/></a></td>
-				</tr>`;}
-				
-			tabel.innerHTML=str;
-		}
-
-      function cautaIngrediente(element, eveniment) {
-            eveniment.preventDefault();
-            
-            var elemIngrediente = document.getElementById("cautare");
-                      
-            var ingredientNou=elemIngrediente.value;
-           
-            var tabel=document.querySelector("#meniu tbody");
-			var str="";
-            
-			for(i in meniu){
-                if(meniu[i].ingrediente.indexOf(ingredientNou)===-1){
-                    continue;
-                }
-                    str+=`<tr>
-					<td><span><img class="imagine" src="${meniu[i].imagine}" alt="nu gasesc imaginea"></span></td>
-                    <td><h2>${meniu[i].nume}</h2></br></br><div>${meniu[i].ingrediente}<div></td>
-                    <td><a href="detalii.html?id=${i}">
-                    <input class="butonDetalii" type="button" value="Detalii"/></a></td>
-				</tr>`;}
-				
-			tabel.innerHTML=str;
-
-                elemIngrediente.value="";
-               
-            
-        }
-
-        function valideazaIngrediente(element,eveniment){
-        
-        var codTasta=eveniment.keyCode;
-
-
-            if(codTasta===13){cautaIngrediente(element, eveniment);}       
-            
-        }
-        
-          </script>
-    <style>
-         
-
-            #fereastraMeniu{
-                background-color:rgb(117, 222, 230); 
-                padding: 20px; 
-                
-            }
-
-            .titlu{
-                display: flex;
-            }
-            
-            span{
-                flex: 1;
-                margin-left: 30px;
-                font-size: xx-large;
-            }
-            
-            
-            .zonaCautare{
-                width: 300px; 
-                height: 25px;
-                border-color: lightgrey; 
-                margin-right: 30px;
-                margin-left: 30px;
-            }
-
-            .butonCautare{
-                margin-right: 40px; 
-                margin-left: 40px;
-                margin-bottom: 30px;
-                color: white;
-                background-color:  #d9a1f1;
-                height: 31px;
-                border-radius: 5px;
-            }
-
-            .butonContact { 
-                margin-right: 40px; 
-                margin-left: 40px;
-                margin-bottom: 30px;
-                color:white;
-                background-color:#b1d3f5; 
-                height: 31px;
-                border-radius: 5px;
-
-            }
-
-            .butonDetalii { 
-                margin-right: 40px; 
-                margin-left: 40px; 
-                color:white;
-                background-color: rgb(218, 97, 133); 
-                height: 31px;
-                border-radius: 5px;
-            }
-           
-
-			table{
-				border-collapse:collapse;
-			}
-    </style>
-		
-    </head>
-        
-    <body >
+            <script src="meniu.js">
+                </script>
+                <link rel="stylesheet" href="meniu.css">
+    </head>  
+    <body onload="cautaIngrediente()">
            <div id="fereastraMeniu">
              <div class="titlu">
               <span >Cald si bun</span>
@@ -145,7 +15,7 @@
              </br>
                 <div>
                    <input class="zonaCautare" name="cautare" id="cautare" type="text" onkeypress="valideazaIngrediente(this, event);">
-                   <input class="butonCautare" type="button" id="butonCautare" value="Cauta in ingrediente" onclick="cautaIngrediente(this,event);">
+                   <input class="butonCautare" type="button" id="butonCautare" value="Cauta in ingrediente" onclick="cautaIngrediente();">
                     
                 </div>
                 </br>

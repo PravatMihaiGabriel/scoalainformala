@@ -1,94 +1,23 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<script >
-            var meniu;
-            var MENU_SERVER_URL = "https://restaurant-menu-v1.firebaseio.com/menu/.json";
-
-            var xhttp = new XMLHttpRequest();
-			xhttp.onreadystatechange = function() {
-				if (this.readyState == 4 && this.status == 200) {
-					meniu = JSON.parse(this.responseText);
-					drawdetalii();
-				}
-			};
-			xhttp.open("GET", MENU_SERVER_URL, true);
-			xhttp.send();
-		
-		    function drawharta(){
-            var mapProp = {
-                        center: new google.maps.LatLng(44.4432214, 26.1585078),
-                        zoom: 12,
-                        mapTypeId: google.maps.MapTypeId.ROADMAP,
-                    };
-                    var map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
-		}
-        
-          </script>
-    <style>
-         
-
-            #fereastraContact{
-                background-color:rgb(117, 222, 230); 
-                padding: 20px;
-                height: 100vh;
-                
-            }
-
-            .titlu{
-                display: flex;
-            }
-            
-            span{
-               
-                margin-left: 30px;
-                font-size: xx-large;
-                flex: 1;
-            }
-            
-            .adresa{
-                
-                margin-left: 30px;
-
-            }
-            
-          
-            .butonMeniu { 
-                margin-right: 40px; 
-                margin-left: 40px; 
-                color:white;
-                background-color: rgb(218, 97, 133); 
-                height: 31px;
-                border-radius: 5px;
-            }
-
-           #googleMap {
-            height:550px;  
-            margin-left: 15px;
-
-           }
-           
-           
-		
-    </style>
-		
-    </head>
-        
+        <script src="contact.js">
+        </script>
+        <link rel="stylesheet" href="contact.css">
+    </head>  
     <body onload="drawharta()">
            <div id="fereastraContact">
-               <div class="titlu">
+            <div class="titlu">
             <span>Cald si bun</span>
             <a href="meniu.html">
             <input class="butonMeniu" type="button" id="butonMeniu" value="Meniu"></a>
-               </div>
+            </div>
             </br>
             <div class="adresa">Adresa: Sos. Pantelimon, nr. 253</div>
-                </br>
-                
+            </br>   
             <div id="googleMap" ></div>
-                </br>
-                   
+            </br>       
           </div>
  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDo4lTLnuHmYj5RJzb8IeCAKqAHb154rbw"></script>
-</body>
+    </body>
 </html>

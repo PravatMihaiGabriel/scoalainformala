@@ -1,0 +1,38 @@
+            #fereastraDetalii{
+                background-color:rgb(117, 222, 230); 
+                padding: 20px;
+                   
+            }
+            
+            span{
+                flex: 1;
+                margin-left: 30px;
+                font-size: xx-large;
+            }
+            
+            .titlu{
+                display: flex;
+            }
+            
+            .butonContact { 
+                margin-right: 40px; 
+                margin-left: 5px;
+                margin-bottom: 30px;
+                color:white;
+                background-color:#b1d3f5; 
+                height: 31px;
+                border-radius: 5px;
+            }
+
+             .butonMeniu { 
+                margin-right: 5px; 
+                margin-left: 40px; 
+                color:white;
+                background-color: rgb(218, 97, 133); 
+                height: 31px;
+                border-radius: 5px;
+            }
+            
+            .imagine { 
+                max-width: 600px;
+            }

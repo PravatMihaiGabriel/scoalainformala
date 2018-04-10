@@ -1,77 +1,9 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<script >
-            var meniu;
-            var MENU_SERVER_URL = "https://restaurant-menu-v1.firebaseio.com/menu/.json";
-
-            var xhttp = new XMLHttpRequest();
-			xhttp.onreadystatechange = function() {
-				if (this.readyState == 4 && this.status == 200) {
-					meniu = JSON.parse(this.responseText);
-					
-					drawdetalii();
-				}
-			};
-			xhttp.open("GET", MENU_SERVER_URL, true);
-			xhttp.send();
-		
-		function drawdetalii(){
-            var tabel=document.querySelector("#detalii");
-			var str="";
-            var i=window.location.search.substring(4);
-			 
-                    str+=`
-					<span><img class="imagine" src="${meniu[i].imagine}" alt="nu gasesc imaginea"></span>
-                    <h2>${meniu[i].nume}</h2></br></br><div>${meniu[i].reteta}<div>`
-				
-			tabel.innerHTML=str;
-		}
-        
-          </script>
-    <style>
-         
-
-            #fereastraDetalii{
-                background-color:rgb(117, 222, 230); 
-                padding: 20px;
-                height: 100vh; 
-                
-            }
-            
-            span{
-                flex: 1;
-                margin-left: 30px;
-                font-size: xx-large;
-            }
-            
-            .titlu{
-                display: flex;
-            }
-            
-            .butonContact { 
-                margin-right: 40px; 
-                margin-left: 5px;
-                margin-bottom: 30px;
-                color:white;
-                background-color:#b1d3f5; 
-                height: 31px;
-                border-radius: 5px;
-            }
-
-             .butonMeniu { 
-                margin-right: 5px; 
-                margin-left: 40px; 
-                color:white;
-                background-color: rgb(218, 97, 133); 
-                height: 31px;
-                border-radius: 5px;
-            }
-
-          
-    
-    </style>
-		
+            <script src="detalii.js">
+                </script>
+                <link rel="stylesheet" href="detalii.css">
     </head>
         
     <body >
