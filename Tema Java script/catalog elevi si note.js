@@ -59,16 +59,23 @@ var listaElevi=[];
         function sorteazaMedii(i, element, eveniment){
             
             listaElevi.sort(function(a,b){
-				if((a.suma/a.note.length)>(b.suma/b.note.length)){
+                var mediaa=0;
+                var mediab=0;
+                if (a.note.length>0){
+                    mediaa=(a.suma/a.note.length);
+                } 
+                if (b.note.length>0){
+                    mediab=(b.suma/b.note.length);
+                }
+                if(mediaa>mediab){
 					return 1;
-				}else if((a.suma/a.note.length)<(b.suma/b.note.length)){
+				}else if(mediaa<mediab){
 					return -1;
 				}else{
 					return 0;
 				}
 			});
-           
-                  
+    
            if (i==="desc"){
                            listaElevi.reverse();
 
