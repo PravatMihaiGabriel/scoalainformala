@@ -1,0 +1,47 @@
+[
+        {
+            "denumire": "Laptop",
+            "imagine": "laptop.jpg",
+            "pret": "1000",
+            "descriere": "ram, hard disc, monitor",
+            "stoc": "100"
+
+        },
+        {
+            "denumire": "Laptop1",
+            "imagine": "laptop1.jpg",
+            "pret": "2000",
+            "descriere": "ram, hard disc, monitor",
+            "stoc": "99"
+        },
+        {
+            "denumire": "Laptop",
+            "imagine": "laptop.jpg",
+            "pret": "1000",
+            "descriere": "ram, hard disc, monitor",
+            "stoc": "100"
+
+        },
+        {
+            "denumire": "Laptop1",
+            "imagine": "laptop1.jpg",
+            "pret": "2000",
+            "descriere": "ram, hard disc, monitor",
+            "stoc": "99"
+        },
+        {
+            "denumire": "Laptop",
+            "imagine": "laptop.jpg",
+            "pret": "1000",
+            "descriere": "ram, hard disc, monitor",
+            "stoc": "100"
+
+        },
+        {
+            "denumire": "Laptop1",
+            "imagine": "laptop1.jpg",
+            "pret": "2000",
+            "descriere": "ram, hard disc, monitor",
+            "stoc": "99"
+        }
+    ]

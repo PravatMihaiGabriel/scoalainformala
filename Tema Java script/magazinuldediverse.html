@@ -26,13 +26,30 @@
       </div>
       <div class="denumire">${produse[i].denumire}</div>
       <div class="pretSiButon"><span class="pret">${produse[i].pret}lei</span>
-        <a href="https://webdesign.tutsplus.com/tutorials/css-grid-layout-quick-start-guide--cms-27238">
-        <input class="butonDetalii" type="button" value="DETALII"/></a>
+        <input class="butonDetalii" type="button" value="DETALII" onclick="detalii(${i});"/>
     </div>
   </div>`;}
 				
 			tabel.innerHTML=str;  
         }
+
+        function detalii(index){
+            var tabel=document.querySelector("#detalii");
+            element.classList.remove("fereastraInviizibila");
+            element.classList.add("fereastraInVizibila");
+			var str="";
+            str+=`<div class="principal">
+      <div class="poza" style="background-image: url(${produse[i].imagine})">
+      </div>
+      <div class="denumire">${produse[i].denumire}</div>
+      <div class="pretSiButon"><span class="pret">${produse[i].pret}lei</span>
+        <input class="butonDetalii" type="button" value="DETALII" onclick="detalii(${i});"/>
+    </div>
+  </div>`
+				
+			tabel.innerHTML=str;  
+        }
+
 
     </script>
     <style>    
@@ -40,9 +57,7 @@ body {
   padding: 30px;
   background: #ffffff;
   
-  
 }
-
 
 .grid-1 {
   display: grid;
@@ -51,7 +66,6 @@ body {
   grid-gap: 10px;
   
 }
-
 
 .grid-1 div {
   
@@ -104,12 +118,20 @@ body {
     font-size: 40px;
     border-bottom-width: 30px;
     margin-bottom: 30px;
-}
 
+}
+.detaliiInvizibile{
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    z-index: -1;
+    display: none;
+}
 </style>
 </head>
 <body onload="deseneazaProduse()">
 <div class="titlu">Magazinul de diverse</div>
+<div id="detalii"></div>
 <section class="grid-1" id="produse">
 </section>
 
