@@ -26,31 +26,56 @@
       </div>
       <div class="denumire">${produse[i].denumire}</div>
       <div class="pretSiButon"><span class="pret">${produse[i].pret}lei</span>
-        <input class="butonDetalii" type="button" value="DETALII" onclick="detalii(${i});"/>
+     <input  class="butonDetalii" type="button" value="DETALII" onclick="detalii(${i});"/>
     </div>
   </div>`;}
 				
 			tabel.innerHTML=str;  
         }
 
-        function detalii(index){
+        function detalii(i){
             var tabel=document.querySelector("#detalii");
-            element.classList.remove("fereastraInviizibila");
-            element.classList.add("fereastraInVizibila");
+            tabel.classList.remove("detaliiInvizibile");
+            tabel.classList.add("detaliiVizibile");
 			var str="";
-            str+=`<div class="principal">
-      <div class="poza" style="background-image: url(${produse[i].imagine})">
+            str+=`
+      <div class="fereastraDetalii1">
+      <input class="inchideDetalii" type="button" value="X" onclick="inchideDetalii();"/>
+      <div class="fereastraDetalii">
+      <div class="pozaDetalii" style="background-image: url(${produse[i].imagine})">
       </div>
+      <div class="denumirePretCantitate">
       <div class="denumire">${produse[i].denumire}</div>
-      <div class="pretSiButon"><span class="pret">${produse[i].pret}lei</span>
-        <input class="butonDetalii" type="button" value="DETALII" onclick="detalii(${i});"/>
+      </br>
+      <div>Pret: ${produse[i].pret} lei</div>
+      </br>
+      <div class="cantitate">In stoc: ${produse[i].stoc} buc</div>
+      </br>
+      <div>
+      <span>Cantitate: </span> 
+      <input class="detaliiCantitate" type="text"/>
+      </div>
+      </br>
+      <input class="adaugaInCos" type="button" value="Adauga in Cos" onclick="adaugaInCos(${i});"/>
+      </div>
     </div>
   </div>`
 				
 			tabel.innerHTML=str;  
         }
 
+        function adaugaInCos(){
 
+        }
+
+        function inchideDetalii(){
+            var tabel=document.querySelector("#detalii");
+            tabel.classList.remove("detaliiVizibile");
+            tabel.classList.add("detaliiInvizibile");
+
+        }
+
+        
     </script>
     <style>    
 body {
@@ -82,6 +107,21 @@ body {
     background-position: center;
 }
 
+.pozaDetalii{
+    flex: 1;
+    padding: 25px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    height: 400px;
+    background-position: left;
+}
+
+.denumirePretCantitate{
+    display: flex;
+    flex-direction: column;
+
+}
+
 .pret{
   flex: 1;
 }
@@ -90,7 +130,9 @@ body {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  text-align: center
+  text-align: center;
+  font-weight: bold;
+
 }
 .pretSiButon{
     text-align: center;
@@ -100,6 +142,28 @@ body {
     border-width: 1px;
     border-style: solid;
     border-color: #d6d2d2;
+}
+.fereastraDetalii1{
+    text-align: right;
+    border-width: 2px;
+    border-style: solid;
+    border-color: #c0bdbd;
+    box-shadow: 4px 2px 20px 0px #827d7d;
+
+}
+
+.fereastraDetalii{
+    display: flex;
+    
+    padding: 30px;
+    flex-direction: row;
+
+}
+
+.detaliiCantitate {
+    width: 30px;
+    text-align: center;
+
 }
 .butonDetalii{
   padding-left: 10px;
@@ -113,6 +177,42 @@ body {
     background-color: #f5c5d1;
     
 }
+.adaugaInCos{
+  padding-left: 10px;
+    padding-right: 10px;
+    width: 150px;
+    height: 26px;
+    font-size: 16px;
+    font-weight: normal;
+    font-family: initial;
+    background-color: #c5eff5;
+    
+}
+
+.butonDetalii:hover { padding-left: 10px;
+    padding-right: 10px;
+    width: 90px;
+    height: 26px;
+    font-size: 16px;
+    font-weight: normal;
+    font-family: initial;
+    margin-right: 30px;
+    background-color: #f58ba5;   
+
+}
+
+.adaugaInCos:hover{
+  padding-left: 10px;
+    padding-right: 10px;
+    width: 150px;
+    height: 26px;
+    font-size: 16px;
+    font-weight: normal;
+    font-family: initial;
+    margin-right: 30px;
+    background-color: #7ce6f6;
+    
+}
 .titlu{
     height: 50px;
     font-size: 40px;
@@ -121,17 +221,35 @@ body {
 
 }
 .detaliiInvizibile{
+    display: none;
+}
+.detaliiVizibile{
+    
+    display: block;
+    
+    padding: 30px;
+    background: #ffffff;
     position: absolute;
     left: 0px;
     top: 0px;
-    z-index: -1;
-    display: none;
+    bottom: 0px;
+    right: 0px;
+    max-width:600;
+    max-height: 600px;
+    margin: auto auto;
+    z-index: 1;
+
 }
+.detaliiVizibile div {
+  
+  font-size: 18px;
+  padding: 20px;
+  }
 </style>
 </head>
 <body onload="deseneazaProduse()">
 <div class="titlu">Magazinul de diverse</div>
-<div id="detalii"></div>
+<div id="detalii" class="detaliiInvizibile"></div>
 <section class="grid-1" id="produse">
 </section>
 
