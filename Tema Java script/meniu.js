@@ -23,7 +23,7 @@
                     continue;
                 }
                     str+=`<tr>
-					<td><span><img class="imagine" src="${meniu[i].imagine}" alt="nu gasesc imaginea"></span></td>
+					<td><span><img class="imagine" src="${meniu[i].imagine}" alt="nu gasesc imaginea"/></span></td>
                     <td><h2>${meniu[i].nume}</h2></br></br><div>${meniu[i].ingrediente}<div></td>
                     <td><a href="detalii.html?id=${i}">
                     <input class="butonDetalii" type="button" value="Detalii"/></a></td>
