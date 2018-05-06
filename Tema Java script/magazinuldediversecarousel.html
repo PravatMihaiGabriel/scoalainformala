@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html>
+	<head>
+       
+    <script>
+       
+       
+      var produse;
+            var PRODUSE_SERVER_URL = "https://produse-cae5b.firebaseio.com/.json";
+
+            var xhttp = new XMLHttpRequest();
+			xhttp.onreadystatechange = function() {
+				if (this.readyState == 4 && this.status == 200) {
+					produse = JSON.parse(this.responseText);
+					
+					deseneazaProduse();
+				}
+			};
+			xhttp.open("GET", PRODUSE_SERVER_URL, true);
+			xhttp.send();
+		
+      function deseneazaProduse() { 
+                       
+            var tabel=document.querySelector("#produse");
+			var str="";
+            
+			for(i in produse){
+                    str+=`<div class="principal">
+      <div class="poza" style="background-image: url(${produse[i].imagine})">
+      </div>
+      <div class="denumire">${produse[i].denumire}</div>
+      <div class="pretSiButon"><span class="pret">${produse[i].pret}lei</span>
+     <input  class="butonDetalii" type="button" value="DETALII" onclick="detalii(${i});"/>
+    </div>
+  </div>`;}
+				
+			tabel.innerHTML=str;  
+        }
+
+        function detalii(i){
+            var tabel=document.querySelector("#detalii");
+            tabel.classList.remove("detaliiInvizibile");
+            tabel.classList.add("detaliiVizibile");
+			var str="";
+            str+=`
+      <div id="fereastraDetalii1">
+      <input class="inchideDetalii" type="button" value="X" onclick="inchideDetalii();"/>
+      <div class="fereastraDetalii">
+      <div class="pozaDetalii" style="background-image: url(${produse[i].imagine})">
+      </div>
+      <div class="denumirePretCantitate">
+      <div class="denumire">${produse[i].denumire}</div>
+      </br>
+      <div class="denumire">${produse[i].descriere}</div>
+      </br>
+      <div>Pret: ${produse[i].pret} lei</div>
+      </br>
+      <div class="cantitate">In stoc: ${produse[i].stoc} buc</div>
+      </br>
+      <div>
+      <span>Cantitate: </span> 
+      <input value="1" min="1" class="detaliiCantitate" type="number"/>
+      </div>
+      </br>
+      <input class="adaugaInCos" type="button" value="Adauga in Cos" onclick="adaugaInCos(${i});"/>
+      </div>
+    </div>
+  </div>`
+				
+            tabel.innerHTML=str;
+            
+        }
+
+        var cos=[];
+
+        function adaugaInCos(index){
+            /*if(localStorage.cos!==undefined){
+                cos=localStorage.cos;
+            }*/
+            var tabel=document.querySelector("#produsInCos");
+            var tabel1=document.querySelector("#stocInsuficient");
+            var codProdus=produse[index].cod;
+            var cantitateNoua=parseInt(document.querySelector(".detaliiCantitate").value);
+            var produsNou={ cod: produse[index].cod, imagine: produse[index].imagine, denumire: produse[index].denumire, pret: produse[index].pret, cantitate: cantitateNoua,
+             descriere: produse[index].descriere, stoc: produse[index].stoc}; 
+
+            
+                var pozitie=false;
+                for (i=0; i<cos.length;i++){
+                
+                if (codProdus===cos[i].cod){
+                    pozitie=i;
+                    if((cos[pozitie].cantitate+cantitateNoua)>produse[index].stoc){ 
+                        tabel1.classList.remove("stocInsuficientInvizibil");
+                tabel1.classList.add("stocInsuficientVizibil");
+                setTimeout(function(){tabel1.classList.remove("stocInsuficientVizibil")},2000);
+                tabel1.classList.add("stocInsuficientInvizibil");
+
+                }
+                else{ cos[pozitie].cantitate=cos[pozitie].cantitate+cantitateNoua;
+                    str=`Prosusul ${produse[i].denumire} a fost adaugat in cos`;
+                    
+                    tabel.innerHTML=str;
+                    tabel.classList.remove("produsInCosInvizibil");
+                tabel.classList.add("produsInCosVizibil");
+                setTimeout(function(){tabel.classList.remove("produsInCosVizibil")},2000);
+                tabel.classList.add("produsInCosInvizibil");
+            } 
+                }
+            }
+                if(pozitie===false){
+             if (produsNou.cantitate>produse[index].stoc){
+                 tabel1.classList.remove("stocInsuficientInvizibil");
+                tabel1.classList.add("stocInsuficientVizibil");
+                setTimeout(function(){tabel1.classList.remove("stocInsuficientVizibil")},2000);
+                tabel1.classList.add("stocInsuficientInvizibil");
+            }
+                else{cos.push(produsNou);
+                    
+                    str=`Produsul ${produse[i].denumire} a fost adaugat in cos`;
+                    tabel.innerHTML=str;
+                tabel.classList.remove("produsInCosInvizibil");
+                tabel.classList.add("produsInCosVizibil");
+                setTimeout(function(){tabel.classList.remove("produsInCosVizibil")},2000);
+                tabel.classList.add("produsInCosInvizibil");
+            }
+            }
+            
+            inchideDetalii();
+            localStorage.cos=JSON.stringify(cos);
+            console.log( localStorage.cos);
+            /*console.log(JSON.stringify(cos));
+            console.log(JSON.parse(localStorage.cos));*/
+
+
+        }
+
+        function inchideDetalii(){
+            var tabel=document.querySelector("#detalii");
+            tabel.classList.remove("detaliiVizibile");
+            tabel.classList.add("detaliiInvizibile");
+
+        }
+
+        
+    </script>
+    <style>    
+body {
+  padding: 30px;
+  padding-top: 0px;
+  background: #ffffff;
+  
+}
+
+.grid-1 {
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  grid-template-rows: auto auto auto;
+  grid-gap: 10px;
+  
+}
+
+.grid-1 div {
+  
+  font-size: 18px;
+  padding: 20px;
+  }
+
+.poza{
+    
+    padding: 25px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    height: 100px;
+    background-position: center;
+}
+
+.pozaDetalii{
+    flex: 1;
+    padding: 25px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    height: 400px;
+    background-position: left;
+}
+
+.denumirePretCantitate{
+    display: flex;
+    flex-direction: column;
+
+}
+
+.pret{
+  flex: 1;
+}
+
+.denumire{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  text-align: center;
+  font-weight: bold;
+
+}
+.pretSiButon{
+    text-align: center;
+    display: flex;
+}
+.principal{
+    border-width: 1px;
+    border-style: solid;
+    border-color: #d6d2d2;
+}
+#fereastraDetalii1{
+    background: #ffffff;
+    text-align: right;
+    border-width: 2px;
+    border-style: solid;
+    border-color: #c0bdbd;
+    box-shadow: 4px 2px 20px 0px #827d7d;
+    padding: 2px;
+    
+
+}
+
+
+.fereastraDetalii{
+    display: flex;
+    padding: 30px;
+    flex-direction: row;
+
+}
+
+.detaliiCantitate {
+    width: 30px;
+    text-align: center;
+
+}
+.butonDetalii{
+  padding-left: 10px;
+    padding-right: 10px;
+    width: 90px;
+    height: 26px;
+    font-size: 16px;
+    font-weight: normal;
+    font-family: initial;
+    margin-right: 30px;
+    background-color: #f5c5d1;
+    
+}
+
+.butonDetalii:hover {
+    background-color: #f58ba5;   
+
+}
+.adaugaInCos{
+  padding-left: 10px;
+    padding-right: 10px;
+    width: 150px;
+    height: 26px;
+    font-size: 16px;
+    font-weight: normal;
+    font-family: initial;
+    background-color: #c5eff5;
+    
+}
+.adaugaInCos:hover{
+    background-color: #7ce6f6;
+    
+}
+
+.butonCos{
+    flex: 1;
+  padding-left: 10px;
+    padding-right: 10px;
+    width: 150px;
+    height: 40px;
+    font-size: 16px;
+    font-weight: normal;
+    font-family: initial;
+    margin-right: 30px;
+    background-color: #f5c5d1;
+}
+
+.titluSiCos {display: flex;
+}
+
+.titlu{
+    font-size: 40px;
+    padding-bottom: 10px;
+    flex: 9;
+
+}
+.detaliiInvizibile{
+    display: none;
+}
+.detaliiVizibile{
+    display: block;
+    
+    left: 0px;
+    top: 0px;
+    bottom: 0px;
+    right: 0px;
+    max-width:600px;
+    max-height: 600px;
+    height: auto;
+    margin: auto auto;
+    position: fixed;
+    overflow-y: auto;
+    position: fixed;
+    z-index: 1;
+
+}
+.detaliiVizibile div {
+  
+  font-size: 18px;
+  padding: 20px;
+  }
+
+  .inchideDetalii {
+    border: 0px;
+    
+    padding-left: 5px;
+    padding-right: 3px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    margin-right: 3px;
+    box-shadow: 2px 2px 2px #403c3c;
+
+  }
+
+  .prev, .next{
+      color:  rgb(226, 84, 84);
+      background-color: #a7b7d0;
+      padding: 2px;
+      box-shadow: 2px 2px 4px 0px #a7b7d0;
+
+  }
+
+   
+  
+
+  .produsInCosInvizibil, .stocInsuficientInvizibil {
+    display: none;
+    
+  }
+
+  .produsInCosVizibil, .stocInsuficientVizibil {
+    display: block;
+    color:darkred;
+    height: 50px;
+    text-align: center;
+    padding: 10px;    
+    background-color: rgba(0, 0, 0, 0.2);
+    
+    
+  }
+</style>
+</head>
+<body onload="deseneazaProduse()">
+    
+<div class="titluSiCos"><span class="titlu">Magazinul de diverse</span>
+    <a href="cos.html">
+<input  class="butonCos" type="button" value="Cos Cumparaturi"/>
+</a>
+</div>
+
+          <div class="has-slider">
+                <span class="prev">Prev</span>
+                <span class="next">Next</span>
+          </br>
+          </br>
+            <div class="slider mslider">
+              <div class="slider-panel">
+                <a href="">
+          <img src="laptop.jpg" alt="" /><img src="laptop.jpg" alt="" /><img src="laptop.jpg" alt="" />
+          </a>
+              </div>
+              <div class="slider-panel">
+                <a href="">
+                        <img src="laptop1.jpg" alt="" /><img src="laptop1.jpg" alt="" /><img src="laptop1.jpg" alt="" />
+          </a>
+              </div>
+              <div class="slider-panel">
+                <a href="">
+                        <img src="cuptor-cu-microunde-samsung.jpg" alt="" /><img src="cuptor-cu-microunde-samsung.jpg" alt="" />
+          </a>
+              </div>
+              <div class="slider-panel">
+                <a href="">
+                        <img src="cantar-electronic-de-verificare-digi.jpg" alt="" /><img src="cantar-electronic-de-verificare-digi.jpg" alt="" /><img src="cantar-electronic-de-verificare-digi.jpg" alt="" />
+          </a>
+              </div>
+            </div>
+            <div class="slider-pagination"></div>
+          </div>
+          </div>
+    
+    </br>
+<div id="stocInsuficient" class="stocInsuficientInvizibil">Stoc Insuficient</div>
+<div id="produsInCos" class="produsInCosInvizibil"></div>  
+<div id="detalii" class="detaliiInvizibile"></div>
+<section class="grid-1" id="produse">
+</section>
+
+<link rel="stylesheet" href="minimal-carousel.css" type="text/css" media="screen" charset="utf-8">
+<script src="minimal-carousel.js"></script>
+</body>
+</html>
