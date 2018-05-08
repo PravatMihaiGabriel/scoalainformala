@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-       
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
     <script>
        
        
@@ -26,6 +26,8 @@
             var str="";
             var tabel1=document.querySelector("#zonaTotal");
             var str1="";
+            var tabel2=document.querySelector("#cosGol");
+            var str2="";
             var pretTotalNet=0;
             var pretTotal=0;
             var tva=0;
@@ -33,21 +35,24 @@
             
             if(cos.length>0){
                 str=str+`</br>
-                <div class="gridCos">
+                <div class="gridCosTitlu">
       <span class="denumireCos" >Denumire</span>
       <span class="denumireCos">Pret (lei)</span>
       <span class="denumireCos">Cantitate</span>
-      <span class="denumireCos"></span>
       <span class="denumireCos">Pret Total (lei)</span>
       </div>
       </br>`;
-            } /*else {<h1>Cosul este gol</h1>;}*/
+            } else {str2=`<h1 class>Cosul este gol</h1>`
+                    tabel.classList.remove("cos");
+                    tabel.classList.add("cosGol");
+                    tabel1.classList.remove("zonaTotal");
+                    tabel1.classList.add("zonaTotalGol");}
 
 			for(i in cos){ produseInCos=produseInCos+1;
                 pretTotal=pretTotal+(cos[i].pret*cos[i].cantitate);
                     str+=`</br>
                     <div class="gridCos">
-      <a href="" style="text-decoration: none;"><span class="denumireCos" onclick="detalii(${i});">${cos[i].denumire}</span></a>
+      <a href="#" style="text-decoration: none;"><span class="denumireCos" onclick="detalii(${i});">${cos[i].denumire}</span></a>
       <span class="denumireCos">${cos[i].pret} lei</span>
       <input  class="inchideDetalii1" type="button" value="-" onclick="scade(${i});"/>
       <span class="denumireCos">${cos[i].cantitate}</span>
@@ -57,11 +62,16 @@
       </div>
       </br>`
      ;}
-         if(produseInCos>0) {pretTotalNet=pretTotal/1.19;
-         tva=pretTotal-pretTotalNet;
+         if(produseInCos>0) {
+              
+             pretTotalNet=pretTotal/1.19;
+             tva=pretTotal-pretTotalNet;
+             if (produseInCos>1){  str1=`<div class="detaliiZonaTotal">${produseInCos} Produse</div>`;
 
-         str1=`<div class="detaliiZonaTotal">${produseInCos} Produse</div>
-         <div class="detaliiZonaTotal">Pret (fara TVA): ${pretTotalNet.toFixed(2)} lei</div>
+             } else { str1=`<div class="detaliiZonaTotal">${produseInCos} Produs</div>`;
+             }
+
+         str1=str1+`<div class="detaliiZonaTotal">Pret (fara TVA): ${pretTotalNet.toFixed(2)} lei</div>
          <div class="detaliiZonaTotal">TVA: ${tva.toFixed(2)} lei</div>
          <div class="detaliiZonaTotal">Pret Total: ${pretTotal.toFixed(2)} lei</div>
          <input  class="butonDetalii1" type="button" value="CUMPARA" onclick="cumpara();"/>
@@ -70,8 +80,9 @@
          
              
         }
-        tabel.innerHTML=str; 
+        tabel.innerHTML=str;
         tabel1.innerHTML=str1;
+        tabel2.innerHTML=str2;
       }
         function detalii(i){
             var tabel=document.querySelector("#detalii");
@@ -109,9 +120,9 @@
 
         
         function adaugaInCos(index){
-            /*if(localStorage.cos!==undefined){
+            if(localStorage.cos!==undefined){
                 cos=JSON.parse(localStorage.cos);
-            }*/
+            }
             var tabel=document.querySelector("#produsInCos");
             var tabel1=document.querySelector("#stocInsuficient");
             var codProdus=cos[index].cod;
@@ -257,12 +268,20 @@ body {
 
   .gridCos {
   display: grid;
-  grid-template-columns: auto auto 10px auto 10px auto auto;
+  grid-template-columns: auto auto 10px 50px 10px auto auto;
   grid-template-rows: auto auto auto;
   grid-gap: 10px;
+  text-align: center;
   
 }
 
+.gridCosTitlu {
+  display: grid;
+  grid-template-columns: 230px 220px  80px 230px;
+  grid-gap: 10px;
+  text-align: center;
+  
+}
 .poza{
     
     padding: 25px;
@@ -471,7 +490,7 @@ body {
     background-color: rgba(0, 0, 0, 0.2);
   }
 
-    #cos {
+    .cos {
     text-align: left;
     flex: 9;
     flex-direction: row;
@@ -481,12 +500,17 @@ body {
 
     }
 
+    .cosGol {
+    text-align: left;
+    border: none;
+    }
+
     .cosSiTotal {
         display: flex;
 
     }
 
-    #zonaTotal{
+    .zonaTotal{
         
         flex:2;
         flex-direction:column;
@@ -495,6 +519,12 @@ body {
     border-style: solid;
     border-color: #d6d2d2;
 
+
+    }
+
+    .zonaTotalGol {
+        
+        border: none;
 
     }
 
@@ -516,11 +546,13 @@ body {
 <div id="stocInsuficient" class="stocInsuficientInvizibil">Stoc Insuficient</div>
 <div id="produsInCos" class="produsInCosInvizibil"></div>  
 <div id="detalii" class="detaliiInvizibile"></div>
+<div id="cosGol"></div>
 <div class="cosSiTotal">
+
 <div class="cos" id="cos">
 
 </div>
-<div id="zonaTotal">
+<div class="zonaTotal" id="zonaTotal">
     
 </div>
 </div>

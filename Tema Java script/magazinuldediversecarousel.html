@@ -1,11 +1,16 @@
 <!DOCTYPE html>
 <html>
 	<head>
-       
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"> 
     <script>
        
        
       var produse;
+
+      var cos=[];
+      if(localStorage.cos!==undefined){
+                cos=JSON.parse(localStorage.cos);}
+
             var PRODUSE_SERVER_URL = "https://produse-cae5b.firebaseio.com/.json";
 
             var xhttp = new XMLHttpRequest();
@@ -33,7 +38,7 @@
      <input  class="butonDetalii" type="button" value="DETALII" onclick="detalii(${i});"/>
     </div>
   </div>`;}
-				
+            produseInCos();	
 			tabel.innerHTML=str;  
         }
 
@@ -71,12 +76,12 @@
             
         }
 
-        var cos=[];
+        
 
         function adaugaInCos(index){
-            /*if(localStorage.cos!==undefined){
-                cos=localStorage.cos;
-            }*/
+            if(localStorage.cos!==undefined){
+                cos=JSON.parse(localStorage.cos);
+            }
             var tabel=document.querySelector("#produsInCos");
             var tabel1=document.querySelector("#stocInsuficient");
             var codProdus=produse[index].cod;
@@ -105,6 +110,7 @@
                 tabel.classList.add("produsInCosVizibil");
                 setTimeout(function(){tabel.classList.remove("produsInCosVizibil")},2000);
                 tabel.classList.add("produsInCosInvizibil");
+                produseInCos();
             } 
                 }
             }
@@ -123,6 +129,7 @@
                 tabel.classList.add("produsInCosVizibil");
                 setTimeout(function(){tabel.classList.remove("produsInCosVizibil")},2000);
                 tabel.classList.add("produsInCosInvizibil");
+                produseInCos();
             }
             }
             
@@ -141,11 +148,22 @@
             tabel.classList.add("detaliiInvizibile");
 
         }
+        
+        function produseInCos() {
+            var prodInCos=0;
+            var tabel=document.querySelector(".aButonCos");
+            var str="";
+            for(i in cos){ prodInCos=prodInCos+1;
+            }
+            if (prodInCos>0) {str=`<input  class="butonCos" type="button" value="(${prodInCos})Cos Cumparaturi"/>`
+            tabel.innerHTML=str;}
+        }
 
         
     </script>
     <style>    
 body {
+  font-family:'Times New Roman', Times, serif;
   padding: 30px;
   padding-top: 0px;
   background: #ffffff;
@@ -360,7 +378,7 @@ body {
 <body onload="deseneazaProduse()">
     
 <div class="titluSiCos"><span class="titlu">Magazinul de diverse</span>
-    <a href="cos.html">
+    <a class="aButonCos" href="cos.html">
 <input  class="butonCos" type="button" value="Cos Cumparaturi"/>
 </a>
 </div>
@@ -372,33 +390,34 @@ body {
           </br>
             <div class="slider mslider">
               <div class="slider-panel">
-                <a href="">
-          <img src="laptop.jpg" alt="" /><img src="laptop.jpg" alt="" /><img src="laptop.jpg" alt="" />
+                <a href="#">
+          <img src="laptop.jpg" alt="" />
           </a>
               </div>
               <div class="slider-panel">
-                <a href="">
-                        <img src="laptop1.jpg" alt="" /><img src="laptop1.jpg" alt="" /><img src="laptop1.jpg" alt="" />
+                <a href="#">
+                        <img src="laptop1.jpg" alt="" />
           </a>
               </div>
               <div class="slider-panel">
-                <a href="">
-                        <img src="cuptor-cu-microunde-samsung.jpg" alt="" /><img src="cuptor-cu-microunde-samsung.jpg" alt="" />
+                <a href="#">
+                        <img src="cuptor-cu-microunde-samsung.jpg" alt="" />
           </a>
               </div>
               <div class="slider-panel">
-                <a href="">
-                        <img src="cantar-electronic-de-verificare-digi.jpg" alt="" /><img src="cantar-electronic-de-verificare-digi.jpg" alt="" /><img src="cantar-electronic-de-verificare-digi.jpg" alt="" />
+                <a href="#">
+                        <img src="cantar-electronic-de-verificare-digi.jpg" alt="" />
           </a>
               </div>
             </div>
-            <div class="slider-pagination"></div>
+            <div class="slider-pagination">
+            </div>
           </div>
           </div>
     
     </br>
 <div id="stocInsuficient" class="stocInsuficientInvizibil">Stoc Insuficient</div>
-<div id="produsInCos" class="produsInCosInvizibil"></div>  
+<div id="produsInCos" class="produsInCosInvizibil w3-container w3-center w3-animate-zoom"></div> 
 <div id="detalii" class="detaliiInvizibile"></div>
 <section class="grid-1" id="produse">
 </section>
