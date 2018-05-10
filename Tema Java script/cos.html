@@ -13,7 +13,6 @@
 			xhttp.onreadystatechange = function() {
 				if (this.readyState == 4 && this.status == 200) {
 					produse = JSON.parse(this.responseText);
-					
 					deseneazaCos();
 				}
 			};
@@ -219,12 +218,14 @@
                      if (cos.length>0){
                         if (cos[i].cod===produse[j].cod){
                          produse[j].stoc=produse[j].stoc-cos[i].cantitate;
-                         cos.splice(i,1);
-                         localStorage.cos=JSON.stringify(cos);
+                         /*cos.splice(i,1);
+                         localStorage.cos=JSON.stringify(cos);*/
                      }
                      }
                  }  
                 }
+                cos=[];
+                localStorage.cos=JSON.stringify(cos);
                 deseneazaCos(); 
                 sendAsJson();
 				}
@@ -269,7 +270,7 @@ body {
   .gridCos {
   display: grid;
   grid-template-columns: auto auto 10px 50px 10px auto auto;
-  grid-template-rows: auto auto auto;
+  grid-auto-rows: 50px;
   grid-gap: 10px;
   text-align: center;
   
@@ -533,6 +534,107 @@ body {
         font-weight: bold;
 
     }
+
+     @media all and (max-width: 500px) {
+    body {
+  font-family:'Times New Roman', Times, serif;
+  line-height: normal;
+  padding: 10px;
+  padding-top: 0px;
+  background: #ffffff;
+    }
+    .grid-1 {
+  display: grid;
+  grid-template-columns: auto;
+  grid-auto-rows: 200px;
+  grid-gap: 10px;
+  }
+  .grid-1 div {
+  
+  font-size: 18px;
+  padding: 5px;
+  }
+
+.detaliiVizibile div {
+  
+  font-size: 18px;
+  padding: 5px;
+  }
+
+  .pozaDetalii{
+    flex: 1;
+    padding: 5px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    height: 300px;
+    background-position: left;
+}
+
+.fereastraDetalii{
+    padding: 10px;
+}
+.gridCos {
+  display: grid;
+  grid-template-columns: 60px 60px 10px 20px 10px 60px 60px;
+  grid-auto-rows: 25px;
+  grid-gap: 5px;
+  text-align: center;
+  
+}
+
+.gridCosTitlu {
+  display: grid;
+  grid-template-columns: 65px 45px  55px 60px;
+  grid-gap: 5px;
+  text-align: center;
+  
+}  
+
+.denumireCos {
+ 
+ text-align: center;
+ font-weight: bold;
+ padding-right: 1px;
+ padding-left: 1px;
+}
+
+.butonDetalii{
+  padding-left: 1px;
+    padding-right: 1px;
+    width: 60px;
+    height: 26px;
+    font-size: 13px;
+    font-weight: normal;
+    font-family: initial;
+    margin-right: 1px;
+    background-color: #f5c5d1;
+    
+}
+
+.inchideDetalii1 {
+    padding-left: 0px;
+    padding-right: 0px;
+    height: 17px;
+    width: 15px;
+    box-shadow: 1px 1px 1px #403c3c;
+  }  
+
+  .denumireCos {
+ 
+ text-align: center;
+ font-weight: bold;
+ padding-right: 1px;
+ padding-left: 1px;
+}
+
+.cosSiTotal {
+        display: block;
+
+    }
+
+    
+           
+          }
     
     
 </style>
