@@ -252,8 +252,9 @@ body {
 }
 
 .detaliiCantitate {
-    width: 30px;
+    width: 40px;
     text-align: center;
+    font-size: 18px;
 
 }
 .butonDetalii{
@@ -382,11 +383,20 @@ body {
 
   .produsInCosVizibil, .stocInsuficientVizibil {
     display: block;
-    color:darkred;
+    color:rgb(255, 255, 255);
     height: 50px;
+    font-size: 25px;
     text-align: center;
     padding: 10px;    
-    background-color: rgba(0, 0, 0, 0.2);  
+    background-color: rgba(0, 0, 0, 0.2);
+    top: 60px;
+    left: 0px;
+    bottom: 0px;
+    right: 0px;
+    position: fixed;
+    overflow-y: auto;
+    position: fixed;
+    z-index: 3;  
   }
 
   @media all and (max-width: 500px) {
@@ -450,6 +460,17 @@ body {
     z-index: 1;
    
 }
+
+.detaliiVizibile{
+    
+    top: 150px;
+}
+
+.produsInCosVizibil, .stocInsuficientVizibil {
+    top: 100px;
+   
+}
+
       
            
           }
