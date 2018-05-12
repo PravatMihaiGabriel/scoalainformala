@@ -52,7 +52,7 @@
                     str+=`</br>
                     <div class="gridCos">
       <a href="#" style="text-decoration: none;"><span class="denumireCos" onclick="detalii(${i});">${cos[i].denumire}</span></a>
-      <span class="denumireCos">${cos[i].pret} lei</span>
+      <span class="denumireProdusCos">${cos[i].pret} lei</span>
       <input  class="inchideDetalii1" type="button" value="-" onclick="scade(${i});"/>
       <span class="denumireCos">${cos[i].cantitate}</span>
       <input  class="inchideDetalii1" type="button" value="+" onclick="adauga(${i});"/>
@@ -320,7 +320,7 @@ body {
 
 }
 
-.denumireCos {
+.denumireCos, .denumireProdusCos {
  
   text-align: center;
   font-weight: bold;
@@ -575,7 +575,7 @@ body {
 }
 .gridCos {
   display: grid;
-  grid-template-columns: 65px 60px 10px 20px 10px 65px 60px;
+  grid-template-columns: 60px 60px 10px 20px 10px 60px 60px;
   grid-auto-rows: 25px;
   grid-gap: 5px;
   text-align: center;
@@ -584,7 +584,7 @@ body {
 
 .gridCosTitlu {
   display: grid;
-  grid-template-columns: 65px 45px  55px 60px;
+  grid-template-columns: 70px 45px  60px 60px;
   grid-gap: 5px;
   text-align: center;
   
@@ -595,6 +595,16 @@ body {
  text-align: center;
  font-weight: bold;
  padding-right: 1px;
+ padding-left: 1px;
+}
+
+
+.denumireProdusCos { overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  text-align: center;
+  font-weight: bold;
+  padding-right: 1px;
  padding-left: 1px;
 }
 
