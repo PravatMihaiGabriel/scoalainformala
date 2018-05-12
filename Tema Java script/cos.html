@@ -51,8 +51,8 @@
                 pretTotal=pretTotal+(cos[i].pret*cos[i].cantitate);
                     str+=`</br>
                     <div class="gridCos">
-      <a href="#" style="text-decoration: none;"><span class="denumireCos" onclick="detalii(${i});">${cos[i].denumire}</span></a>
-      <span class="denumireProdusCos">${cos[i].pret} lei</span>
+      <a href="#" style="text-decoration: none;"><span class="denumireProdusCos" onclick="detalii(${i});">${cos[i].denumire}</span></a>
+      <span class="denumireCos">${cos[i].pret} lei</span>
       <input  class="inchideDetalii1" type="button" value="-" onclick="scade(${i});"/>
       <span class="denumireCos">${cos[i].cantitate}</span>
       <input  class="inchideDetalii1" type="button" value="+" onclick="adauga(${i});"/>
@@ -587,6 +587,7 @@ body {
   grid-template-columns: 70px 45px  60px 60px;
   grid-gap: 5px;
   text-align: center;
+  font-size: 11px;
   
 }  
 
