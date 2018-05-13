@@ -76,7 +76,7 @@
         tabel1.innerHTML=str1;
         if(str2.length>0){
         tabel2.innerHTML=str2;
-        setTimeout(function(){window.location="Magazinuldediverse.html"},1000);
+        setTimeout(function(){window.location="magazinuldediverse.html"},1000);
         }
       }
 
