@@ -1,0 +1,122 @@
+<html>
+	<head>
+        <script>
+            var parametriiDecodati=decodeURIComponent(window.location.search)
+            var parametrii=parametriiDecodati.split("?");
+            var idSiProdus=parametrii[1].split("&");
+            var id=idSiProdus[0].split("=")
+            var produs=idSiProdus[1].split("=");
+            var PRODUSE_DELETE_ITEM_SERVER_URL = "https://produse-cae5b.firebaseio.com/"+id[1]+".json";
+
+                 console.log("valoarea lui:", PRODUSE_DELETE_ITEM_SERVER_URL);
+                            
+            function sterge(form, event){
+			var xhttp = new XMLHttpRequest();
+			xhttp.onreadystatechange = function() {
+				if (this.readyState == 4 && this.status == 200) {
+                    window.location="Magazinuldediverseadmin.html";
+					
+				}
+			};
+			xhttp.open("DELETE", PRODUSE_DELETE_ITEM_SERVER_URL, true);
+			xhttp.send();
+        }
+        
+        function numeProdus(){
+                var element=document.getElementById("numeProdus");
+              
+                var sir=`Esti pe cale sa stergi produsul ${produs[1]}`;
+                element.innerHTML=sir;
+     
+        }
+
+        function nuSterge(){
+            window.location="Magazinuldediverseadmin.html";
+
+        }
+        </script>
+        <style>
+#formularSterge{
+    background-color:rgb(117, 222, 230); 
+    padding: 20px;
+    height: 500px;
+    border-radius: 5px;
+    text-align: center
+    
+}
+
+.titlu{
+    
+    margin-left: 30px;
+    font-size: xx-large;
+    color:#3939ec;
+
+}
+
+.formular {
+    
+    font-size: x-large;
+}
+
+.butonSterge { 
+    margin-right: 40px; 
+    margin-left: 5px;
+    width: 51px; 
+    color:white;
+    background-color: rgb(218, 97, 133); 
+    height: 31px;
+    border-radius: 5px;
+}
+
+.butonNuSterge { 
+    margin-right: 40px; 
+    margin-left: 5px;
+    width: 51px; 
+    color:white;
+    background-color: rgb(97, 180, 218); 
+    height: 31px;
+    border-radius: 5px;
+}
+
+ .subsol {
+    color:rgb(255, 255, 255);
+    font-size: 25px;
+    text-align: center;
+    padding: 5px;    
+    background-color: rgba(0, 0, 0, 0.2);
+    bottom: 0px;
+    position:fixed;
+    right: 0px;
+    left: 0px;
+}
+
+</style>
+
+
+    </head>
+    <body onload="numeProdus()">
+    
+    <form id="formularSterge" method="post" action="https://produse-cae5b.firebaseio.com/.json" 
+    onsubmit="sterge(this,event)">
+            
+                
+                <span class="titlu">Magazinul de diverse (Admin)</span>
+                </br></br>
+                
+                
+                <div class="formular" id="numeProdus"></div>
+                <br>
+                <div class="formular">Confirmi stergerea ?</div>
+                  </br>
+                
+                <input class="butonSterge" type="submit" value="Da">
+                <input class="butonNuSterge" type="button" value="Nu" onclick="nuSterge()">
+      
+          
+          </form>
+        </br>
+        <div class="subsol">Copyright@ 2018 PMG</div>
+          
+
+</body>
+</html>

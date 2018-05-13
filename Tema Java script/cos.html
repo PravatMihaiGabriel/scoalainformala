@@ -20,6 +20,9 @@
 			xhttp.send();
 		
       function deseneazaCos() { 
+            var element=document.getElementById("imagineLoading");
+            element.classList.remove("imagineLoading");
+            element.classList.add("ascundeImagine");
                        
             var tabel=document.querySelector("#cos");
             var str="";
@@ -51,11 +54,12 @@
                 pretTotal=pretTotal+(cos[i].pret*cos[i].cantitate);
                     str+=`</br>
                     <div class="gridCos">
-      <a href="#" style="text-decoration: none;"><span class="denumireProdusCos" onclick="detalii(${i});">${cos[i].denumire}</span></a>
-      <span class="denumireCos">${cos[i].pret} lei</span>
-      <input  class="inchideDetalii1" type="button" value="-" onclick="scade(${i});"/>
+      <a href="#" class="denumireProdusCos">
+      <span onclick="detalii(${i});">${cos[i].denumire}</span></a>
+      <span>${cos[i].pret} lei</span>
+      <div class="denumireCos"><input  class="inchideDetalii1" type="button" value="-" onclick="scade(${i});"/></div>
       <span class="denumireCos">${cos[i].cantitate}</span>
-      <input  class="inchideDetalii1" type="button" value="+" onclick="adauga(${i});"/>
+      <div class="denumireCos"><input  class="inchideDetalii1" type="button" value="+" onclick="adauga(${i});"/></div>
       <span class="denumireCos">${(cos[i].pret*cos[i].cantitate)} lei</span>
       <input  class="butonDetalii" type="button" value="STERGE" onclick="remove(${i});"/>
       </div>
@@ -83,7 +87,7 @@
         tabel1.innerHTML=str1;
         tabel2.innerHTML=str2;
       }
-        function detalii(i){
+      function detalii(i){
             var tabel=document.querySelector("#detalii");
             tabel.classList.remove("detaliiInvizibile");
             tabel.classList.add("detaliiVizibile");
@@ -91,13 +95,13 @@
             str+=`
       <div id="fereastraDetalii1">
       <input class="inchideDetalii" type="button" value="X" onclick="inchideDetalii();"/>
-      <div class="fereastraDetalii">
+      <div id="fereastraDetalii">
       <div class="pozaDetalii" style="background-image: url(${cos[i].imagine})">
       </div>
       <div class="denumirePretCantitate">
-      <div class="denumire">${cos[i].denumire}</div>
+      <div class="denumireDetalii">${cos[i].denumire}</div>
       </br>
-      <div class="denumire">${cos[i].descriere}</div>
+      <div class="descriere">${cos[i].descriere}</div>
       </br>
       <div>Pret: ${cos[i].pret} lei</div>
       </br>
@@ -153,23 +157,6 @@
             } 
                 }
             }
-               /* if(pozitie===false){
-             if (produsNou.cantitate>cos[index].stoc){
-                 tabel1.classList.remove("stocInsuficientInvizibil");
-                tabel1.classList.add("stocInsuficientVizibil");
-                setTimeout(function(){tabel1.classList.remove("stocInsuficientVizibil")},2000);
-                tabel1.classList.add("stocInsuficientInvizibil");
-            }
-                else{cos.push(produsNou);
-                    
-                    str=`Produsul ${produse[i].denumire} a fost adaugat in cos`;
-                    tabel.innerHTML=str;
-                tabel.classList.remove("produsInCosInvizibil");
-                tabel.classList.add("produsInCosVizibil");
-                setTimeout(function(){tabel.classList.remove("produsInCosVizibil")},2000);
-                tabel.classList.add("produsInCosInvizibil");
-            }
-            }*/
             
             inchideDetalii();
             deseneazaCos();
@@ -232,6 +219,9 @@
 			
         
         function sendAsJson(){
+            var element=document.getElementById("imagineLoading");
+            element.classList.remove("imagineLoading");
+            element.classList.add("ascundeImagine");
 								
                 var xhttp = new XMLHttpRequest();
 				xhttp.onreadystatechange = function() {
@@ -250,7 +240,14 @@ body {
   padding: 30px;
   padding-top: 0px;
   background: #ffffff;
-  
+}
+.imagineLoading>img { display: block;
+    width: 100px;
+    height: 100px;
+
+}
+
+.ascundeImagine { display: none;
 }
 
 .grid-1 {
@@ -269,9 +266,9 @@ body {
 
   .gridCos {
   display: grid;
-  grid-template-columns: auto auto 10px 50px 10px auto auto;
+  grid-template-columns: 240px 170px 20px 15px 20px 260px 100px;
   grid-auto-rows: 50px;
-  grid-gap: 10px;
+  grid-gap: 15px;
   text-align: center;
   
 }
@@ -279,7 +276,7 @@ body {
 .gridCosTitlu {
   display: grid;
   grid-template-columns: 220px 205px 80px 270px;
-  grid-gap: 5px;
+  grid-gap: 10px;
   text-align: center;
   
 }
@@ -304,6 +301,7 @@ body {
 .denumirePretCantitate{
     display: flex;
     flex-direction: column;
+    max-width:300px;
 
 }
 
@@ -312,21 +310,54 @@ body {
 }
 
 .denumire{
+  
+  text-align: center;
+  font-weight: bold;
+  max-width:250px;  
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  text-align: center;
-  font-weight: bold;
 
 }
 
-.denumireCos, .denumireProdusCos {
+.denumireDetalii {
+  
+  text-align: center;
+  font-weight: bold;
+  max-width:250px;  
+  
+
+}
+
+.descriere{
+  
+  text-align: center;
+  font-weight: bold;
+  max-width:250px;  
+  overflow: hidden;
+  
+
+}
+
+.denumireCos {
  
   text-align: center;
   font-weight: bold;
   padding-right: 30px;
   padding-left: 30px;
 }
+
+.denumireProdusCos {
+    text-decoration: none;
+    max-width: 170px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+   font-weight: bold;
+  padding-right: 30px;
+  padding-left: 30px;
+    }
+
 .pretSiButon{
     text-align: center;
     display: flex;
@@ -349,9 +380,9 @@ body {
 }
 
 
-.fereastraDetalii{
+#fereastraDetalii{
     display: flex;
-    padding: 30px;
+    padding: 1px;
     flex-direction: row;
 
 }
@@ -436,19 +467,17 @@ body {
 }
 .detaliiVizibile{
     display: block;
-    
     left: 0px;
     top: 0px;
     bottom: 0px;
     right: 0px;
-    max-width:600px;
-    max-height: 600px;
+    max-width:700px;
+    max-height: 700px;
     height: auto;
     margin: auto auto;
     position: fixed;
     overflow-y: auto;
-    position: fixed;
-    z-index: 1;
+    z-index: 2;
 
 }
 .detaliiVizibile div {
@@ -570,9 +599,25 @@ body {
     background-position: left;
 }
 
-.fereastraDetalii{
-    padding: 10px;
+.denumirePretCantitate{
+    max-width:180px;
+
 }
+
+
+
+.denumireDetalii {
+  max-width:180px;  
+  
+
+}
+
+.descriere{
+  max-width:180px;
+  
+
+}
+
 .gridCos {
   display: grid;
   grid-template-columns: 60px 60px 10px 20px 10px 60px 50px;
@@ -602,11 +647,7 @@ body {
 }
 
 
-.denumireProdusCos { overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  text-align: center;
-  font-weight: bold;
+.denumireProdusCos { 
   padding-right: 1px;
  padding-left: 1px;
  font-size: 11px;
@@ -646,19 +687,34 @@ body {
 
     }
 
-    
            
           }
     
+.subsol {
+    color:rgb(255, 255, 255);
+    font-size: 25px;
+    text-align: center;
+    padding: 10px;    
+    background-color: rgba(0, 0, 0, 0.2);
+    top: 900px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    position: fixed;
+    
+
+}  
     
 </style>
 </head>
 <body onload="deseneazaCos()">
-<div>    
+<div>     
 <a class="titlu" href="magazinuldediversecarousel.html">Magazinul de diverse</a>
 </div>
-
 </br>
+<div id="imagineLoading" class="imagineLoading">
+    <img src="http://blog.teamtreehouse.com/wp-content/uploads/2015/05/InternetSlowdown_Day.gif" alt="nu gasesc imaginea"> 
+</div>
 <div id="stocInsuficient" class="stocInsuficientInvizibil">Stoc Insuficient</div>
 <div id="produsInCos" class="produsInCosInvizibil"></div>  
 <div id="detalii" class="detaliiInvizibile"></div>
@@ -672,7 +728,8 @@ body {
     
 </div>
 </div>
-
+</br>
+<div class="subsol">Copyright@ 2018 PMG</div>
 
 </body>
 </html>

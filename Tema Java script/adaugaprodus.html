@@ -1,0 +1,167 @@
+<html>
+	<head>
+            <script>
+                var PRODUSE_ADD_ITEM_SERVER_URL = "https://produse-cae5b.firebaseio.com/.json";
+                var codmax;
+                
+ 
+ function sendAsJson(form, event){
+ event.preventDefault();
+ var obj;
+
+        var xhttp1 = new XMLHttpRequest();
+		xhttp1.onreadystatechange = function() {
+			if (this.readyState == 4 && this.status == 200) {
+                console.log(this.responseText);
+                produse=JSON.parse(this.responseText);
+                console.log("verificare", produse);
+                max (produse);
+                obj = { "cod": codmax, "denumire": document.getElementById('denumire').value, "imagine": document.getElementById('imagine').value, 
+                "descriere": document.getElementById('descriere').value, "pret": document.getElementById('pret').value, 
+                "stoc": document.getElementById('stoc').value }
+                console.log("verificare", obj);
+                var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+            console.log(this.responseText);
+            window.location="Magazinuldediverseadmin.html";
+            }
+            };
+ 
+        xhttp.open("POST", PRODUSE_ADD_ITEM_SERVER_URL, true);
+        xhttp.send(JSON.stringify(obj));	
+ 
+                      
+		}
+        };
+                
+		xhttp1.open("GET", PRODUSE_ADD_ITEM_SERVER_URL, true);
+        xhttp1.send(); 
+ 
+}
+
+ function max (ceva){
+     var maxim=1;
+     var contor=0;
+     for(i in ceva){
+         contor=contor+1;
+         if(ceva[i].cod>maxim){
+             maxim=parseInt(ceva[i].cod);
+         }
+     }
+     if(contor>0){codmax=maxim+1;}
+     else{ codmax=maxim;}
+
+ }
+        </script>
+
+<style>
+    #formularProdusNou{
+                background-color:rgb(117, 222, 230); 
+                padding: 20px;
+                border-radius: 5px;
+                
+            }
+
+            .titlu{
+                
+                margin-left: 30px;
+                font-size: xx-large;
+                color:#3939ec;
+
+            }
+
+            .formular {
+                display: flex;
+            }
+
+            .completare {
+                margin-right: 40px; 
+                margin-left: 40px;
+                margin-bottom: 30px;
+                height: 41px;
+                width: 900px;
+                float: right;   
+
+            }
+
+            .completare1 {
+                margin-right: 880px;
+                width: 60px;
+            }
+            
+            span{
+                flex: 1;
+                margin-left: 30px;
+                font-size: x-large;
+                
+            }
+            
+            .butonAdauga { 
+                margin-right: 40px; 
+                margin-left: 20px;
+                margin-bottom: 30px;
+                color:white;
+                background-color:#b1d3f5; 
+                height: 41px;
+                border-radius: 5px;
+
+            }
+
+            .butonModifica { 
+                margin-right: 5px; 
+                margin-left: 40px; 
+                color:white;
+                background-color: #b1d3f5; 
+                height: 31px;
+                border-radius: 5px;
+            }
+
+            .butonSterge { 
+                margin-right: 40px; 
+                margin-left: 5px; 
+                color:white;
+                background-color: rgb(218, 97, 133); 
+                height: 31px;
+                border-radius: 5px;
+            }
+            .subsol {
+    color:rgb(255, 255, 255);
+    font-size: 25px;
+    text-align: center;
+    padding: 5px;    
+    background-color: rgba(0, 0, 0, 0.2);
+    bottom: 0px;
+    position:fixed;
+    right: 0px;
+    left: 0px;
+}
+</style>
+    
+    </head>
+<body >
+    <form id="formularProdusNou" method="post" action="https://produse-cae5b.firebaseio.com/.json" 
+    onsubmit="sendAsJson(this,event)">
+    <span class="titlu">Magazinul de diverse (Admin)</span>
+</br></br>
+<div class="formular"><span>Denumire produs:</span> <input class="completare" name="denumire" type="text" id="denumire"></div>
+<br>
+
+<div class="formular"><span>Imagine produs: </span><input class="completare" name="imagine" type="text" id="imagine" ></div>
+<br>
+
+<div class="formular"><span>Descriere produs:</span> <textarea class="completare" name="descriere" id="descriere"></textarea></div>
+    <br>
+
+<div class="formular"><span>Pret produs: </span><input class="completare1" name="pret" type="number" min="1" value="1" id="pret" ></div>
+<br>
+<div class="formular"><span>Stoc produs: </span><input class="completare1" name="stoc" type="number" min="1" value="1" id="stoc" ></div>
+<br>
+
+<input class="butonAdauga" type="submit" value="Salveaza produs"><br>
+    </form>
+</br>
+<div class="subsol">Copyright@ 2018 PMG</div>
+
+</body>
+</html>
