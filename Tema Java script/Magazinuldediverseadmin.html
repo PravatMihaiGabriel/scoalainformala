@@ -1,209 +1,11 @@
 <!DOCTYPE html>
 <html>
 	<head>
-    <script>
-        var produse;
-            var PRODUSE_SERVER_URL = "https://produse-cae5b.firebaseio.com/.json";
-
-            var xhttp = new XMLHttpRequest();
-			xhttp.onreadystatechange = function() {
-				if (this.readyState == 4 && this.status == 200) {
-					produse = JSON.parse(this.responseText);
-					
-					drawproduse();
-				}
-			};
-			xhttp.open("GET", PRODUSE_SERVER_URL, true);
-			xhttp.send();
-		
-		function drawproduse(){
-            var element=document.getElementById("imagineLoading");
-            element.classList.remove("imagineLoading");
-            element.classList.add("ascundeImagine");
-            var tabel=document.querySelector("#produse tbody");
-            var str="";
-            var tabel1=document.querySelector(".titluProduse");
-            var str1="";
-            
-            str1=`<span class="capTabel">Denumire</span>
-            <span class="capTabel">Descriere</span>
-            <span class="capTabel1">Pret</span>
-            <span class="capTabel1">Stoc</span>`;
-            
-            
-			for(i in produse){ 
-                    str+=`<tr>
-                    <td><span ><img class="imagine" src="${produse[i].imagine}" alt="nu gasesc imaginea"></span></td>
-                    
-                    <td><div class="proprietati">${produse[i].denumire}</div></td>
-                    
-                    <td><div class="proprietati">${produse[i].descriere}</div></td>
-                    
-                    <td><div class="proprietati">${produse[i].pret} lei </div></td>
-                    
-                    <td><div class="proprietati">${produse[i].stoc} buc</div></td>
-                    
-                    <td><a href="modificaprodus.html?id=${i}">
-                    <input class="butonModifica" type="button" value="Modifica"/></a></td>
-                    <td><a href="stergeprodus.html?id=${i}&nume=${produse[i].denumire}">
-                    <input class="butonSterge" type="button" value="Sterge"/></a></td>
-                </tr>`;}
- 
-            tabel1.innerHTML=str1;	
-            tabel.innerHTML=str;
-            
-		}
-
-    </script>
-
-<style>
-
-#fereastraMagazin{
-    background-color:rgb(255, 255, 255); 
-    padding: 20px; 
-    
-}
-.proprietati {
-    padding: 30px;
-    font-family:'Times New Roman', Times, serif;
-    font-size: 18px;
-    text-align: center;
-
-}
-
-
-.titlu{
-    display: flex;
-    background-color:rgb(255, 255, 255); 
-    top: 0px;
-    left: 0px;
-    right: 0px;
-    position: fixed;
-    padding-top: 10px;
-    z-index: 1;
-}
-
-span{
-    flex: 1;
-    margin-left: 30px;
-    font-size: xx-large;
-    color:#3939ec;
-}
-
-
-
-.butonAdauga { 
-    margin-right: 40px; 
-    margin-left: 40px;
-    margin-bottom: 30px;
-    color:white;
-    background-color:#b1d3f5; 
-    height: 31px;
-    border-radius: 5px;
-
-}
-
-.butonModifica { 
-    margin-right: 5px; 
-    margin-left: 40px; 
-    color:white;
-    background-color: #b1d3f5; 
-    height: 31px;
-    border-radius: 5px;
-}
-.butonSterge { 
-    margin-right: 40px; 
-    margin-left: 5px; 
-    color:white;
-    background-color: rgb(218, 97, 133); 
-    height: 31px;
-    border-radius: 5px;
-}
-
-
-table{
-    border-collapse:collapse;
-}
-
-.imagineLoading>img { display: block;
-    width: 100px;
-    height: 100px;
-
-}
-
-.ascundeImagine { display: none;
-}
-
-.imagine { 
-    max-width: 160px;
-    margin-top: 10px;
-}
-
-.titluProduse {
-    background-color:#d7dde2;
-    font-weight: bold;
-    
-    padding-bottom: 25px;
-    padding-top: 25px;
-    font-family:'Times New Roman', Times, serif;
-    font-size: 18px;
-    text-align: center;
-    top: 71px;
-    left: 25px;
-    right: 30px;
-    position: fixed;
-    z-index: 1;
-    
-    
-
-}
-
-.capTabel {
-    font-weight: bold;
-    padding-right: 160px;
-    padding-left: 50px;
-    font-family:'Times New Roman', Times, serif;
-    font-size: 18px;
-    text-align: center;
-    color: black;
-    margin-left: 1px;
-
-}
-
-.capTabel1 {
-    font-weight: bold;
-    padding-right: 10px;
-    padding-left: 40px;
-    font-family:'Times New Roman', Times, serif;
-    font-size: 18px;
-    text-align: center;
-    color: black;
-    margin-left: 1x;
-
-}
-
-
-tbody {
-    top: 150px;
-    position:absolute;
-}
-
-.subsol {
-    color:rgb(255, 255, 255);
-    font-size: 25px;
-    text-align: center;
-    padding: 5px;    
-    background-color: rgba(0, 0, 0, 0.2);
-    bottom: 0px;
-    position:fixed;
-    right: 0px;
-    left: 0px;
-}
-
-</style>                     
-    </head>
-        
-    <body  >
+        <script src="magazinuldediverseadmin.js">
+        </script>    
+    <link rel="stylesheet" href="magazinuldediverseadmin.css">                  
+    </head>  
+    <body>
            <div id="fereastraMagazin">
              <div class="titlu">
               <span >Magazinul de diverse (Admin)</span>
@@ -215,19 +17,17 @@ tbody {
              </div>      
              </br>
             </br>
-        </br>    
+            </br>    
             <div>
                 <div class="titluProduse"></div>
                     <table class="produse" id="produse">
-                                        <tbody>
-                
+                    <tbody>
                     </tbody>
                     </table>
-            </div>    
+                </div>    
                 </div> 
             </div>
         </br>
         <div class="subsol">Copyright@ 2018 PMG</div>
-
 </body>
 </html>

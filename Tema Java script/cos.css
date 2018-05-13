@@ -1,0 +1,427 @@
+body {
+  padding: 30px;
+  padding-top: 0px;
+  background: #ffffff;
+}
+
+.imagineLoading>img { display: block;
+    width: 100px;
+    height: 100px;
+}
+
+.ascundeImagine { 
+    display: none;
+}
+
+.grid-1 {
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  grid-template-rows: auto auto auto;
+  grid-gap: 10px; 
+}
+
+.grid-1 div {
+  font-size: 18px;
+  padding: 20px;
+  }
+
+  .gridCos {
+  display: grid;
+  grid-template-columns: 240px 170px 20px 15px 20px 260px 100px;
+  grid-auto-rows: 50px;
+  grid-gap: 15px;
+  text-align: center;
+}
+
+.gridCosTitlu {
+  display: grid;
+  grid-template-columns: 220px 205px 80px 270px;
+  grid-gap: 10px;
+  text-align: center;
+}
+.poza{ 
+    padding: 25px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    height: 100px;
+    background-position: center;
+}
+
+.pozaDetalii{
+    flex: 1;
+    padding: 25px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    height: 400px;
+    background-position: left;
+}
+
+.denumirePretCantitate{
+    display: flex;
+    flex-direction: column;
+    max-width:300px;
+}
+
+.pret{
+  flex: 1;
+}
+
+.denumire{
+  text-align: center;
+  font-weight: bold;
+  max-width:250px;  
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.denumireDetalii {
+  text-align: center;
+  font-weight: bold;
+  max-width:250px;  
+}
+
+.descriere{
+  text-align: center;
+  font-weight: bold;
+  max-width:250px;  
+  overflow: hidden;
+}
+
+.denumireCos {
+  text-align: center;
+  font-weight: bold;
+  padding-right: 30px;
+  padding-left: 30px;
+}
+
+.denumireProdusCos {
+    text-decoration: none;
+    max-width: 170px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+   font-weight: bold;
+  padding-right: 30px;
+  padding-left: 30px;
+    }
+
+.pretSiButon{
+    text-align: center;
+    display: flex;
+}
+
+.principal{
+    border-width: 1px;
+    border-style: solid;
+    border-color: #d6d2d2;
+}
+
+#fereastraDetalii1{
+    background: #ffffff;
+    text-align: right;
+    border-width: 2px;
+    border-style: solid;
+    border-color: #c0bdbd;
+    box-shadow: 4px 2px 20px 0px #827d7d;
+    padding: 2px;
+}
+
+#fereastraDetalii{
+    display: flex;
+    padding: 1px;
+    flex-direction: row;
+}
+
+.detaliiCantitate {
+    width: 30px;
+    text-align: center;
+}
+
+.butonDetalii{
+  padding-left: 10px;
+    padding-right: 10px;
+    width: 90px;
+    height: 26px;
+    font-size: 16px;
+    font-weight: normal;
+    font-family: initial;
+    margin-right: 30px;
+    background-color: #f5c5d1;   
+}
+
+.butonDetalii:hover, .butonDetalii1:hover {
+    background-color: #f58ba5;   
+}
+
+.butonDetalii1{
+    padding-right: 10px;
+    width: 90px;
+    height: 26px;
+    font-size: 16px;
+    font-weight: normal;
+    font-family: initial;
+    margin-right: 30px;
+    background-color: #f5c5d1;  
+}
+.adaugaInCos{
+  padding-left: 10px;
+    padding-right: 10px;
+    width: 150px;
+    height: 26px;
+    font-size: 16px;
+    font-weight: normal;
+    font-family: initial;
+    background-color: #c5eff5;   
+}
+.adaugaInCos:hover{
+    background-color: #7ce6f6;   
+}
+
+.butonCos{
+    flex: 1;
+  padding-left: 10px;
+    padding-right: 10px;
+    width: 150px;
+    height: 40px;
+    font-size: 16px;
+    font-weight: normal;
+    font-family: initial;
+    margin-right: 30px;
+    background-color: #f5c5d1;
+}
+
+.titluSiCos {
+    display: flex;
+}
+
+.titlu{
+    font-size: 40px;
+    padding-bottom: 10px;
+    text-decoration: none;
+    color: black;
+}
+
+.detaliiInvizibile{
+    display: none;
+}
+
+.detaliiVizibile{
+    display: block;
+    left: 0px;
+    top: 0px;
+    bottom: 0px;
+    right: 0px;
+    max-width:700px;
+    max-height: 700px;
+    height: auto;
+    margin: auto auto;
+    position: fixed;
+    overflow-y: auto;
+    z-index: 2;
+}
+
+.detaliiVizibile div {
+  font-size: 18px;
+  padding: 20px;
+  }
+
+  .inchideDetalii {
+    border: 0px;
+    padding-left: 5px;
+    padding-right: 3px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    margin-right: 3px;
+    box-shadow: 2px 2px 2px #403c3c;
+  }
+
+  .inchideDetalii1 {
+    padding-left: 0px;
+    padding-right: 0px;
+    height: 17px;
+    width: 15px;
+    box-shadow: 2px 2px 2px #403c3c;
+  }  
+ 
+  .produsInCosInvizibil, .stocInsuficientInvizibil {
+    display: none;  
+  }
+
+  .produsInCosVizibil, .stocInsuficientVizibil {
+    display: block;
+    color:darkred;
+    height: 50px;
+    text-align: center;
+    padding: 10px;    
+    background-color: rgba(0, 0, 0, 0.2);
+  }
+
+    .cos {
+    text-align: left;
+    flex: 9;
+    flex-direction: row;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #d6d2d2;
+    }
+
+    .cosGol {
+    text-align: left;
+    border: none;
+    }
+
+    .cosSiTotal {
+        display: flex;
+    }
+
+    .zonaTotal{ 
+        flex:2;
+        flex-direction:column;
+        text-align: right;   
+    border-width: 1px;
+    border-style: solid;
+    border-color: #d6d2d2;
+    }
+
+    .zonaTotalGol {
+        border: none;
+    }
+
+    .detaliiZonaTotal {
+        padding: 10px;
+        font-weight: bold;
+    }
+
+     @media all and (max-width: 500px) {
+
+    body {
+  font-family:'Times New Roman', Times, serif;
+  line-height: normal;
+  padding: 10px;
+  padding-top: 0px;
+  background: #ffffff;
+    }
+
+    .grid-1 {
+  display: grid;
+  grid-template-columns: auto;
+  grid-auto-rows: 200px;
+  grid-gap: 10px;
+  }
+
+  .grid-1 div {
+  font-size: 18px;
+  padding: 5px;
+  }
+
+.pozaDetalii{
+    flex: 1;
+    padding: 5px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    height: 300px;
+    background-position: left;
+}
+
+.detaliiVizibile div {
+  font-size: 14px;
+  padding: 5px;
+  }
+
+.detaliiVizibile{
+    top: 80px;
+    max-width:500px;
+    max-height: 600px;
+}
+
+.denumirePretCantitate, .denumireDetalii, .descriere {
+    max-width:180px;
+}
+
+.gridCos {
+  display: grid;
+  grid-template-columns: 60px 60px 10px 20px 10px 60px 50px;
+  grid-auto-rows: 25px;
+  grid-gap: 5px;
+  text-align: center;
+}
+
+.gridCosTitlu {
+  display: grid;
+  grid-template-columns: 70px 45px  60px 60px;
+  grid-gap: 5px;
+  text-align: center;
+  font-weight: bold;
+}  
+
+.denumireCos {
+ 
+ text-align: center;
+ font-weight: bold;
+ padding-right: 1px;
+ padding-left: 1px;
+ font-size: 11px;
+}
+
+
+.denumireProdusCos { 
+  padding-right: 1px;
+ padding-left: 1px;
+ font-size: 11px;
+}
+
+.butonDetalii{
+  padding-left: 1px;
+    padding-right: 1px;
+    width: 50px;
+    height: 26px;
+    font-size: 11px;
+    font-weight: normal;
+    font-family: initial;
+    margin-right: 1px;
+    background-color: #f5c5d1;   
+}
+
+.inchideDetalii1 {
+    padding-left: 0px;
+    padding-right: 0px;
+    height: 17px;
+    width: 15px;
+    box-shadow: 1px 1px 1px #403c3c;
+  }  
+
+  .denumireCos {
+ text-align: center;
+ font-weight: bold;
+ padding-right: 1px;
+ padding-left: 1px;
+}
+
+.cosSiTotal {
+        display: block;
+    }
+
+.produsInCosVizibil, .stocInsuficientVizibil {
+    top: 50px;
+    height: 30px;
+    font-size: 15px;
+   
+}
+
+.subsol {
+    font-size: 15px;
+}               
+    }
+    
+.subsol {
+    color:rgb(255, 255, 255);
+    font-size: 25px;
+    text-align: center;
+    padding: 5px;    
+    background-color: rgba(0, 0, 0, 0.2);
+    bottom: 0px;
+    position:fixed;
+    right: 0px;
+    left: 0px;
+}

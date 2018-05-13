@@ -1,262 +1,61 @@
 <!DOCTYPE html>
 <html>
 	<head>
-    
-    <script>
-       
-      var produse;
-            var PRODUSE_SERVER_URL = "https://produse-cae5b.firebaseio.com/.json";
-
-            var xhttp = new XMLHttpRequest();
-			xhttp.onreadystatechange = function() {
-				if (this.readyState == 4 && this.status == 200) {
-					produse = JSON.parse(this.responseText);
-					
-					deseneazaProduse();
-				}
-			};
-			xhttp.open("GET", PRODUSE_SERVER_URL, true);
-			xhttp.send();
-		
-      function deseneazaProduse() { 
-        var slider = tns({
-    container: '.my-slider',
-    items: 5,
-    slideBy: 'page',
-    autoplay: true
-  });                     
-            var tabel=document.querySelector("#produse");
-			var str="";
-            
-			for(i in produse){
-                    str+=`<div class="principal">
-      <div class="poza" style="background-image: url(${produse[i].imagine})">
-      </div>
-      <div class="denumire">${produse[i].denumire}</div>
-      <div class="pretSiButon"><span class="pret">${produse[i].pret}lei</span>
-     <input  class="butonDetalii" type="button" value="DETALII" onclick="detalii(${i});"/>
-    </div>
-  </div>`;}
-				
-			tabel.innerHTML=str;  
-        }
-
-        function detalii(i){
-            var tabel=document.querySelector("#detalii");
-            tabel.classList.remove("detaliiInvizibile");
-            tabel.classList.add("detaliiVizibile");
-			var str="";
-            str+=`
-      <div class="fereastraDetalii1">
-      <input class="inchideDetalii" type="button" value="X" onclick="inchideDetalii();"/>
-      <div class="fereastraDetalii">
-      <div class="pozaDetalii" style="background-image: url(${produse[i].imagine})">
-      </div>
-      <div class="denumirePretCantitate">
-      <div class="denumire">${produse[i].denumire}</div>
-      </br>
-      <div>Pret: ${produse[i].pret} lei</div>
-      </br>
-      <div class="cantitate">In stoc: ${produse[i].stoc} buc</div>
-      </br>
-      <div>
-      <span>Cantitate: </span> 
-      <input class="detaliiCantitate" type="text"/>
-      </div>
-      </br>
-      <input class="adaugaInCos" type="button" value="Adauga in Cos" onclick="adaugaInCos(${i});"/>
-      </div>
-    </div>
-  </div>`
-				
-			tabel.innerHTML=str;  
-        }
-
-        function adaugaInCos(){
-
-        }
-
-        function inchideDetalii(){
-            var tabel=document.querySelector("#detalii");
-            tabel.classList.remove("detaliiVizibile");
-            tabel.classList.add("detaliiInvizibile");
-
-        }
-
-        
-    </script>
-    <style>    
-body {
-  padding: 30px;
-  background: #ffffff;
-  
-}
-
-.grid-1 {
-  display: grid;
-  grid-template-columns: auto auto auto auto;
-  grid-template-rows: auto auto auto;
-  grid-gap: 10px;
-  
-}
-
-.grid-1 div {
-  
-  font-size: 18px;
-  padding: 20px;
-  }
-
-.poza{
-    
-    padding: 25px;
-    background-repeat: no-repeat;
-    background-size: contain;
-    height: 100px;
-    background-position: center;
-}
-
-.pozaDetalii{
-    flex: 1;
-    padding: 25px;
-    background-repeat: no-repeat;
-    background-size: contain;
-    height: 400px;
-    background-position: left;
-}
-
-.denumirePretCantitate{
-    display: flex;
-    flex-direction: column;
-
-}
-
-.pret{
-  flex: 1;
-}
-
-.denumire{
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  text-align: center;
-  font-weight: bold;
-
-}
-.pretSiButon{
-    text-align: center;
-    display: flex;
-}
-.principal{
-    border-width: 1px;
-    border-style: solid;
-    border-color: #d6d2d2;
-}
-.fereastraDetalii1{
-    text-align: right;
-    border-width: 2px;
-    border-style: solid;
-    border-color: #c0bdbd;
-    box-shadow: 4px 2px 20px 0px #827d7d;
-
-}
-
-.fereastraDetalii{
-    display: flex;
-    padding: 30px;
-    flex-direction: row;
-
-}
-
-.detaliiCantitate {
-    width: 30px;
-    text-align: center;
-
-}
-.butonDetalii{
-  padding-left: 10px;
-    padding-right: 10px;
-    width: 90px;
-    height: 26px;
-    font-size: 16px;
-    font-weight: normal;
-    font-family: initial;
-    margin-right: 30px;
-    background-color: #f5c5d1;
-    
-}
-
-.butonDetalii:hover {
-    background-color: #f58ba5;   
-
-}
-.adaugaInCos{
-  padding-left: 10px;
-    padding-right: 10px;
-    width: 150px;
-    height: 26px;
-    font-size: 16px;
-    font-weight: normal;
-    font-family: initial;
-    background-color: #c5eff5;
-    
-}
-.adaugaInCos:hover{
-    background-color: #7ce6f6;
-    
-}
-
-
-
-.titlu{
-    height: 50px;
-    font-size: 40px;
-    border-bottom-width: 30px;
-    margin-bottom: 30px;
-
-}
-.detaliiInvizibile{
-    display: none;
-}
-.detaliiVizibile{
-    display: block;
-    padding: 30px;
-    background: #ffffff;
-    position: absolute;
-    left: 0px;
-    top: 0px;
-    bottom: 0px;
-    right: 0px;
-    max-width:600px;
-    max-height: 600px;
-    margin: auto auto;
-    position: fixed;
-    overflow-y: auto;
-    z-index: 1;
-
-}
-.detaliiVizibile div {
-  
-  font-size: 18px;
-  padding: 20px;
-  }
-</style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"> 
+    <script src="magazinuldediverse.js">
+    </script>    
+<link rel="stylesheet" href="magazinuldediverse.css">
 </head>
-<body onload="deseneazaProduse()">
-<div class="my-slider">
-  <div><img class="imagine" src="cuptor-cu-microunde-samsung.jpg" alt="nu gasesc imaginea"/></div>
-  <div><img class="imagine" src="cuptor-cu-microunde-samsung.jpg" alt="nu gasesc imaginea"/></div>  
-  <div><img class="imagine" src="cantar-electronic-de-verificare-digi.jpg" alt="nu gasesc imaginea"/></div>
-  iv><img class="imagine" src="cuptor-cu-microunde-samsung.jpg" alt="nu gasesc imaginea"/></div>
+<body onload="deseneazaProduse()">    
+<div class="titluSiCos"><span class="titlu">Magazinul de diverse</span>
+    <a class="aButonCos" href="cos.html">
+<input  class="butonCos" type="button" value="Cos Cumparaturi"/>
+</a>
 </div>
-
-<!-- or ul.my-slider > li -->
-<div class="titlu">Magazinul de diverse</div>
+          <div class="has-slider">
+                <span class="prev">Prev</span>
+                <span class="next">Next</span>
+          </br>
+          </br>
+            <div class="slider mslider">
+              <div class="slider-panel">
+                <a href="#">
+          <img src="laptop.jpg" alt="" />
+          </a>
+              </div>
+              <div class="slider-panel">
+                <a href="#">
+                        <img src="telefonHTC.jpg" alt="" />
+          </a>
+              </div>
+              <div class="slider-panel">
+                <a href="#">
+                        <img src="TVSonyBravia.jpg" alt="" />
+          </a>
+              </div>
+              <div class="slider-panel">
+                <a href="#">
+                        <img src="FrigiderDaewoo.jpg" alt="" />
+          </a>
+              </div>
+            </div>
+            <div class="slider-pagination">
+            </div>
+          </div>
+          </div>
+    </br>
+<div id="imagineLoading" class="imagineLoading">
+    <img src="http://blog.teamtreehouse.com/wp-content/uploads/2015/05/InternetSlowdown_Day.gif" alt="nu gasesc imaginea"> 
+</div>
+<div id="stocInsuficient" class="stocInsuficientInvizibil">Stoc Insuficient</div>
+<div id="produsInCos" class="produsInCosInvizibil w3-container w3-center w3-animate-zoom"></div> 
 <div id="detalii" class="detaliiInvizibile"></div>
 <section class="grid-1" id="produse">
 </section>
-<link rel="stylesheet" href="tiny-slider.css">
-
-<!--[if (lt IE 9)]><script src="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.6.0/min/tiny-slider.helper.ie8.js"></script><![endif]-->
-<script src="tiny-slider.js"></script>
+</br>
+<div class="subsol">Copyright@ 2018 PMG</div>
+<link rel="stylesheet" href="minimal-carousel.css" type="text/css" media="screen" charset="utf-8">
+<script src="minimal-carousel.js"></script>
 </body>
 </html>

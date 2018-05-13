@@ -1,0 +1,49 @@
+#formularSterge{
+    background-color:rgb(117, 222, 230); 
+    padding: 20px;
+    height: 500px;
+    border-radius: 5px;
+    text-align: center  
+}
+
+.titlu{
+    margin-left: 30px;
+    font-size: xx-large;
+    color:#3939ec;
+}
+
+.formular {
+    font-size: x-large;
+}
+
+.butonSterge { 
+    margin-right: 40px; 
+    margin-left: 5px;
+    width: 51px; 
+    color:white;
+    background-color: rgb(218, 97, 133); 
+    height: 31px;
+    border-radius: 5px;
+}
+
+.butonNuSterge { 
+    margin-right: 40px; 
+    margin-left: 5px;
+    width: 51px; 
+    color:white;
+    background-color: rgb(97, 180, 218); 
+    height: 31px;
+    border-radius: 5px;
+}
+
+.subsol {
+    color:rgb(255, 255, 255);
+    font-size: 25px;
+    text-align: center;
+    padding: 5px;    
+    background-color: rgba(0, 0, 0, 0.2);
+    bottom: 0px;
+    position:fixed;
+    right: 0px;
+    left: 0px;
+}

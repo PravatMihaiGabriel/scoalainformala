@@ -1,0 +1,341 @@
+body {
+  font-family:'Times New Roman', Times, serif;
+  line-height: normal;
+  padding: 30px;
+  padding-top: 60px;
+  background: #ffffff;
+}
+
+.imagineLoading>img { 
+    display: block;
+    width: 100px;
+    height: 100px;
+}
+
+.ascundeImagine { 
+    display: none;
+}
+
+.grid-1 {
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  grid-auto-rows: 280px;
+  grid-gap: 10px;
+  
+}
+
+.grid-1 div {
+  font-size: 18px;
+  padding: 20px;
+  }
+
+.poza{
+    padding: 25px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    height: 120px;
+    background-position: center;
+}
+
+.pozaDetalii{
+    flex: 1;
+    padding: 25px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    height: 400px;
+    background-position: left;
+}
+
+.denumirePretCantitate{
+    display: flex;
+    flex-direction: column;
+    max-width:300px;
+}
+
+.pret{
+  flex: 1;
+}
+
+.denumire{
+  text-align: center;
+  font-weight: bold;
+  max-width:250px;  
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.denumireDetalii {
+  text-align: center;
+  font-weight: bold;
+  max-width:250px;  
+}
+
+.descriere{
+  text-align: center;
+  font-weight: bold;
+  max-width:250px;  
+  overflow: hidden;
+}
+.pretSiButon{
+    text-align: center;
+    display: flex;
+}
+
+.principal{
+    border-width: 1px;
+    border-style: solid;
+    border-color: #d6d2d2;
+}
+
+#fereastraDetalii1{
+    background: #ffffff;
+    text-align: right;
+    border-width: 2px;
+    border-style: solid;
+    border-color: #c0bdbd;
+    box-shadow: 4px 2px 20px 0px #827d7d;
+    padding: 2px;
+}
+
+#fereastraDetalii{
+    display: flex;
+    padding: 1px;
+    flex-direction: row;
+}
+
+.detaliiCantitate {
+    width: 40px;
+    text-align: center;
+    font-size: 18px;
+}
+
+.butonDetalii{
+  padding-left: 10px;
+    padding-right: 10px;
+    width: 90px;
+    height: 26px;
+    font-size: 16px;
+    font-weight: normal;
+    font-family: initial;
+    margin-right: 30px;
+    background-color: #f5c5d1;  
+}
+
+.butonDetalii:hover {
+    background-color: #f58ba5;   
+}
+
+.adaugaInCos{
+  padding-left: 10px;
+    padding-right: 10px;
+    width: 150px;
+    height: 26px;
+    font-size: 16px;
+    font-weight: normal;
+    font-family: initial;
+    background-color: #c5eff5;  
+}
+
+.adaugaInCos:hover{
+    background-color: #7ce6f6;  
+}
+
+.butonCos{
+    flex: 1;
+  padding-left: 10px;
+    padding-right: 10px;
+    width: 150px;
+    height: 40px;
+    font-size: 16px;
+    font-weight: normal;
+    font-family: initial;
+    margin-right: 30px;
+    background-color: #f5c5d1;
+}
+
+.butonCos:hover{
+    background-color: #f58ba5;
+}
+
+.titluSiCos {display: flex;
+    left: 0px;
+    top: 0px;
+    right: 0px;
+    background: #ffffff;
+    height: auto;
+    margin: auto auto;
+    position: fixed;
+    overflow-y: auto;
+    position: fixed;
+    z-index: 1; 
+}
+
+.titlu{
+    font-size: 40px;
+    padding-bottom: 10px;
+    flex: 9;
+}
+
+.detaliiInvizibile{
+    display: none;
+}
+
+.detaliiVizibile{
+    display: block;
+    left: 0px;
+    top: 0px;
+    bottom: 0px;
+    right: 0px;
+    max-width:700px;
+    max-height: 700px;
+    height: auto;
+    margin: auto auto;
+    position: fixed;
+    overflow-y: auto;
+    position: fixed;
+    z-index: 2;
+}
+.detaliiVizibile div {
+  font-size: 18px;
+  padding: 20px;
+  }
+
+  .inchideDetalii {
+    border: 0px; 
+    padding-left: 5px;
+    padding-right: 3px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    margin-right: 3px;
+    box-shadow: 2px 2px 2px #403c3c;
+  }
+
+  .prev, .next{
+      color:  rgb(226, 84, 84);
+      background-color: #a7b7d0;
+      padding: 2px;
+      box-shadow: 2px 2px 4px 0px #a7b7d0;
+      top: 60px;
+  }
+
+  .produsInCosInvizibil, .stocInsuficientInvizibil {
+    display: none; 
+  }
+
+  .produsInCosVizibil, .stocInsuficientVizibil {
+    display: block;
+    color:rgb(255, 255, 255);
+    height: 50px;
+    font-size: 25px;
+    text-align: center;
+    padding: 10px;    
+    background-color: rgba(0, 0, 0, 0.2);
+    top: 60px;
+    left: 0px;
+    bottom: 0px;
+    right: 0px;
+    position: fixed;
+    overflow-y: auto;
+    position: fixed;
+    z-index: 3;  
+  }
+
+.subsol {
+    color:rgb(255, 255, 255);
+    font-size: 25px;
+    text-align: center;
+    padding: 5px;    
+    background-color: rgba(0, 0, 0, 0.2);
+    bottom: 0px;
+    position:fixed;
+    right: 0px;
+    left: 0px;
+}
+
+  @media all and (max-width: 500px) {
+    body {
+  font-family:'Times New Roman', Times, serif;
+  line-height: normal;
+  padding: 10px;
+  padding-top: 125px;
+  background: #ffffff;
+    }
+
+    .grid-1 {
+  display: grid;
+  grid-template-columns: auto;
+  grid-auto-rows: 200px;
+  grid-gap: 10px;
+  }
+
+  .grid-1 div {
+  font-size: 18px;
+  padding: 5px;
+  }
+
+  .butonCos{
+  padding-left: 1px;
+    padding-right: 1px;
+    width: 108px;
+    height: 30px;
+    font-size: 10px;
+    margin-right: 3px;
+}
+
+.detaliiVizibile div {
+  font-size: 14px;
+  padding: 5px;
+  }
+
+  .detaliiVizibile{
+    top: 80px;
+    max-width:500px;
+    max-height: 600px;
+}
+
+  .pozaDetalii{
+    flex: 1;
+    padding: 5px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    height: 300px;
+    background-position: left;
+}
+
+.denumirePretCantitate{
+    max-width:180px;
+
+}
+
+.denumireDetalii {
+  max-width:180px;
+}
+
+.descriere{
+  max-width:180px;
+}
+
+.titluSiCos {display: flex;
+    left: 0px;
+    top: 0px;
+    right: 0px;
+    background: #ffffff;
+    height: auto;
+    margin: auto auto;
+    position: fixed;
+    overflow-y: auto;
+    position: fixed;
+    z-index: 1;  
+}
+
+.produsInCosVizibil, .stocInsuficientVizibil {
+    top: 50px;
+    height: 30px;
+    font-size: 15px; 
+}
+
+.subsol {
+    font-size: 15px;
+}                
+ }
