@@ -1,0 +1,97 @@
+{
+  "0" : {
+    "denumire" : "Telefon HTC",
+    "descriere" : "Telefon mobil HTC U 11, Dual SIM, 64GB, 4G, Sapphire Blue",
+    "imagine" : "telefonHTC.jpg",
+    "pret" : "2099",
+    "stoc" : 92
+  },
+  "1" : {
+    "cod" : "2",
+    "denumire" : "Laptop Gaming Lenovo Legion",
+    "descriere" : "Laptop Gaming Lenovo Legion Y520-15IKBN cu procesor Intel® Core® i7-7700HQ 2.80GHz, Kaby Lake™, 15.6\", Full HD, IPS, 8GB, 1TB, nVIDIA GeForce GTX 1050 4GB, Free DOS, Black",
+    "imagine" : "laptop1.jpg",
+    "pret" : "3599",
+    "stoc" : 74
+  },
+  "2" : {
+    "cod" : "3",
+    "denumire" : "Laptop 2 in 1 Kiano Intelect X3 HD",
+    "descriere" : "Laptop 2 in 1 Kiano Intelect X3 HD cu procesor Intel Atom® x5-Z8350 pana la 1.92 GHz, 10.1\", IPS HD, 2GB, 32GB eMMC, Intel HD Graphics, Microsoft Windows 10, Silver",
+    "imagine" : "laptop.jpg",
+    "pret" : "599",
+    "stoc" : 23
+  },
+  "3" : {
+    "cod" : "4",
+    "denumire" : "Laptop ASUS S406UA-BM029T",
+    "descriere" : "Laptop ASUS S406UA-BM029T cu procesor Intel® Core™ i5-8250U pana la 3.40 GHz, Kaby Lake R, 14\", Full HD, 4GB, 256GB M.2 SSD, Intel® HD graphics 620, Microsoft Windows 10, Gold Metal",
+    "imagine" : "laptopAsus.jpg",
+    "pret" : "2999",
+    "stoc" : 26
+  },
+  "4" : {
+    "cod" : "5",
+    "denumire" : "Televizor Smart LED Sony Bravia",
+    "descriere" : "TV, Audio-Video & FotoTelevizoare & accesoriiTelevizoareTelevizoare Sony\nTelevizor Smart LED Sony Bravia, 108 cm, 43XE7005, 4K Ultra HD",
+    "imagine" : "TVSonyBravia.jpg",
+    "pret" : "2299",
+    "stoc" : 143
+  },
+  "5" : {
+    "cod" : "6",
+    "denumire" : "Frigider Side by Side Daewoo",
+    "descriere" : "Side by Side Daewoo FRN-T20DAMI, 537 l, Clasa A+, No Frost, H 181.2 cm, Finisaj oglinda",
+    "imagine" : "FrigiderDaewoo.jpg",
+    "pret" : "5499",
+    "stoc" : 12
+  },
+  "-LCL2Holohdva_dVbZL0" : {
+    "cod" : "7",
+    "denumire" : "Aparat foto DSLR Nikon D5300",
+    "descriere" : "Aparat foto DSLR Nikon D5300",
+    "imagine" : "AparatfotoNikon.jpg",
+    "pret" : "2549",
+    "stoc" : 32
+  },
+  "-LCL6WSMOcn5zXwjvT54" : {
+    "cod" : 8,
+    "denumire" : "Masina de spalat rufe 6th Sense Colours Whirlpool",
+    "descriere" : "Masina de spalat rufe 6th Sense Colours Whirlpool FDLR 70220 S, 7 kg, 1200 RPM Display Smart, Clasa A+++, Silver",
+    "imagine" : "MasinaspalatWhirlpool.jpg",
+    "pret" : "1499",
+    "stoc" : 59
+  },
+  "-LCL75PF7KbJv_6ANEHp" : {
+    "cod" : 9,
+    "denumire" : "Tableta Microsoft Surface Pro (2017)",
+    "descriere" : "Tableta Microsoft Surface Pro (2017), Procesor Intel® Core™ i5 7300U, PixelSense 12.3\", 4GB RAM, 128GB SSD, 8MP, Wi-Fi, Microsoft Windows 10 Pro (Argintiu)",
+    "imagine" : "TabletaMicrosoft.jpg",
+    "pret" : "5399",
+    "stoc" : 101
+  },
+  "-LCL7quwi5i27yD7tdDI" : {
+    "cod" : 10,
+    "denumire" : "Espressor automat Oursson AM6244/OR",
+    "descriere" : "Espressor automat Oursson AM6244/OR, 1400 W, 19 Bar, Rasnita ceramica, Portocaliu",
+    "imagine" : "EspressorOursson.jpg",
+    "pret" : "2799",
+    "stoc" : 17
+  },
+  "-LCL8Y5Y8tO8f5-dNNPg" : {
+    "cod" : 11,
+    "denumire" : "Aspirator fara sac Rowenta",
+    "descriere" : "Aspirator fara sac Rowenta Multi Cyclonic Animal Care RO8359EA, 750W, 2 niveluri filtrare, 2L, tub telescopic din metal, perie Ergo Comfort Silence+, Softcare+, duza spatii inguste, filtru spuma, Violet",
+    "imagine" : "Aspiratorrowenta.png",
+    "pret" : "879",
+    "stoc" : 45
+  },
+  "-LCL9oj1xvRE8a2-3tJ3" : {
+    "cod" : 12,
+    "denumire" : "Hota decorativa , Gorenje DVG 600",
+    "descriere" : "Hota decorativa , Gorenje DVG 600 ZBE, 60cm, 305 m3/h, Negru-Inox",
+    "imagine" : "HotaGorenje.jpg",
+    "pret" : "739",
+    "stoc" : 58
+  }
+}
