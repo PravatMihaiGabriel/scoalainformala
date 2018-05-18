@@ -1,9 +1,15 @@
+
         var produse;
+        var a=0;
             var PRODUSE_SERVER_URL = "https://produse-cae5b.firebaseio.com/.json";
             var xhttp = new XMLHttpRequest();
 			xhttp.onreadystatechange = function() {
 				if (this.readyState == 4 && this.status == 200) {
-					produse = JSON.parse(this.responseText);
+                    produse = JSON.parse(this.responseText);
+                    /*if(a=0){
+                        location.reload(true);
+                        a=1;
+                    }*/
 					drawproduse();
 				}
 			};
