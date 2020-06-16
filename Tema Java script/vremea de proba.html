@@ -79,22 +79,7 @@
             </tr>`
             }
             document.getElementById("prognoza").innerHTML = strPrognoza;
-            /*strPrognoza+=`<span class="vremeaNow">
-            <span><img class="imagine" src="${URL_WEATHER_ICON_PREFIX}${vremeaAcum.weather[0].icon}.png" alt="nu gasesc imaginea"></span>
-            </br>
-            <span>Descriere: ${vremeaAcum.weather[0].description}</span>
-            </br>
-            <span>Umiditate: ${vremeaAcum.main.humidity}</span>
-            </br>
-            <span>Presiune: ${vremeaAcum.main.pressure}</span>
-            </br>
-            <span>Temperatura curenta: ${vremeaAcum.main.temp}</span>
-            </br>
-            <span>Minima zilei: ${vremeaAcum.main.temp_min}</span>
-            </br>
-            <span>Maxima zilei: ${vremeaAcum.main.temp_max}</span>
-            <div id="googleMap" style="width:75%;height:250px;"></div>`
-            document.getElementById("vremeaAcum").innerHTML=str;*/
+            
             }
             function valideaza(elem, e) {
                 e.preventDefault();
@@ -149,33 +134,7 @@
 }
                 return elemOras.value;
             }
-			/*var currentWeather = new XMLHttpRequest();
-            currentWeather.onreadystatechange = function() {
-                if (this.readyState==4 && this.status==200){
-                    
-                    console.log(this.responseText);
-                    console.log(JSON.parse(this.responseText));
-                    var vremeaAcum=JSON.parse(this.responseText);
-                    console.log(vremeaAcum);
-                    str=""
-                    for(var i in cursValutar.rates){
-                        console.log(i,cursValutar.rates[i]);
-                        str+=`<li> <span class="curency">${i}</span>
-        <span class="rate">${(1/cursValutar.rates[i]).toFixed(4)}</span>
-      </li>`
-                    document.getElementById("containerCursValutar").innerHTML=str; 
-                    document.getElementById("data").innerHTML=dataRomaneasca(cursValutar.date); 
-                    }
-                }
-            };
-            if (a=true){currentWeather.open("GET", URL_CURRENT_WEATHER);
-            currentWeather.send();}
-            function dataRomaneasca(data){
-                var dataRomaneasca="";
-                //dataRomaneasca=data[8]+data[9]+"."+data[5]+data[6]+"."+data[0]+data[1]+data[2]+data[3];
-                dataRomaneasca=data.substr(8,2)+"."+data.substr(5,2)+"."+data.substr(0,4);
-                return dataRomaneasca;
-            }*/
+			
     </script>
     <style>
         .rate {
